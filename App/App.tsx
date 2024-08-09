@@ -90,8 +90,11 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
-        </View>
+          </View>
       </ScrollView>
+      {/* Footer */}
+      <View style={styles.footer}><Text>Fixed footer</Text>
+      </View>
     </SafeAreaView>
   );
 }
@@ -113,6 +116,13 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  footer: {
+    position: 'absolute',
+    height: '10%',
+    left: 0,
+    right: 0,
+    bottom: 0,
+  }
 });
 
 export default App;
