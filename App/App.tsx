@@ -7,7 +7,8 @@
 
 import React from 'react';
 import {
-  processColor,
+  Image,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -15,12 +16,18 @@ import {
 } from 'react-native';
 import {LineChart} from 'react-native-charts-wrapper';
 
+// Images
+const homeIcon = './images/homeIcon.png';
+const zoomIcon = './images/zoomIcon.png';
+const trophyIcon = './images/trophyIcon.png';
+const profileIcon = './images/profileIcon.png';
+
 //function App(): React.JSX.Element {
 class App extends React.Component {
 
   render() {
     return (
-      /* Full view */
+      // Full view
       <View style={{height: '100%'}}>
 
         {/* Scroll view */}
@@ -54,7 +61,33 @@ class App extends React.Component {
 
         {/* Footer */}
         <View style={styles.footer}>
-          <Text style={styles.baseText}>Footer</Text>
+
+          {/* Footer Icons */}
+          <Pressable>
+            <Image
+            style={styles.footerIcon}
+            source={require(homeIcon)}
+            />
+          </Pressable>
+          <Pressable>
+            <Image
+            style={styles.footerIcon}
+            source={require(zoomIcon)}
+            />
+          </Pressable>
+          <Pressable>
+            <Image
+            style={styles.footerIcon}
+            source={require(trophyIcon)}
+            />
+          </Pressable>
+          <Pressable>
+            <Image
+            style={styles.footerIcon}
+            source={require(profileIcon)}
+            />
+          </Pressable>
+
         </View>
       </View>
     );
@@ -82,6 +115,13 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  footerIcon: {
+    height: 50,
+    width: 50,
   },
 });
 
