@@ -6,100 +6,40 @@
  */
 
 import React from 'react';
-import type {PropsWithChildren} from 'react';
 import {
-  SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+function App(): React.JSX.Element {
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    /* Full view */
+    <View style={{height: '100%'}}>
+      {/* Scroll view */}
+      <View style={styles.scrollArea}>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic">
+          <Text style={styles.baseText}>
+            {'A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN'}
+          </Text>
+        </ScrollView>
+      </View>
+      {/* Footer */}
+      <View style={styles.footer}>
+        <Text style={styles.baseText}>Footer</Text>
+      </View>
     </View>
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-          </View>
-      </ScrollView>
-      {/* Footer */}
-      <View style={styles.footer}><Text>Fixed footer</Text>
-      </View>
-    </SafeAreaView>
-  );
-}
-
 const styles = StyleSheet.create({
+  baseText: {
+    fontFamily: 'Poppins',
+    fontSize: 60,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
@@ -116,13 +56,18 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  scrollArea: {
+    height: '90%',
+    backgroundColor: 'beige',
+  },
   footer: {
     position: 'absolute',
     height: '10%',
+    backgroundColor: 'tan',
     left: 0,
     right: 0,
     bottom: 0,
-  }
+  },
 });
 
 export default App;
