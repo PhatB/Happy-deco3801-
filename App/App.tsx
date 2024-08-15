@@ -7,32 +7,58 @@
 
 import React from 'react';
 import {
+  processColor,
   ScrollView,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import {LineChart} from 'react-native-charts-wrapper';
 
-function App(): React.JSX.Element {
+//function App(): React.JSX.Element {
+class App extends React.Component {
 
-  return (
-    /* Full view */
-    <View style={{height: '100%'}}>
-      {/* Scroll view */}
-      <View style={styles.scrollArea}>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic">
-          <Text style={styles.baseText}>
-            {'A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN'}
-          </Text>
-        </ScrollView>
+  render() {
+    return (
+      /* Full view */
+      <View style={{height: '100%'}}>
+
+        {/* Scroll view */}
+        <View style={styles.scrollArea}>
+          <ScrollView
+            contentInsetAdjustmentBehavior="automatic">
+            <LineChart
+            style={styles.chart}
+            data={{
+              dataSets: [
+                {
+                  values: [
+                    {
+                      y: 65,
+                      x: 0
+                    },
+                    {
+                      y: 77,
+                      x: 1
+                    }
+                  ]
+                },
+              ]
+            }}
+          />
+            <Text style={styles.baseText}>
+              {'A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN'}
+            </Text>
+          </ScrollView>
+        </View>
+
+        {/* Footer */}
+        <View style={styles.footer}>
+          <Text style={styles.baseText}>Footer</Text>
+        </View>
       </View>
-      {/* Footer */}
-      <View style={styles.footer}>
-        <Text style={styles.baseText}>Footer</Text>
-      </View>
-    </View>
-  );
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -40,25 +66,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     fontSize: 60,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
   scrollArea: {
     height: '90%',
     backgroundColor: 'beige',
+  },
+  chart: {
+    alignSelf: 'center',
+    width: '80%',
+    height: 400,
   },
   footer: {
     position: 'absolute',
