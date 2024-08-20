@@ -7,6 +7,7 @@
 
 import React from 'react';
 import {
+  Button,
   Image,
   Pressable,
   ScrollView,
@@ -15,6 +16,8 @@ import {
   View,
 } from 'react-native';
 import {LineChart} from 'react-native-charts-wrapper';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Images
 const homeIcon = './images/homeIcon.png';
@@ -22,74 +25,121 @@ const zoomIcon = './images/zoomIcon.png';
 const trophyIcon = './images/trophyIcon.png';
 const profileIcon = './images/profileIcon.png';
 
-//function App(): React.JSX.Element {
+// Navigation screens
+const HomeScreen = ({navigation}) => {
+  return (
+    // Full view
+    <View style={{height: '100%'}}>
+
+    {/* Scroll view */}
+    <View style={styles.scrollArea}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic">
+        <Text style={styles.baseText}>
+          {'HOME'}
+        </Text>
+      </ScrollView>
+    </View>
+
+    {/* Footer */}
+    <View style={styles.footer}>
+
+      {/* Footer Icons */}
+      <Pressable>
+        <Image
+        style={styles.footerIcon}
+        source={require(homeIcon)}
+        />
+      </Pressable>
+      <Pressable>
+        <Image
+        style={styles.footerIcon}
+        source={require(zoomIcon)}
+        />
+      </Pressable>
+      <Pressable>
+        <Image
+        style={styles.footerIcon}
+        source={require(trophyIcon)}
+        />
+      </Pressable>
+      <Pressable onPress={() => navigation.navigate("Profile", {screen: "ProfileScreen"})}>
+        <Image
+        style={styles.footerIcon}
+        source={require(profileIcon)}
+        />
+      </Pressable>
+    </View>
+  </View>
+  );
+};
+
+const ProfileScreen = ({navigation}) => {
+  return (
+    // Full view
+    <View style={{height: '100%'}}>
+
+    {/* Scroll view */}
+    <View style={styles.scrollArea}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic">
+        <Text style={styles.baseText}>
+          {'PROFILE'}
+        </Text>
+      </ScrollView>
+    </View>
+
+    {/* Footer */}
+    <View style={styles.footer}>
+
+      {/* Footer Icons */}
+      <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
+        <Image
+        style={styles.footerIcon}
+        source={require(homeIcon)}
+        />
+      </Pressable>
+      <Pressable>
+        <Image
+        style={styles.footerIcon}
+        source={require(zoomIcon)}
+        />
+      </Pressable>
+      <Pressable>
+        <Image
+        style={styles.footerIcon}
+        source={require(trophyIcon)}
+        />
+      </Pressable>
+      <Pressable>
+        <Image
+        style={styles.footerIcon}
+        source={require(profileIcon)}
+        />
+      </Pressable>
+    </View>
+  </View>
+  );
+};
+
+// Stack
+const Stack = createNativeStackNavigator();
+
+// App
 class App extends React.Component {
 
   render() {
     return (
-      // Full view
-      <View style={{height: '100%'}}>
-
-        {/* Scroll view */}
-        <View style={styles.scrollArea}>
-          <ScrollView
-            contentInsetAdjustmentBehavior="automatic">
-            <LineChart
-            style={styles.chart}
-            data={{
-              dataSets: [
-                {
-                  values: [
-                    {
-                      y: 65,
-                      x: 0
-                    },
-                    {
-                      y: 77,
-                      x: 1
-                    }
-                  ]
-                },
-              ]
-            }}
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{title: 'Welcome'}}
           />
-            <Text style={styles.baseText}>
-              {'A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN'}
-            </Text>
-          </ScrollView>
-        </View>
-
-        {/* Footer */}
-        <View style={styles.footer}>
-
-          {/* Footer Icons */}
-          <Pressable>
-            <Image
-            style={styles.footerIcon}
-            source={require(homeIcon)}
-            />
-          </Pressable>
-          <Pressable>
-            <Image
-            style={styles.footerIcon}
-            source={require(zoomIcon)}
-            />
-          </Pressable>
-          <Pressable>
-            <Image
-            style={styles.footerIcon}
-            source={require(trophyIcon)}
-            />
-          </Pressable>
-          <Pressable>
-            <Image
-            style={styles.footerIcon}
-            source={require(profileIcon)}
-            />
-          </Pressable>
-
-        </View>
-      </View>
+          <Stack.Screen name="Profile" component={ProfileScreen} />
+        </Stack.Navigator>
+    </NavigationContainer>
     );
   }
 }
