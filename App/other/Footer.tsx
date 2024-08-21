@@ -25,7 +25,7 @@ export const Footer = ({}) => {
           source={require(homeIcon)}
           />
         </Pressable>
-        <Pressable onPress={() => navigation.navigate("Stats", {screen: "StatsScreen"})}>
+        <Pressable onPress={() => navigation.navigate("Search", {screen: "SearchScreen"})}>
           <Image
           style={styles.footerIcon}
           source={require(zoomIcon)}
