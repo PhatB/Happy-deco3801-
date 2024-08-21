@@ -62,7 +62,7 @@ const Footer = ({}) => {
 }
 
 // Navigation screens
-const HomeScreen = ({navigation}) => {
+const HomeScreen = () => {
   return (
     // Full view
     <View style={{height: '100%'}}>
@@ -84,7 +84,7 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
-const StatsScreen = ({navigation}) => {
+const StatsScreen = () => {
   return (
     // Full view
     <View style={{height: '100%'}}>
@@ -96,6 +96,25 @@ const StatsScreen = ({navigation}) => {
         <Text style={styles.baseText}>
           {'Stats'}
         </Text>
+        <LineChart
+            style={styles.chart}
+            data={{
+              dataSets: [
+                {
+                  values: [
+                    {
+                      y: 65,
+                      x: 0
+                    },
+                    {
+                      y: 77,
+                      x: 1
+                    }
+                  ]
+                },
+              ]
+            }}
+          />
       </ScrollView>
     </View>
 
@@ -106,7 +125,7 @@ const StatsScreen = ({navigation}) => {
   );
 };
 
-const AchievementsScreen = ({navigation}) => {
+const AchievementsScreen = () => {
   return (
     // Full view
     <View style={{height: '100%'}}>
@@ -128,7 +147,7 @@ const AchievementsScreen = ({navigation}) => {
   );
 };
 
-const ProfileScreen = ({navigation}) => {
+const ProfileScreen = () => {
   return (
     // Full view
     <View style={{height: '100%'}}>
