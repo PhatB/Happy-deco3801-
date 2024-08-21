@@ -6,14 +6,7 @@
  */
 
 import React from 'react';
-import {
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
-import {NavigationContainer,
-  useNavigation,
-} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Files made by us
