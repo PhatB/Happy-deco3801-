@@ -7,8 +7,6 @@
 
 import React from 'react';
 import {
-  Image,
-  Pressable,
   ScrollView,
   Text,
   View,
@@ -18,47 +16,10 @@ import {NavigationContainer,
   useNavigation,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+// Files made by us
 import {styles} from './other/Styles.tsx';
-
-// Images
-const homeIcon = './images/homeIcon.png';
-const zoomIcon = './images/zoomIcon.png';
-const trophyIcon = './images/trophyIcon.png';
-const profileIcon = './images/profileIcon.png';
-const leafIcon = './images/leafIcon.png';
-
-const Footer = ({}) => {
-  const navigation = useNavigation();
-  return (
-    <View style={styles.footer}>
-      {/* Footer Icons */}
-      <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
-        <Image
-        style={styles.footerIcon}
-        source={require(homeIcon)}
-        />
-      </Pressable>
-      <Pressable onPress={() => navigation.navigate("Stats", {screen: "StatsScreen"})}>
-        <Image
-        style={styles.footerIcon}
-        source={require(zoomIcon)}
-        />
-      </Pressable>
-      <Pressable onPress={() => navigation.navigate("Achievements", {screen: "AchievementsScreen"})}>
-        <Image
-        style={styles.footerIcon}
-        source={require(trophyIcon)}
-        />
-      </Pressable>
-      <Pressable onPress={() => navigation.navigate("Profile", {screen: "ProfileScreen"})}>
-        <Image
-        style={styles.footerIcon}
-        source={require(profileIcon)}
-        />
-      </Pressable>
-    </View>
-  );
-}
+import {Footer} from './other/Footer.tsx';
 
 // Navigation screens
 const HomeScreen = () => {
@@ -203,38 +164,5 @@ class App extends React.Component {
     );
   }
 }
-
-/*const styles = StyleSheet.create({
-  baseText: {
-    fontFamily: 'Poppins',
-    fontSize: 60,
-  },
-  scrollArea: {
-    height: '90%',
-    backgroundColor: 'beige',
-  },
-  chart: {
-    alignSelf: 'center',
-    width: '80%',
-    height: 400,
-  },
-  footer: {
-    position: 'absolute',
-    height: '10%',
-    backgroundColor: 'tan',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  footerIcon: {
-    height: 50,
-    width: 50,
-    // Space out icons
-    margin: 15,
-  },
-});*/
 
 export default App;
