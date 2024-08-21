@@ -7,11 +7,9 @@
 
 import React from 'react';
 import {
-  Button,
   Image,
   Pressable,
   ScrollView,
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -20,6 +18,7 @@ import {NavigationContainer,
   useNavigation,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {styles} from './other/Styles.tsx';
 
 // Images
 const homeIcon = './images/homeIcon.png';
@@ -205,7 +204,7 @@ class App extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
+/*const styles = StyleSheet.create({
   baseText: {
     fontFamily: 'Poppins',
     fontSize: 60,
@@ -236,6 +235,6 @@ const styles = StyleSheet.create({
     // Space out icons
     margin: 15,
   },
-});
+});*/
 
 export default App;
