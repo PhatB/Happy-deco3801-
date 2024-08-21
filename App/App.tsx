@@ -16,7 +16,9 @@ import {
   View,
 } from 'react-native';
 import {LineChart} from 'react-native-charts-wrapper';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer,
+  useNavigation,
+} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Images
@@ -24,40 +26,26 @@ const homeIcon = './images/homeIcon.png';
 const zoomIcon = './images/zoomIcon.png';
 const trophyIcon = './images/trophyIcon.png';
 const profileIcon = './images/profileIcon.png';
+const leafIcon = './images/leafIcon.png';
 
-// Navigation screens
-const HomeScreen = ({navigation}) => {
+const Footer = ({}) => {
+  const navigation = useNavigation();
   return (
-    // Full view
-    <View style={{height: '100%'}}>
-
-    {/* Scroll view */}
-    <View style={styles.scrollArea}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic">
-        <Text style={styles.baseText}>
-          {'HOME'}
-        </Text>
-      </ScrollView>
-    </View>
-
-    {/* Footer */}
     <View style={styles.footer}>
-
       {/* Footer Icons */}
-      <Pressable>
+      <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
         <Image
         style={styles.footerIcon}
         source={require(homeIcon)}
         />
       </Pressable>
-      <Pressable>
+      <Pressable onPress={() => navigation.navigate("Stats", {screen: "StatsScreen"})}>
         <Image
         style={styles.footerIcon}
         source={require(zoomIcon)}
         />
       </Pressable>
-      <Pressable>
+      <Pressable onPress={() => navigation.navigate("Achievements", {screen: "AchievementsScreen"})}>
         <Image
         style={styles.footerIcon}
         source={require(trophyIcon)}
@@ -70,6 +58,72 @@ const HomeScreen = ({navigation}) => {
         />
       </Pressable>
     </View>
+  );
+}
+
+// Navigation screens
+const HomeScreen = ({navigation}) => {
+  return (
+    // Full view
+    <View style={{height: '100%'}}>
+
+    {/* Scroll view */}
+    <View style={styles.scrollArea}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic">
+        <Text style={styles.baseText}>
+          {'Home'}
+        </Text>
+      </ScrollView>
+    </View>
+
+    {/* Footer */}
+    <Footer></Footer>
+
+  </View>
+  );
+};
+
+const StatsScreen = ({navigation}) => {
+  return (
+    // Full view
+    <View style={{height: '100%'}}>
+
+    {/* Scroll view */}
+    <View style={styles.scrollArea}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic">
+        <Text style={styles.baseText}>
+          {'Stats'}
+        </Text>
+      </ScrollView>
+    </View>
+
+    {/* Footer */}
+    <Footer></Footer>
+
+  </View>
+  );
+};
+
+const AchievementsScreen = ({navigation}) => {
+  return (
+    // Full view
+    <View style={{height: '100%'}}>
+
+    {/* Scroll view */}
+    <View style={styles.scrollArea}>
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic">
+        <Text style={styles.baseText}>
+          {'Achievements'}
+        </Text>
+      </ScrollView>
+    </View>
+
+    {/* Footer */}
+    <Footer></Footer>
+
   </View>
   );
 };
@@ -84,40 +138,14 @@ const ProfileScreen = ({navigation}) => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic">
         <Text style={styles.baseText}>
-          {'PROFILE'}
+          {'Profile'}
         </Text>
       </ScrollView>
     </View>
 
     {/* Footer */}
-    <View style={styles.footer}>
+    <Footer></Footer>
 
-      {/* Footer Icons */}
-      <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
-        <Image
-        style={styles.footerIcon}
-        source={require(homeIcon)}
-        />
-      </Pressable>
-      <Pressable>
-        <Image
-        style={styles.footerIcon}
-        source={require(zoomIcon)}
-        />
-      </Pressable>
-      <Pressable>
-        <Image
-        style={styles.footerIcon}
-        source={require(trophyIcon)}
-        />
-      </Pressable>
-      <Pressable>
-        <Image
-        style={styles.footerIcon}
-        source={require(profileIcon)}
-        />
-      </Pressable>
-    </View>
   </View>
   );
 };
@@ -135,9 +163,23 @@ class App extends React.Component {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{title: 'Welcome'}}
+            options={{ headerShown: false }}
           />
-          <Stack.Screen name="Profile" component={ProfileScreen} />
+          <Stack.Screen
+            name="Achievements"
+            component={AchievementsScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Stats"
+            component={StatsScreen}
+            options={{ headerShown: false }}
+          />
         </Stack.Navigator>
     </NavigationContainer>
     );
@@ -172,6 +214,8 @@ const styles = StyleSheet.create({
   footerIcon: {
     height: 50,
     width: 50,
+    // Space out icons
+    margin: 15,
   },
 });
 
