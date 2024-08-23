@@ -13,7 +13,7 @@ public class EnvironmentRecord
     [BsonElement("device")]
     [BsonRepresentation(BsonType.ObjectId)]
     public string? Device { get; set; } = null!;
-
+    
     [BsonElement("time")]
     [BsonRepresentation(BsonType.DateTime)]
     public DateTime? Time { get; set; } = null!;

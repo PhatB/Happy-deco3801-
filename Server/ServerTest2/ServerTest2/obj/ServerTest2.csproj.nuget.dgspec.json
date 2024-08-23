@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\billj\\Documents\\GitHub\\deco3801\\server\\Server2\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {}
+    "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\billj\\Documents\\GitHub\\deco3801\\server\\Server2\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {
+    "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\billj\\Documents\\GitHub\\deco3801\\server\\Server2\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
+        "projectUniqueName": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
         "projectName": "ServerTest2",
-        "projectPath": "C:\\Users\\billj\\Documents\\GitHub\\deco3801\\server\\Server2\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
+        "projectPath": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
         "packagesPath": "C:\\Users\\billj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\billj\\Documents\\GitHub\\deco3801\\server\\Server2\\ServerTest2\\ServerTest2\\obj\\",
+        "outputPath": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\billj\\AppData\\Roaming\\NuGet\\NuGet.Config"

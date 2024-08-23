@@ -1,3 +1,4 @@
+﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerTest2.Models;
@@ -10,15 +11,15 @@ namespace ServerTest2.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class PlantTypeController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly PlantTypeService _plantTypeService;
         
         /// <summary>
         /// Constructor for a user controller
         /// </summary>
-        /// <param name="userService">The corresponding MongoDB service</param>
-        public UsersController(UserService userService) => _userService = userService;
+        /// <param name="plantTypeService">The corresponding MongoDB service</param>
+        public PlantTypeController(PlantTypeService plantTypeService) => _plantTypeService = plantTypeService;
         
         
         // GET: api/<UserController>
@@ -28,10 +29,10 @@ namespace ServerTest2.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<List<User>> Get() => await _userService.GetAsync();
+        public async Task<List<PlantType>> Get() => await _plantTypeService.GetAsync();
         
         [HttpGet("name/{name}")]
-        public async Task<List<User>> GetFromName(string name) => await _userService.GetFromNameAsync(name);
+        public async Task<List<PlantType>> GetFromName(string name) => await _plantTypeService.GetFromNameAsync(name);
 
         // GET api/<UserController>/5
         /// <summary>
@@ -40,9 +41,9 @@ namespace ServerTest2.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id:length(24)}")]
-        public async Task<ActionResult<User>> Get(string id)
+        public async Task<ActionResult<PlantType>> Get(string id)
         {
-            var user = await _userService.GetAsync(id);
+            var user = await _plantTypeService.GetAsync(id);
 
             if (user is null)
             {
@@ -54,17 +55,17 @@ namespace ServerTest2.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public async Task<IActionResult> Post(User newUser)
+        public async Task<IActionResult> Post(PlantType newUser)
         {
-            await _userService.CreateAsync(newUser);
+            await _plantTypeService.CreateAsync(newUser);
 
             return CreatedAtAction(nameof(Get), new { id = newUser.Id }, newUser);
         }
 
         [HttpPut("{id:length(24)}")]
-        public async Task<IActionResult> Update(string id, User updatedUser)
+        public async Task<IActionResult> Update(string id, PlantType updatedUser)
         {
-            var book = await _userService.GetAsync(id);
+            var book = await _plantTypeService.GetAsync(id);
 
             if (book is null)
             {
@@ -73,21 +74,21 @@ namespace ServerTest2.Controllers
 
             updatedUser.Id = book.Id;
 
-            await _userService.UpdateAsync(id, updatedUser);
+            await _plantTypeService.UpdateAsync(id, updatedUser);
 
             return NoContent();
         }
         [HttpDelete("{id:length(24)}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var book = await _userService.GetAsync(id);
+            var book = await _plantTypeService.GetAsync(id);
 
             if (book is null)
             {
                 return NotFound();
             }
 
-            await _userService.RemoveAsync(id);
+            await _plantTypeService.RemoveAsync(id);
 
             return NoContent();
         }
