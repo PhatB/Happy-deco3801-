@@ -17,7 +17,7 @@ export const ProfileScreen = () => {
             <View style={styles.scrollArea}>
                 <ScrollView
                     contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.baseText}>
+                    <Text style={styles.pageTitle}>
                         {'Profile'}
                     </Text>
                 </ScrollView>

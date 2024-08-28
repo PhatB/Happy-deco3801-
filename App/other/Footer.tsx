@@ -2,7 +2,8 @@ import React from 'react';
 import {
     View,
     Pressable,
-    Image
+    Image,
+    Text
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './Styles.tsx';
@@ -14,6 +15,9 @@ const trophyIcon = '../images/trophyIcon.png';
 const profileIcon = '../images/profileIcon.png';
 const leafIcon = '../images/leafIcon.png';
 
+const homeIndex = 0;
+let image;
+
 export const Footer = ({}) => {
     const navigation = useNavigation();
     return (
@@ -22,7 +26,7 @@ export const Footer = ({}) => {
             <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={require(homeIcon)}
+                source={require(leafIcon)}
                 />
             </Pressable>
             <Pressable onPress={() => navigation.navigate("Search", {screen: "SearchScreen"})}>

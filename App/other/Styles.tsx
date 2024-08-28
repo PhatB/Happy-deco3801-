@@ -7,9 +7,16 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins',
     fontSize: 60,
   },
+  pageTitle: {
+    fontFamily: 'Poppins',
+    color: '143728',
+    fontSize: 35,
+    textAlign: 'center',
+    paddingTop: 20,
+  },
   scrollArea: {
     height: '90%',
-    backgroundColor: 'beige',
+    backgroundColor: 'F5F9F3',
   },
   chart: {
     alignSelf: 'center',
@@ -19,7 +26,7 @@ export const styles = StyleSheet.create({
   footer: {
     position: 'absolute',
     height: '10%',
-    backgroundColor: 'tan',
+    backgroundColor: 'white',
     left: 0,
     right: 0,
     bottom: 0,

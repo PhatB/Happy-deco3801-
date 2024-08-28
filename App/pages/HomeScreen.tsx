@@ -16,8 +16,8 @@ export const HomeScreen = () => {
             <View style={styles.scrollArea}>
                 <ScrollView
                     contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.baseText}>
-                        {'Home'}
+                    <Text style={styles.pageTitle}>
+                        {'My Plants'}
                     </Text>
                 </ScrollView>
             </View>

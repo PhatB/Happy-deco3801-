@@ -18,7 +18,7 @@ export const SearchScreen = () => {
             <View style={styles.scrollArea}>
                 <ScrollView
                     contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.baseText}>
+                    <Text style={styles.pageTitle}>
                         {'Explore'}
                     </Text>
                     <LineChart
@@ -35,7 +35,8 @@ export const SearchScreen = () => {
                                     y: 77,
                                     x: 1
                                 }
-                                ]
+                                ],
+                                label: 'abc'
                             },
                             ]
                         }}
