@@ -5,8 +5,6 @@ import {
     Text,
 } from 'react-native';
 
-import {LineChart} from 'react-native-charts-wrapper';
-
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
@@ -24,26 +22,6 @@ export const SearchScreen = () => {
                     </Text>
                     {/* Search bar */}
                     <Search></Search>
-                    <LineChart
-                        style={styles.chart}
-                        data={{
-                            dataSets: [
-                            {
-                                values: [
-                                {
-                                    y: 65,
-                                    x: 0
-                                },
-                                {
-                                    y: 77,
-                                    x: 1
-                                }
-                                ],
-                                label: 'abc'
-                            },
-                            ]
-                        }}
-                        />
                 </ScrollView>
             </View>
 
