@@ -19,7 +19,7 @@ export const SearchScreen = () => {
                 <ScrollView
                     contentInsetAdjustmentBehavior="automatic">
                     <Text style={styles.baseText}>
-                        {'Search'}
+                        {'Explore'}
                     </Text>
                     <LineChart
                         style={styles.chart}
