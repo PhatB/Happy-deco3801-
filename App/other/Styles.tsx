@@ -14,6 +14,10 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 20,
   },
+  search: {
+    fontFamily: 'Poppins',
+    fontSize: 30,
+  },
   scrollArea: {
     height: '90%',
     backgroundColor: 'F5F9F3',

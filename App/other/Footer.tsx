@@ -15,9 +15,6 @@ const trophyIcon = '../images/trophyIcon.png';
 const profileIcon = '../images/profileIcon.png';
 const leafIcon = '../images/leafIcon.png';
 
-const homeIndex = 0;
-let image;
-
 export const Footer = ({}) => {
     const navigation = useNavigation();
     return (
@@ -49,4 +46,4 @@ export const Footer = ({}) => {
             </Pressable>
         </View>
     );
-  }
+}

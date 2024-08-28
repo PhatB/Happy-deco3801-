@@ -9,6 +9,7 @@ import {LineChart} from 'react-native-charts-wrapper';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
+import {Search} from '../other/Search.tsx';
 
 export const SearchScreen = () => {
     return (
@@ -21,6 +22,8 @@ export const SearchScreen = () => {
                     <Text style={styles.pageTitle}>
                         {'Explore'}
                     </Text>
+                    {/* Search bar */}
+                    <Search></Search>
                     <LineChart
                         style={styles.chart}
                         data={{

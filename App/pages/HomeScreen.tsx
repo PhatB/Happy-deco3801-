@@ -7,6 +7,7 @@ import {
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
+import {Search} from '../other/Search.tsx';
 
 export const HomeScreen = () => {
     return (
@@ -19,6 +20,8 @@ export const HomeScreen = () => {
                     <Text style={styles.pageTitle}>
                         {'My Plants'}
                     </Text>
+                    {/* Search bar */}
+                    <Search></Search>
                 </ScrollView>
             </View>
 
