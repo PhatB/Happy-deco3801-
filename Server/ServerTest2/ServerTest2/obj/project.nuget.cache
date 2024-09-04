@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "brLV1NdWIt/CjZWgBpPKRcORARBvIUY3FPPSAJSJqMaGOBu43Dqhq3i9rMcJLyV7BuGNDf3qMx+/5JixsxepdA==",
+  "dgSpecHash": "6brlb7295kCAEWKd1nXbvacfvKYMcoJFH5uTeSVrG03wVk9Y4hx6HGmuj1UcwSPOq9G7A1Mk/lBRkHKv0iyy+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\billj\\Documents\\GitHub\\deco3801\\server\\Server2\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
+  "projectFilePath": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\billj\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\billj\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",

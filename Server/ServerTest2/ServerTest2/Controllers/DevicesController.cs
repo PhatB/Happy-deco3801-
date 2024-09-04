@@ -6,7 +6,7 @@ using ServerTest2.Services;
 namespace ServerTest2.Controllers
 {
     /// <summary>
-    /// API Controller for the User collection
+    /// API Controller for the Devices collection
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]

@@ -20,35 +20,34 @@ const Stack = createNativeStackNavigator();
 
 // App
 class App extends React.Component {
-
-  render() {
-    return (
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Achievements"
-            component={AchievementsScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Profile"
-            component={ProfileScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Search"
-            component={SearchScreen}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
-    </NavigationContainer>
-    );
-  }
+    render() {
+        return (
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName="Home">
+                    <Stack.Screen
+                        name="Home"
+                        component={HomeScreen}
+                        options={{headerShown: false}}
+                    />
+                    <Stack.Screen
+                        name="Achievements"
+                        component={AchievementsScreen}
+                        options={{headerShown: false}}
+                    />
+                    <Stack.Screen
+                        name="Profile"
+                        component={ProfileScreen}
+                        options={{headerShown: false}}
+                    />
+                    <Stack.Screen
+                        name="Search"
+                        component={SearchScreen}
+                        options={{headerShown: false}}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        );
+    }
 }
 
 export default App;
