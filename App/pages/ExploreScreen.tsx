@@ -4,6 +4,7 @@ import {ScrollView, View, Text} from 'react-native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
+import { ExploreDisplayPlants } from '../other/ExploreDisplayPlants.tsx';
 
 export const ExploreScreen = () => {
     return (
@@ -15,6 +16,8 @@ export const ExploreScreen = () => {
                     <Text style={styles.pageTitle}>{'Explore'}</Text>
                     {/* Search bar */}
                     <Search />
+                    {/* Display plants */}
+                    <ExploreDisplayPlants />
                 </ScrollView>
             </View>
 
