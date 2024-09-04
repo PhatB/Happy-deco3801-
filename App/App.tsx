@@ -11,7 +11,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Files made by us
 import {HomeScreen} from './pages/HomeScreen.tsx';
-import {SearchScreen} from './pages/SearchScreen.tsx';
+import {ExploreScreen} from './pages/ExploreScreen.tsx';
 import {AchievementsScreen} from './pages/AchievementsScreen.tsx';
 import {ProfileScreen} from './pages/ProfileScreen.tsx';
 
@@ -40,8 +40,8 @@ class App extends React.Component {
                         options={{headerShown: false}}
                     />
                     <Stack.Screen
-                        name="Search"
-                        component={SearchScreen}
+                        name="Explore"
+                        component={ExploreScreen}
                         options={{headerShown: false}}
                     />
                 </Stack.Navigator>

@@ -5,7 +5,7 @@ import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
 
-export const SearchScreen = () => {
+export const ExploreScreen = () => {
     return (
         // Full view
         <View style={{height: '100%'}}>
