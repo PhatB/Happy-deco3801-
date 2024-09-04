@@ -33,7 +33,7 @@ export const Footer = ({}) => {
                 source={require(leafIcon)}
                 />
             </Pressable>
-            <Pressable onPress={() => navigation.navigate("Search", {screen: "SearchScreen"})}>
+            <Pressable onPress={() => navigation.navigate("Explore", {screen: "ExploreScreen"})}>
                 <Image
                 style={styles.footerIcon}
                 source={require(searchIcon)}
