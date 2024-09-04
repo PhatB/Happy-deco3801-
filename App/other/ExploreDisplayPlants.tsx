@@ -1,23 +1,7 @@
-<<<<<<< Updated upstream
-import React from 'react';
-import {View, Text} from 'react-native';
-
-import csv from 'csvtojson';
-const csvPlantTypes = '../data/PlantTypes.csv';
-
-export const ExploreDisplayPlants = () => {
-
-    return (
-        // Full view
-        <View>
-        </View>
-    );
-};
-=======
 
 import React, {useEffect} from 'react'
 import {View} from "react-native";
-import fs from "fs";
+import fs from "react-native-fs";
 import {parse} from 'csv-parse'
 const loadCSV =  function (filePath: string) {
     return new Promise((resolve, reject) => {
@@ -66,4 +50,3 @@ export const ExploreDisplayPlants = ({}) => {
         </View>
     )
 }
->>>>>>> Stashed changes
