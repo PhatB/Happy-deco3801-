@@ -1,6 +1,7 @@
 import React from 'react';
 import {
     View,
+    Text,
     Pressable,
     Image,
 } from 'react-native';
@@ -23,7 +24,7 @@ export const Footer = ({}) => {
     return (
         <View style={styles.footer}>
             {/* Footer Icons */}
-            {/*navigation.getState().index == homeIndex ? <Text>{navigation.getState().index}</Text> : <Text>{'False'}</Text>*/}
+            {navigation.getState().index == homeIndex ? <Text>{navigation.getState().index}</Text> : <Text>{'False'}</Text>}
             {/*navigation.getState().index == homeIndex ? image = leafIcon : image = homeIcon*/}
             
             <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
