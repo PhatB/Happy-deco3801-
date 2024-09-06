@@ -5,6 +5,7 @@ import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
 import { ExploreDisplayPlants } from '../other/ExploreDisplayPlants.tsx';
+import { ExploreDisplayPests } from '../other/ExploreDisplayPlants.tsx';
 
 export const ExploreScreen = () => {
     return (
@@ -56,6 +57,8 @@ export const ExploreScreen = () => {
                     <View style={styles.main}>
                         {/* Display plants */}
                         <ExploreDisplayPlants />
+                        {/* Display pests */}
+                        {/*<ExploreDisplayPests />*/}
                     </View>
                 </ScrollView>
             </View>
