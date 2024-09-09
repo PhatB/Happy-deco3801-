@@ -1,22 +1,51 @@
 
 import React, {useEffect} from 'react'
-import {FlatList, Text, View} from "react-native";
+import {FlatList, Text, View, Image, Pressable} from "react-native";
 import * as fs from 'react-native-fs'
 import {readString} from 'react-native-csv'
 import plants from "../data/PlantTypes.json";
-
+import {styles} from './Styles.tsx';
 
 export const ExploreDisplayPlants = ({}) => {
+
+    //let plantImage = data.item.image
 
     return (
         <View>
             <FlatList
                 data={plants}
-                renderItem ={({item}) => <Text>{`
-                    Name: ${item.name}
-                    Scientific Name: ${item.sci_name}
-                   `}
-                </Text>}
+                renderItem ={({item}) =>
+                <View
+                style={{flexDirection:'row', paddingVertical: 15}}>
+                    <Image
+                    style={styles.display}
+                    source={item.name == "Peace Lily" ? require('../images/peace.jpg') :
+                        (item.name == "Dieffenbachia" ? require('../images/dieffenbachia.jpg') :
+                        (item.name == "Monstera" ? require('../images/monstera.jpg') :
+                        (item.name == "Orchid" ? require('../images/orchid.jpg') :
+                        (item.name == "Burro's Tail" ? require('../images/succulent.jpg') :
+                        require('../images/missingTexture.jpg')))))}
+                    />
+                    <View
+                    style={{width: '60%', flexDirection: 'column'}}>
+                        {/* Name */}
+                        <Text
+                        style={[styles.baseText, {fontSize: 20}]}>
+                            {`${item.name}`}
+                        </Text>
+                        <Text
+                        style={[styles.baseText, {fontSize: 15, color: '#BFBFBF'}]}>
+                            {`${item.sci_name}`}
+                        </Text>
+                    </View>
+                    <Pressable>
+                        <Image
+                        style={{direction: 'rtl'}}
+                        source={require('../images/arrowIcon.png')}
+                        />
+                    </Pressable>
+                </View>
+                }
             />
 
         </View>
