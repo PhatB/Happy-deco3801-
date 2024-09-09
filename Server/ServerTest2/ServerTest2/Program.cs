@@ -25,6 +25,9 @@ if (app.Environment.IsDevelopment())
 }
 app.MapGet("/", () => "Hello!");
 app.UseHttpsRedirection();
+app.UseAuthorization();
+app.UseRouting();
+app.UseExceptionHandler("/Error");
 app.MapControllers();
 app.Run();
 
