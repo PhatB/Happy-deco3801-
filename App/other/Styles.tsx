@@ -70,5 +70,7 @@ export const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 10,
+    marginLeft: 10,
+    marginRight: 20,
   }
 });

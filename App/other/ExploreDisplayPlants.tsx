@@ -1,6 +1,6 @@
 
 import React, {useEffect} from 'react'
-import {FlatList, Text, View, Image} from "react-native";
+import {FlatList, Text, View, Image, Pressable} from "react-native";
 import * as fs from 'react-native-fs'
 import {readString} from 'react-native-csv'
 import plants from "../data/PlantTypes.json";
@@ -15,7 +15,8 @@ export const ExploreDisplayPlants = ({}) => {
             <FlatList
                 data={plants}
                 renderItem ={({item}) =>
-                <View>
+                <View
+                style={{flexDirection:'row', paddingVertical: 15}}>
                     <Image
                     style={styles.display}
                     source={item.name == "Peace Lily" ? require('../images/peace.jpg') :
@@ -25,11 +26,24 @@ export const ExploreDisplayPlants = ({}) => {
                         (item.name == "Burro's Tail" ? require('../images/succulent.jpg') :
                         require('../images/missingTexture.jpg')))))}
                     />
-                    <Text>{`
-                        Name: ${item.name}
-                        Scientific Name: ${item.sci_name}
-                    `}
-                    </Text>
+                    <View
+                    style={{width: '60%', flexDirection: 'column'}}>
+                        {/* Name */}
+                        <Text
+                        style={[styles.baseText, {fontSize: 20}]}>
+                            {`${item.name}`}
+                        </Text>
+                        <Text
+                        style={[styles.baseText, {fontSize: 15, color: '#BFBFBF'}]}>
+                            {`${item.sci_name}`}
+                        </Text>
+                    </View>
+                    <Pressable>
+                        <Image
+                        style={{direction: 'rtl'}}
+                        source={require('../images/arrowIcon.png')}
+                        />
+                    </Pressable>
                 </View>
                 }
             />
