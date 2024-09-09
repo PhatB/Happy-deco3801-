@@ -1,7 +1,6 @@
 [
  {
    "name": "Peace Lily",
-   "image": "../images/peace.jpeg",
    "sci_name": "Spathiphyllum",
    "difficulty": "Easy",
    "location": "Indoor",
@@ -18,7 +17,6 @@
  },
  {
    "name": "Dieffenbachia",
-   "image": "../images/peace.jpeg",
    "sci_name": "Dieffenbachia",
    "difficulty": "Medium",
    "location": "Indoor",
@@ -35,7 +33,6 @@
  },
  {
    "name": "Monstera",
-   "image": "../images/monstera.jpg",
    "sci_name": "Monstera deliciosa",
    "difficulty": "Easy",
    "location": "Indoor",
@@ -52,7 +49,6 @@
  },
  {
    "name": "Orchid",
-   "image": "../images/orchid.jpg",
    "sci_name": "Orchidaceae (family)",
    "difficulty": "Hard",
    "location": "Indoor/Outdoor",
@@ -69,7 +65,6 @@
  },
  {
    "name": "Burro's Tail",
-   "image": "../images/succulent.jpeg",
    "sci_name": "Sedum morganianum",
    "difficulty": "Easy",
    "location": "Indoor/Outdoor",

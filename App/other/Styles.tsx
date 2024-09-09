@@ -66,4 +66,9 @@ export const styles = StyleSheet.create({
     // Space out icons
     margin: 22,
   },
+  display: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+  }
 });
