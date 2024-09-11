@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {}
+    "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {
+    "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
+        "projectUniqueName": "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
         "projectName": "ServerTest2",
-        "projectPath": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
-        "packagesPath": "C:\\Users\\billj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\obj\\",
+        "projectPath": "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
+        "packagesPath": "C:\\Users\\Bill\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\billj\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Bill\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -96,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\billj\\.dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Bill\\.dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -10,6 +10,7 @@ export const ExploreDisplayPests = ({}) => {
         <View>
             <FlatList
                 data={plants}
+                scrollEnabled={false}
                 renderItem ={({item}) =>
                 <View
                 style={{flexDirection:'row', paddingVertical: 15}}>
