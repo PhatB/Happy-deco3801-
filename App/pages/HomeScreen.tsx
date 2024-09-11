@@ -4,14 +4,15 @@ import {ScrollView, View, Text, Image} from 'react-native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
-import {ExploreDisplayPlants} from "../other/ExploreDisplayPlants.tsx";
+
 
 const plusIcon = '../images/plusIcon.png';
-
+import {PrettyList} from '../other/PrettyList.tsx';
+import plants from "../data/PlantTypes.json";
 type UserPlant = {
     id: string;
     name: string,
-    
+
 }
 export const HomeScreen = () => {
     return (
@@ -30,7 +31,7 @@ export const HomeScreen = () => {
                             <Image source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </View>
-
+                        <PrettyList data={plants} />
                     </View>
                 </ScrollView>
             </View>

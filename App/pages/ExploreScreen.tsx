@@ -4,8 +4,10 @@ import {ScrollView, View, Text, Pressable} from 'react-native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
-import { ExploreDisplayPlants } from '../other/ExploreDisplayPlants.tsx';
-import { ExploreDisplayPests } from '../other/ExploreDisplayPests.tsx';
+
+import plants from "../data/PlantTypes.json";
+import pests from "../data/PestTypes.json";
+import {PrettyList} from "../other/PrettyList.tsx";
 
 export class ExploreScreen extends React.Component {
 
@@ -85,7 +87,7 @@ export class ExploreScreen extends React.Component {
                         {/* Main box */}
                         <View style={styles.main}>
                             {/* Display plants or pests */}
-                            {showPlants ? <ExploreDisplayPlants /> : <ExploreDisplayPests />}
+                            {showPlants ? <PrettyList data={plants} />: <PrettyList data={pests} />}
                         </View>
                     </ScrollView>
                 </View>
