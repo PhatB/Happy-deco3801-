@@ -89,5 +89,8 @@ namespace ServerTest2.Controllers
 
             return NoContent();
         }
+        [HttpGet("FromUser/{userid:length(24)}")]
+        public async Task<List<UserPlant>> GetFromUsers(string userid) => await _userPlantService.GetFromUserAsync(userid);
+
     }
 }

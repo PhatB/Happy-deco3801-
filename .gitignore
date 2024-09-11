@@ -88,3 +88,8 @@ yarn-error.log
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+/bin/
+/obj/
+/Server/ServerTest2/ServerTest2/bin
+Server/ServerTest2/ServerTest2/bin/Debug/net8.0/ServerTest2.dll
