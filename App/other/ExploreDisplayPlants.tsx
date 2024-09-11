@@ -1,19 +1,16 @@
 
-import React, {useEffect} from 'react'
+import React from 'react'
 import {FlatList, Text, View, Image, Pressable} from "react-native";
-import * as fs from 'react-native-fs'
-import {readString} from 'react-native-csv'
 import plants from "../data/PlantTypes.json";
 import {styles} from './Styles.tsx';
 
 export const ExploreDisplayPlants = ({}) => {
 
-    //let plantImage = data.item.image
-
     return (
         <View>
             <FlatList
                 data={plants}
+                scrollEnabled={false}
                 renderItem ={({item}) =>
                 <View
                 style={{flexDirection:'row', paddingVertical: 15}}>

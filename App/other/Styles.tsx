@@ -43,6 +43,18 @@ export const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 10,
   },
+  smallGreenButton: {
+    width: '42.5%',
+    marginHorizontal: '2.5%',
+  },
+  smallWhiteButton: {
+    width: '42.5%',
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#B3B3B3',
+    marginHorizontal: '2.5%',
+    color: '#B3B3B3',
+  },
   chart: {
     alignSelf: 'center',
     width: '80%',
@@ -72,5 +84,9 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 10,
     marginRight: 20,
-  }
+  },
+  plantList: {
+
+    height:'100%',
+  },
 });

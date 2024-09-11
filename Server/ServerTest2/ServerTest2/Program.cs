@@ -11,6 +11,7 @@ builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<DeviceService>();
 builder.Services.AddSingleton<EnvironmentRecordService>();
 builder.Services.AddSingleton<PlantTypeService>();
+builder.Services.AddSingleton<UserPlantService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

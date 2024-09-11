@@ -15,7 +15,7 @@ public class PlantType
     [BsonElement("moisture_min")]public int MoistureMin { get; set; } = 0;
     [BsonElement("moisture_max")]public int MoistureMax { get; set; } = 0;
     [BsonElement("sun_min")]public int SunlightMin { get; set; } = 0;
-    [BsonElement("sun_max")]public int SunglightMax { get; set; } = 0;
+    [BsonElement("sun_max")]public int SunlightMax { get; set; } = 0;
     [BsonElement("temp_min")]public int TemperatureMin { get; set; } = 0;
     [BsonElement("temp_max")]public int TemperatureMax { get; set; } = 0;
     [BsonElement("uv_min")]public int UVMin { get; set; } = 0;

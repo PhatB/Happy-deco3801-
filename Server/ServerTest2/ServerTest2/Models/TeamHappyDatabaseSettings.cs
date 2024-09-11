@@ -8,4 +8,5 @@ public class TeamHappyDatabaseSettings
     public string DeviceCollectionName { get; set; } = null!;
     public string EnvironmentRecordCollectionName { get; set; } = null!;
     public string PlantTypeCollectionName { get; set; } = null!;
+    public string UserPlantsCollectionName { get; set; } = null!;
 }
