@@ -32,35 +32,55 @@ export class ExploreScreen extends React.Component {
                         }}
                         >
                             {/* Plants */}
-                            <Pressable
-                            style={[styles.greenButton,
-                            {width: '42.5%',
-                            marginHorizontal: '2.5%',
-                            }]}
-                            onPress={() => this.setState({ showPlants: true })}
-                            >
-                                <Text style={styles.greenButton}>{'Plants'}</Text>
-                            </Pressable>
-                            {/* Pests */}
-                            <Pressable
-                            style={[styles.greenButton,
-                            {width: '42.5%',
-                            backgroundColor: 'white',
-                            borderWidth: 1,
-                            borderColor: '#B3B3B3',
-                            marginHorizontal: '2.5%',
-                            }]}
-                            onPress={() => this.setState({ showPlants: false })}
-                            >
-                                <Text
+                            {showPlants ?
+                                <Pressable
                                 style={[styles.greenButton,
-                                {backgroundColor: 'white',
-                                color: '#B3B3B3',
-                                }]}
+                                    styles.smallGreenButton]}
+                                onPress={() => this.setState({ showPlants: true })}
                                 >
-                                    {'Pests'}
-                                </Text>
-                            </Pressable>
+                                    <Text style={styles.greenButton}>{'Plants'}</Text>
+                                </Pressable>
+                                :
+                                <Pressable
+                                style={[styles.greenButton,
+                                    styles.smallWhiteButton]}
+                                onPress={() => this.setState({ showPlants: true })}
+                                >
+                                    <Text
+                                    style={[styles.greenButton,
+                                        {backgroundColor: 'white',
+                                        color: '#B3B3B3',
+                                        }]}
+                                    >
+                                        {'Plants'}
+                                    </Text>
+                                </Pressable>
+                            }
+                            {/* Pests */}
+                            {showPlants ?
+                                <Pressable
+                                style={[styles.greenButton,
+                                styles.smallWhiteButton]}
+                                onPress={() => this.setState({ showPlants: false })}
+                                >
+                                    <Text
+                                    style={[styles.greenButton,
+                                    {backgroundColor: 'white',
+                                    color: '#B3B3B3',
+                                    }]}
+                                    >
+                                        {'Pests'}
+                                    </Text>
+                                </Pressable>
+                                :
+                                <Pressable
+                                style={[styles.greenButton,
+                                styles.smallGreenButton]}
+                                onPress={() => this.setState({ showPlants: false })}
+                                >
+                                    <Text style={styles.greenButton}>{'Pests'}</Text>
+                                </Pressable>
+                            }
                         </View>
                         {/* Main box */}
                         <View style={styles.main}>
