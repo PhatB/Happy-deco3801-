@@ -75,12 +75,12 @@ export class ExploreScreen extends React.Component {
                                 :
                                 <Pressable
                                 style={[styles.greenButton,
-                                styles.smallGreenButton]}
-                                onPress={() => this.setState({ showPlants: false })}
-                                >
-                                    <Text style={styles.greenButton}>{'Pests'}</Text>
-                                </Pressable>
-                            }
+                                    styles.smallGreenButton]}
+                                    onPress={() => this.setState({ showPlants: false })}
+                                    >
+                                        <Text style={styles.greenButton}>{'Pests'}</Text>
+                                    </Pressable>
+                                }
                         </View>
                         {/* Main box */}
                         <View style={styles.main}>
