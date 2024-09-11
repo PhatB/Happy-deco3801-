@@ -7,10 +7,10 @@ import {styles} from './Styles.tsx';
 export const ExploreDisplayPlants = ({}) => {
 
     return (
-        <View style={styles.plantList}>
+        <View>
             <FlatList
                 data={plants}
-
+                scrollEnabled={false}
                 renderItem ={({item}) =>
                 <View
                 style={{flexDirection:'row', paddingVertical: 15}}>

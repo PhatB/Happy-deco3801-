@@ -20,7 +20,7 @@ export class ExploreScreen extends React.Component {
             <View style={{height: '100%'}}>
                 {/* Scroll view */}
                 <View style={styles.scrollArea}>
-
+                    <ScrollView contentInsetAdjustmentBehavior="automatic">
                         <Text style={styles.pageTitle}>{'Explore'}</Text>
                         {/* Search bar */}
                         <Search />
@@ -87,7 +87,7 @@ export class ExploreScreen extends React.Component {
                             {/* Display plants or pests */}
                             {showPlants ? <ExploreDisplayPlants /> : <ExploreDisplayPests />}
                         </View>
-
+                    </ScrollView>
                 </View>
 
                 {/* Footer */}

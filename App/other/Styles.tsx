@@ -87,6 +87,6 @@ export const styles = StyleSheet.create({
   },
   plantList: {
 
-    height:'80%',
+    height:'100%',
   },
 });
