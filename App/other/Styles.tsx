@@ -41,7 +41,9 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: 20,
     padding: 8,
+
     borderRadius: 10,
+
   },
   smallGreenButton: {
     width: '42.5%',

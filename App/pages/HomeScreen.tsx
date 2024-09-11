@@ -4,9 +4,15 @@ import {ScrollView, View, Text, Image} from 'react-native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
+import {ExploreDisplayPlants} from "../other/ExploreDisplayPlants.tsx";
 
 const plusIcon = '../images/plusIcon.png';
 
+type UserPlant = {
+    id: string;
+    name: string,
+    
+}
 export const HomeScreen = () => {
     return (
     // Full view
@@ -18,12 +24,13 @@ export const HomeScreen = () => {
                     {/* Search bar */}
                     <Search />
                     {/* Main box */}
-                    <View style={styles.main}>
+                    <View style={[styles.main, {flexDirection:'column'}]} >
                         {/* Add new plant */}
-                        <View style={styles.greenButton}>
+                        <View style={[styles.greenButton, {marginVertical: 15}]}>
                             <Image source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </View>
+
                     </View>
                 </ScrollView>
             </View>
