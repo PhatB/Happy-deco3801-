@@ -1,22 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "/var/www/dotnet/Happy-deco3801-/Server/ServerTest2/ServerTest2/ServerTest2.csproj": {}
-  },
-  "projects": {
-    "/var/www/dotnet/Happy-deco3801-/Server/ServerTest2/ServerTest2/ServerTest2.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/var/www/dotnet/Happy-deco3801-/Server/ServerTest2/ServerTest2/ServerTest2.csproj",
-        "projectName": "ServerTest2",
-        "projectPath": "/var/www/dotnet/Happy-deco3801-/Server/ServerTest2/ServerTest2/ServerTest2.csproj",
-        "packagesPath": "/home/s4743617/.nuget/packages/",
-        "outputPath": "/var/www/dotnet/Happy-deco3801-/Server/ServerTest2/ServerTest2/obj/",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "/home/s4743617/.nuget/NuGet/NuGet.Config"
-=======
     "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj": {}
   },
   "projects": {
@@ -31,7 +15,6 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Bill\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> 4943a8a81d234522c059065ca643a94108d54ba5
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -118,11 +101,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
-=======
           "runtimeIdentifierGraphPath": "C:\\Users\\Bill\\.dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
->>>>>>> 4943a8a81d234522c059065ca643a94108d54ba5
         }
       }
     }

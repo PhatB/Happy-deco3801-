@@ -88,18 +88,3 @@ yarn-error.log
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/ServerTest2.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/ServerTest2.exe
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Microsoft.OpenApi.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/MongoDB.Bson.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/MongoDB.Driver.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
-Server/ServerTest2/ServerTest2/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
