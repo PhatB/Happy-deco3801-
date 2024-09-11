@@ -84,5 +84,9 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 10,
     marginRight: 20,
-  }
+  },
+  plantList: {
+
+    height:'80%',
+  },
 });
