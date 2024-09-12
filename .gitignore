@@ -93,3 +93,4 @@ yarn-error.log
 /obj/
 /Server/ServerTest2/ServerTest2/bin
 Server/ServerTest2/ServerTest2/bin/Debug/net8.0/ServerTest2.dll
+App/ios/happy.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
