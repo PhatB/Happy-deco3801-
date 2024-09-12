@@ -24,7 +24,12 @@ export const HomeScreen = () => {
                     <Text style={styles.pageTitle}>{'My Plants'}</Text>
                     {/* Search bar */}
                     <Search />
+                    {/* Weather box */}
+                    <View>
+                        
+                    </View>
                     {/* Main box */}
+
                     <View style={[styles.main, {flexDirection:'column'}]} >
                         {/* Add new plant */}
                         <View style={[styles.greenButton, {marginVertical: 15}]}>
