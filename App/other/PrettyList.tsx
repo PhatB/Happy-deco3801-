@@ -7,7 +7,10 @@ import {styles} from './Styles.tsx';
 
 
 type ListProps = {
-    data: any[]
+    data: any[],
+    primaryField: string,
+    secondaryField: string,
+    showPlants: boolean
 }
 export const PrettyList = (props: ListProps) => {
     const navigation = useNavigation();
@@ -33,14 +36,15 @@ export const PrettyList = (props: ListProps) => {
                             {/* Name */}
                             <Text
                                 style={[styles.baseText, {fontSize: 20}]}>
-                                {`${item.name}`}
+                                {`${item[props.primaryField]}`}
                             </Text>
                             <Text
                                 style={[styles.baseText, {fontSize: 15, color: '#BFBFBF'}]}>
-                                {`${item.sci_name}`}
+                                {`${item[props.secondaryField]}`}
                             </Text>
                         </View>
-                        <Pressable onPress={() => navigation.navigate("MoreInfo", {info: item})}>
+                    
+                        <Pressable onPress={() => navigation.navigate("MoreInfo", {info: item, isPlant: props.showPlants})}>
                             <Image
                                 style={{direction: 'rtl', width: 20, height: 20, marginTop: '120%'}}
                                 source={require('../images/arrowIcon.png')}

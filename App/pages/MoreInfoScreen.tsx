@@ -4,6 +4,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
+import {MorePlantInfo}from '../other/MorePlantInfo.tsx'
 
 const plusIcon = '../images/plusIcon.png';
 
@@ -11,12 +12,14 @@ export const MoreInfoScreen = () => {
     const navigation = useNavigation();
     const route = useRoute()
     const info = route.params?.info
+    const isPlant: boolean = route.params?.isPlant
     return (
     // Full view
-        <View style={{height: '100%'}}>
+        <View style={{height: '100%', backgroundColor: 'white'}}>
             {/* Scroll view */}
-            <View style={styles.scrollArea}>
-                <ScrollView contentInsetAdjustmentBehavior="automatic">
+            <View style={[styles.scrollArea]}>
+                <ScrollView contentInsetAdjustmentBehavior="automatic"
+                style={{backgroundColor: 'white'}}>
                     <Text style={[styles.pageTitle]}>{`${info.name}`}</Text>
                     <Pressable onPress={() => navigation.pop()}>
                         <Image
@@ -26,8 +29,17 @@ export const MoreInfoScreen = () => {
                     </Pressable>
                     {/* Main box */}
                     <View style={styles.main}>
-                        
+                        <Image
+                            style={{width: '100%', height: 200, alignSelf: 'center', borderRadius: 20}}
+                            source={info.name == "Peace Lily" ? require('../images/peace.jpg') :
+                                (info.name == "Dieffenbachia" ? require('../images/dieffenbachia.jpg') :
+                                    (info.name == "Monstera" ? require('../images/monstera.jpg') :
+                                        (info.name == "Orchid" ? require('../images/orchid.jpg') :
+                                            (info.name == "Burro's Tail" ? require('../images/succulent.jpg') :
+                                                require('../images/missingTexture.jpg')))))}
+                        />
                     </View>
+                    <MorePlantInfo info={info}/>
                 </ScrollView>
             </View>
 
