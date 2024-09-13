@@ -44,29 +44,41 @@ const plantImages: any = {
 }
 
 
+
 export const ExploreScreen = () =>{
 
         const loadPlants = () => {
             let plantTypes: PlantType[] = []
             let plantList: any[] = plants
-            console.log(JSON.stringify(plantList));
             for (let index in plantList) {
                 let plant = plantList[index]
-                console.log("plant: " + JSON.stringify(plant));
                 let plantType: any = {}
                 for (let key in plant) {
-                    console.log("KEY:" + key)
                     plantType[key] = plant[key]
                 }
                 plantType["image"] = plantImages[plant["name"]]
                 plantTypes.push(plantType);
-                console.log(JSON.stringify("PT: " + JSON.stringify(plantType)));
             }
-            console.log(plantTypes.toString())
             return plantTypes
         }
-        const [plantTypes, setPlantTypes] = useState<PlantType[]>([]);
         const [showPlants, setShowPlants] = useState<boolean>(true);
+        const ShowPlantButton = (props: any) => {
+            return(
+                <Pressable
+                    style={[styles.greenButton, showPlants === props.showPlants
+                        ? styles.smallGreenButton
+                        : styles.smallWhiteButton
+                    ]}
+                    onPress={() => setShowPlants(props.showPlants)}>
+                    <Text style={[styles.greenButton, showPlants !== props.showPlants
+                        ? {backgroundColor: 'white',color: '#B3B3B3'}
+                        :{}
+                    ]}>
+                        {props.label}
+                    </Text>
+                </Pressable>
+            )
+        }
         return (
             // Full view
             <View style={{height: '100%'}}>
@@ -84,75 +96,25 @@ export const ExploreScreen = () =>{
                         }}
                         >
                             {/* Plants */}
-                            {showPlants ?
-                                <Pressable
-                                style={[styles.greenButton,
-                                    styles.smallGreenButton]}
-                                onPress={() => setShowPlants(true)}>
-                                    <Text style={styles.greenButton}>{'Plants'}</Text>
-                                </Pressable>
-                                :
-                                <Pressable
-                                style={[styles.greenButton,
-                                    styles.smallWhiteButton]}
-                                onPress={() => setShowPlants(true)}
-                                >
-                                    <Text
-                                    style={[styles.greenButton,
-                                        {backgroundColor: 'white',
-                                        color: '#B3B3B3',
-                                        }]}
-                                    >
-                                        {'Plants'}
-                                    </Text>
-                                </Pressable>
-                            }
+                            <ShowPlantButton showPlants={true} label={"Plants"} />
                             {/* Pests */}
-                            {showPlants ?
-                                <Pressable
-                                style={[styles.greenButton,
-                                styles.smallWhiteButton]}
-                                onPress={() => setShowPlants(false)}
-                                >
-                                    <Text
-                                    style={[styles.greenButton,
-                                    {backgroundColor: 'white',
-                                    color: '#B3B3B3',
-                                    }]}
-                                    >
-                                        {'Pests'}
-                                    </Text>
-                                </Pressable>
-                                :
-                                <Pressable
-                                style={[styles.greenButton,
-                                    styles.smallGreenButton]}
-                                    onPress={() => setShowPlants(false)}
-                                    >
-                                        <Text style={styles.greenButton}>{'Pests'}</Text>
-                                    </Pressable>
-                                }
+                            <ShowPlantButton showPlants={false} label={"Pests"} />
+
                         </View>
                         {/* Main box */}
                         <View style={styles.main}>
                             {/* Display plants or pests */}
-                            {
-                                showPlants
-                                ? <PrettyList  data={loadPlants()}
-                                               primaryField = {"name"}
-                                               secondaryField={"sci_name"}
-                                               targetPage={"MoreInfo"}
-                                               image = "auto"
-                                               targetConstParams={{"isPlant":showPlants}}
-                                               targetItemParams={{}}/>
-                                : <PrettyList  data={pests}
-                                               primaryField = {"name"}
-                                               image = "auto"
-                                               secondaryField={"sci_name"}
-                                               targetPage={"MoreInfo"}
-                                               targetConstParams={{"isPlant":showPlants}}
-                                               targetItemParams={{}}/>
-                            }
+                            <PrettyList
+                                data={showPlants ? loadPlants() : pests}
+                                primaryField = {"name"}
+                                secondaryField={"sci_name"}
+                                targetPage={"MoreInfo"}
+                                defaultImage={require("../images/gLeafIcon.png")}
+                                targetConstParams={{"isPlant":showPlants}}
+                                targetItemParams={{}}
+                            />
+
+
                         </View>
                     </ScrollView>
                 </View>

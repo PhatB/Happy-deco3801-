@@ -31,12 +31,7 @@ export const MoreInfoScreen = () => {
                     <View style={styles.main}>
                         <Image
                             style={{width: '100%', height: 200, alignSelf: 'center', borderRadius: 20}}
-                            source={info.name == "Peace Lily" ? require('../images/peace.jpg') :
-                                (info.name == "Dieffenbachia" ? require('../images/dieffenbachia.jpg') :
-                                    (info.name == "Monstera" ? require('../images/monstera.jpg') :
-                                        (info.name == "Orchid" ? require('../images/orchid.jpg') :
-                                            (info.name == "Burro's Tail" ? require('../images/succulent.jpg') :
-                                                require('../images/missingTexture.jpg')))))}
+                            source={info.image}
                         />
                     </View>
                     <MorePlantInfo info={info}/>

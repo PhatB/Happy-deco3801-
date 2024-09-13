@@ -63,6 +63,9 @@ export const HomeScreen = () => {
                                 primaryField={"name"}
                                 secondaryField={"plantType"}
                                 defaultImage={require("../images/gLeafIcon.png")}
+                                targetPage = "Home"
+                                targetItemParams={{}}
+                                targetConstParams={{}}
                             />}
 
                     </View>

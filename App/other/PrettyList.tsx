@@ -10,7 +10,7 @@ type ListProps = {
     data: any[],
     primaryField: string,
     secondaryField: string,
-    defaultImage: ImageSourcePropType,
+    defaultImage: ImageSourcePropType | null,
     targetPage: string,
     targetConstParams: any,
     targetItemParams: any,
