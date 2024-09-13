@@ -26,14 +26,6 @@ type PlantType = {
     detail: string
     image: ImageSourcePropType
 }
-/*
-     source={info.name == "Peace Lily" ? require('../images/peace.jpg') :
-                                (info.name == "Dieffenbachia" ? require('../images/dieffenbachia.jpg') :
-                                    (info.name == "Monstera" ? require('../images/monstera.jpg') :
-                                        (info.name == "Orchid" ? require('../images/orchid.jpg') :
-                                            (info.name == "Burro's Tail" ? require('../images/succulent.jpg') :
-                                                require('../images/missingTexture.jpg')))))}
- */
 
 const plantImages: any = {
     "Peace Lily" : require("../images/peace.jpg"),
@@ -43,26 +35,32 @@ const plantImages: any = {
     "Burro's Tail" : require("../images/succulent.jpg"),
 }
 
-
-
 export const ExploreScreen = () =>{
 
-        const loadPlants = () => {
+    /**
+     * Converts the plant data from JSON into an array of PlantType structs.
+     */
+    const loadPlants = () => {
             let plantTypes: PlantType[] = []
             let plantList: any[] = plants
+            // Go through each element in the JSON
             for (let index in plantList) {
                 let plant = plantList[index]
-                let plantType: any = {}
-                for (let key in plant) {
-                    plantType[key] = plant[key]
-                }
-                plantType["image"] = plantImages[plant["name"]]
-                plantTypes.push(plantType);
+
+                // Add the plant's image
+                plant["image"] = plantImages[plant["name"]]
+                // Convert the plant to a PlantType and add it to the array.
+                plantTypes.push(plant);
             }
             return plantTypes
         }
         const [showPlants, setShowPlants] = useState<boolean>(true);
-        const ShowPlantButton = (props: any) => {
+    /**
+     * Component for the buttons that switch between displaying plants and pests
+     * @param props Contains `showPlants: boolean`
+     * and `label: string`
+     */
+    const ShowPlantButton = (props: any) => {
             return(
                 <Pressable
                     style={[styles.greenButton, showPlants === props.showPlants

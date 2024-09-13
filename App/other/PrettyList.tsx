@@ -17,6 +17,12 @@ type ListProps = {
 }
 export const PrettyList = (props: ListProps) => {
     const navigation = useNavigation();
+
+    /**
+     * Creates a struct of parameters to be passed to the
+     * target page if the given item is pressed.
+     * @param item The current list item.
+     */
     const generateParams = (item: any) => {
         let obj: any = {}
         obj["info"] = item;
@@ -35,8 +41,7 @@ export const PrettyList = (props: ListProps) => {
                 data={props.data}
                 scrollEnabled={false}
                 renderItem ={({item}) =>
-                    <View
-                        style={{flexDirection:'row', paddingVertical: 15}}>
+                    <View style={{flexDirection:'row', paddingVertical: 15}}>
                         <Image
                             style={styles.display}
                             source={item.hasOwnProperty('image')
