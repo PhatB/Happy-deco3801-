@@ -14,6 +14,7 @@ import {HomeScreen} from './pages/HomeScreen.tsx';
 import {ExploreScreen} from './pages/ExploreScreen.tsx';
 import {AchievementsScreen} from './pages/AchievementsScreen.tsx';
 import {ProfileScreen} from './pages/ProfileScreen.tsx';
+import {MoreInfoScreen} from './pages/MoreInfoScreen.tsx';
 
 // Stack
 const Stack = createNativeStackNavigator();
@@ -42,6 +43,11 @@ class App extends React.Component {
                     <Stack.Screen
                         name="Explore"
                         component={ExploreScreen}
+                        options={{headerShown: false}}
+                    />
+                    <Stack.Screen
+                        name="MoreInfo"
+                        component={MoreInfoScreen}
                         options={{headerShown: false}}
                     />
                 </Stack.Navigator>

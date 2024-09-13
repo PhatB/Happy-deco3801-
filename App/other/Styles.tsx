@@ -57,6 +57,13 @@ export const styles = StyleSheet.create({
     marginHorizontal: '2.5%',
     color: '#B3B3B3',
   },
+  backArrow: {
+    width: 30,
+    height: 30,
+    transform: [{rotate: '180deg'}],
+    marginTop: -35,
+    marginLeft: '5%',
+  },
   chart: {
     alignSelf: 'center',
     width: '80%',

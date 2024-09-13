@@ -1,6 +1,7 @@
 
 import React from 'react'
 import {FlatList, Text, View, Image, Pressable} from "react-native";
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {styles} from './Styles.tsx';
 
@@ -9,7 +10,7 @@ type ListProps = {
     data: any[]
 }
 export const PrettyList = (props: ListProps) => {
-
+    const navigation = useNavigation();
     return (
         <View>
             <FlatList
@@ -39,9 +40,9 @@ export const PrettyList = (props: ListProps) => {
                                 {`${item.sci_name}`}
                             </Text>
                         </View>
-                        <Pressable>
+                        <Pressable onPress={() => navigation.navigate("MoreInfo", {info: item})}>
                             <Image
-                                style={{direction: 'rtl'}}
+                                style={{direction: 'rtl', width: 20, height: 20, marginTop: '120%'}}
                                 source={require('../images/arrowIcon.png')}
                             />
                         </Pressable>
