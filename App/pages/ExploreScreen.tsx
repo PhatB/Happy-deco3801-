@@ -1,5 +1,5 @@
-import React from 'react';
-import {ScrollView, View, Text, Pressable} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ScrollView, View, Text, Pressable, ImageSourcePropType} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
@@ -9,14 +9,64 @@ import plants from "../data/PlantTypes.json";
 import pests from "../data/PestTypes.json";
 import {PrettyList} from "../other/PrettyList.tsx";
 
-export class ExploreScreen extends React.Component {
+type PlantType = {
+    name: string
+    sci_name: string
+    difficulty: string
+    location: string
+    moisture_min: number
+    moisture_max: number
+    sun_min: number
+    sun_max: number
+    temp_min: number
+    temp_max: number
+    uv_min: number
+    uv_max: number
+    pests: string
+    detail: string
+    image: ImageSourcePropType
+}
+/*
+     source={info.name == "Peace Lily" ? require('../images/peace.jpg') :
+                                (info.name == "Dieffenbachia" ? require('../images/dieffenbachia.jpg') :
+                                    (info.name == "Monstera" ? require('../images/monstera.jpg') :
+                                        (info.name == "Orchid" ? require('../images/orchid.jpg') :
+                                            (info.name == "Burro's Tail" ? require('../images/succulent.jpg') :
+                                                require('../images/missingTexture.jpg')))))}
+ */
 
-    state = {
-        showPlants: true,
-    };
+const plantImages: any = {
+    "Peace Lily" : require("../images/peace.jpg"),
+    "Dieffenbachia": require("../images/dieffenbachia.jpg"),
+    "Monstera" : require("../images/monstera.jpg"),
+    "Orchid" : require("../images/orchid.jpg"),
+    "Burro's Tail" : require("../images/succulent.jpg"),
+}
 
-    render() {
-        const { showPlants } = this.state;
+
+export const ExploreScreen = () =>{
+
+        const loadPlants = () => {
+            let plantTypes: PlantType[] = []
+            let plantList: any[] = plants
+            console.log(JSON.stringify(plantList));
+            for (let index in plantList) {
+                let plant = plantList[index]
+                console.log("plant: " + JSON.stringify(plant));
+                let plantType: any = {}
+                for (let key in plant) {
+                    console.log("KEY:" + key)
+                    plantType[key] = plant[key]
+                }
+                plantType["image"] = plantImages[plant["name"]]
+                plantTypes.push(plantType);
+                console.log(JSON.stringify("PT: " + JSON.stringify(plantType)));
+            }
+            console.log(plantTypes.toString())
+            return plantTypes
+        }
+        const [plantTypes, setPlantTypes] = useState<PlantType[]>([]);
+        const [showPlants, setShowPlants] = useState<boolean>(true);
         return (
             // Full view
             <View style={{height: '100%'}}>
@@ -38,15 +88,14 @@ export class ExploreScreen extends React.Component {
                                 <Pressable
                                 style={[styles.greenButton,
                                     styles.smallGreenButton]}
-                                onPress={() => this.setState({ showPlants: true })}
-                                >
+                                onPress={() => setShowPlants(true)}>
                                     <Text style={styles.greenButton}>{'Plants'}</Text>
                                 </Pressable>
                                 :
                                 <Pressable
                                 style={[styles.greenButton,
                                     styles.smallWhiteButton]}
-                                onPress={() => this.setState({ showPlants: true })}
+                                onPress={() => setShowPlants(true)}
                                 >
                                     <Text
                                     style={[styles.greenButton,
@@ -63,7 +112,7 @@ export class ExploreScreen extends React.Component {
                                 <Pressable
                                 style={[styles.greenButton,
                                 styles.smallWhiteButton]}
-                                onPress={() => this.setState({ showPlants: false })}
+                                onPress={() => setShowPlants(false)}
                                 >
                                     <Text
                                     style={[styles.greenButton,
@@ -78,7 +127,7 @@ export class ExploreScreen extends React.Component {
                                 <Pressable
                                 style={[styles.greenButton,
                                     styles.smallGreenButton]}
-                                    onPress={() => this.setState({ showPlants: false })}
+                                    onPress={() => setShowPlants(false)}
                                     >
                                         <Text style={styles.greenButton}>{'Pests'}</Text>
                                     </Pressable>
@@ -89,14 +138,16 @@ export class ExploreScreen extends React.Component {
                             {/* Display plants or pests */}
                             {
                                 showPlants
-                                ? <PrettyList  data={plants}
+                                ? <PrettyList  data={loadPlants()}
                                                primaryField = {"name"}
                                                secondaryField={"sci_name"}
                                                targetPage={"MoreInfo"}
+                                               image = "auto"
                                                targetConstParams={{"isPlant":showPlants}}
                                                targetItemParams={{}}/>
                                 : <PrettyList  data={pests}
                                                primaryField = {"name"}
+                                               image = "auto"
                                                secondaryField={"sci_name"}
                                                targetPage={"MoreInfo"}
                                                targetConstParams={{"isPlant":showPlants}}
@@ -110,5 +161,5 @@ export class ExploreScreen extends React.Component {
                 <Footer />
             </View>
         );
-    };
+
 }

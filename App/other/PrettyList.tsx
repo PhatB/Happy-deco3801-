@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {FlatList, Text, View, Image, Pressable} from "react-native";
+import {FlatList, Text, View, Image, Pressable, ImageSourcePropType} from "react-native";
 import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {styles} from './Styles.tsx';
@@ -10,6 +10,7 @@ type ListProps = {
     data: any[],
     primaryField: string,
     secondaryField: string,
+    defaultImage: ImageSourcePropType,
     targetPage: string,
     targetConstParams: any,
     targetItemParams: any,
@@ -19,10 +20,10 @@ export const PrettyList = (props: ListProps) => {
     const generateParams = (item: any) => {
         let obj: any = {}
         obj["info"] = item;
-        for (let key in Object.keys(props.targetConstParams)){
+        for (let key in props.targetConstParams){
             obj[key] = props.targetConstParams[key];
         }
-        for (let key in Object.keys(props.targetItemParams)){
+        for (let key in props.targetItemParams){
             obj[key] = item[props.targetItemParams[key]];
         }
         return obj
@@ -38,12 +39,12 @@ export const PrettyList = (props: ListProps) => {
                         style={{flexDirection:'row', paddingVertical: 15}}>
                         <Image
                             style={styles.display}
-                            source={item.name == "Peace Lily" ? require('../images/peace.jpg') :
-                                (item.name == "Dieffenbachia" ? require('../images/dieffenbachia.jpg') :
-                                    (item.name == "Monstera" ? require('../images/monstera.jpg') :
-                                        (item.name == "Orchid" ? require('../images/orchid.jpg') :
-                                            (item.name == "Burro's Tail" ? require('../images/succulent.jpg') :
-                                                require('../images/missingTexture.jpg')))))}
+                            source={item.hasOwnProperty('image')
+                                ? item.image
+                                : props.defaultImage === null || props.defaultImage === undefined
+                                    ? require("../images/missingTexture.jpg")
+                                    : props.defaultImage
+                        }
                         />
                         <View
                             style={{width: '60%', flexDirection: 'column'}}>
