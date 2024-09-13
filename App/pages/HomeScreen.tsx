@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, View, Text, Image} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
@@ -19,10 +19,12 @@ export const HomeScreen = () => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState<UserPlant[]>([]);
     const [error, setError] = useState<String | null>(null);
+
     const getPlants = async () => {
         try {
-            const response = await fetch("https://deco3801-teamhappy.uqcloud.net/api/UserPlants/FromUser/" + testUserId);
+            const response = await fetch("https://deco3801-teamhappy.uqcloud.net/api/UserPlant/FromUser/" + testUserId);
             const json = await response.json();
+            console.log(json)
             setData(json);
         } catch (err) {
             setError(err as String);
@@ -30,6 +32,9 @@ export const HomeScreen = () => {
             setLoading(false);
         }
     }
+    useEffect(() => {
+        getPlants().then();
+    }, [])
     return (
     // Full view
         <View style={{height: '100%'}}>
@@ -52,8 +57,8 @@ export const HomeScreen = () => {
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </View>
                         {error !== null
-                        ? <Text>Error while accessing your plant list: {error}</Text>
-                        : <PrettyList data={data} />}
+                            ? <Text>{`Error while accessing your plant list. ${error}`}</Text>
+                            : <PrettyList data={data} primaryField={"name"} secondaryField={"plantType"}/>}
 
                     </View>
                 </ScrollView>
