@@ -10,10 +10,24 @@ type ListProps = {
     data: any[],
     primaryField: string,
     secondaryField: string,
-    showPlants: boolean
+    targetPage: string,
+    targetConstParams: any,
+    targetItemParams: any,
 }
 export const PrettyList = (props: ListProps) => {
     const navigation = useNavigation();
+    const generateParams = (item: any) => {
+        let obj: any = {}
+        obj["info"] = item;
+        for (let key in Object.keys(props.targetConstParams)){
+            obj[key] = props.targetConstParams[key];
+        }
+        for (let key in Object.keys(props.targetItemParams)){
+            obj[key] = item[props.targetItemParams[key]];
+        }
+        return obj
+
+    }
     return (
         <View>
             <FlatList
@@ -43,8 +57,8 @@ export const PrettyList = (props: ListProps) => {
                                 {`${item[props.secondaryField]}`}
                             </Text>
                         </View>
-                    
-                        <Pressable onPress={() => navigation.navigate("MoreInfo", {info: item, isPlant: props.showPlants})}>
+
+                        <Pressable onPress={() => navigation.navigate(props.targetPage, generateParams(item))}>
                             <Image
                                 style={{direction: 'rtl', width: 20, height: 20, marginTop: '120%'}}
                                 source={require('../images/arrowIcon.png')}

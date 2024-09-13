@@ -58,7 +58,11 @@ export const HomeScreen = () => {
                         </View>
                         {error !== null
                             ? <Text>{`Error while accessing your plant list. ${error}`}</Text>
-                            : <PrettyList data={data} primaryField={"name"} secondaryField={"plantType"}/>}
+                            : <PrettyList
+                                data={data}
+                                primaryField={"name"}
+                                secondaryField={"plantType"}
+                            />}
 
                     </View>
                 </ScrollView>

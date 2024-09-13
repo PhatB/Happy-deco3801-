@@ -89,8 +89,18 @@ export class ExploreScreen extends React.Component {
                             {/* Display plants or pests */}
                             {
                                 showPlants
-                                ? <PrettyList data={plants} primaryField = {"name"} secondaryField={"sci_name"}/>
-                                : <PrettyList data={pests} primaryField = {"name"} secondaryField={"sci_name"}/>
+                                ? <PrettyList  data={plants}
+                                               primaryField = {"name"}
+                                               secondaryField={"sci_name"}
+                                               targetPage={"MoreInfo"}
+                                               targetConstParams={{"isPlant":showPlants}}
+                                               targetItemParams={{}}/>
+                                : <PrettyList  data={pests}
+                                               primaryField = {"name"}
+                                               secondaryField={"sci_name"}
+                                               targetPage={"MoreInfo"}
+                                               targetConstParams={{"isPlant":showPlants}}
+                                               targetItemParams={{}}/>
                             }
                         </View>
                     </ScrollView>
