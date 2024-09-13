@@ -8,6 +8,8 @@ import {styles} from './Styles.tsx';
 
 type ListProps = {
     data: any[]
+    primaryField: string,
+    secondaryField: string,
 }
 export const PrettyList = (props: ListProps) => {
     const navigation = useNavigation();
@@ -33,11 +35,11 @@ export const PrettyList = (props: ListProps) => {
                             {/* Name */}
                             <Text
                                 style={[styles.baseText, {fontSize: 20}]}>
-                                {`${item.name}`}
+                                {`${item[props.primaryField]}`}
                             </Text>
                             <Text
                                 style={[styles.baseText, {fontSize: 15, color: '#BFBFBF'}]}>
-                                {`${item.sci_name}`}
+                                {`${item[props.secondaryField]}`}
                             </Text>
                         </View>
                         <Pressable onPress={() => navigation.navigate("MoreInfo", {info: item})}>

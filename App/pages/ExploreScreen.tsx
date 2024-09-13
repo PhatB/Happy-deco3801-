@@ -87,7 +87,11 @@ export class ExploreScreen extends React.Component {
                         {/* Main box */}
                         <View style={styles.main}>
                             {/* Display plants or pests */}
-                            {showPlants ? <PrettyList data={plants} />: <PrettyList data={pests} />}
+                            {
+                                showPlants
+                                ? <PrettyList data={plants} primaryField = {"name"} secondaryField={"sci_name"}/>
+                                : <PrettyList data={pests} primaryField = {"name"} secondaryField={"sci_name"}/>
+                            }
                         </View>
                     </ScrollView>
                 </View>

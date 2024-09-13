@@ -51,7 +51,7 @@ export const HomeScreen = () => {
                             <Image source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </View>
-                        {error === null
+                        {error !== null
                         ? <Text>Error while accessing your plant list: {error}</Text>
                         : <PrettyList data={data} />}
 
