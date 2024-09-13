@@ -5,14 +5,15 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {MorePlantInfo}from '../other/MorePlantInfo.tsx'
+import {BackButton} from "../other/MiscComponents/BackButton.tsx";
 
 const plusIcon = '../images/plusIcon.png';
 
 export const MoreInfoScreen = () => {
     const navigation = useNavigation();
-    const route = useRoute()
-    const info = route.params?.info
-    const isPlant: boolean = route.params?.isPlant
+    const route: any = useRoute()
+    const {info, isPlant} = route.params;
+
     return (
     // Full view
         <View style={{height: '100%', backgroundColor: 'white'}}>
@@ -21,17 +22,12 @@ export const MoreInfoScreen = () => {
                 <ScrollView contentInsetAdjustmentBehavior="automatic"
                 style={{backgroundColor: 'white'}}>
                     <Text style={[styles.pageTitle]}>{`${info.name}`}</Text>
-                    <Pressable onPress={() => navigation.pop()}>
-                        <Image
-                            style={styles.backArrow}
-                            source={require('../images/arrowIcon.png')}
-                        />
-                    </Pressable>
+                    <BackButton/>
                     {/* Main box */}
                     <View style={styles.main}>
                         <Image
                             style={{width: '100%', height: 200, alignSelf: 'center', borderRadius: 20}}
-                            source={info.image}
+                            source={info.hasOwnProperty("image") ? info.image : require("../images/missingTexture.jpg")}
                         />
                     </View>
                     <MorePlantInfo info={info}/>

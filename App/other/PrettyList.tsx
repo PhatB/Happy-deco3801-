@@ -1,22 +1,19 @@
 
 import React from 'react'
 import {FlatList, Text, View, Image, Pressable, ImageSourcePropType} from "react-native";
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {NavigationProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import {styles} from './Styles.tsx';
-
-
-type ListProps = {
+interface ListProps {
     data: any[],
     primaryField: string,
     secondaryField: string,
     defaultImage: ImageSourcePropType | null,
-    targetPage: string,
+    targetPage:string,
     targetConstParams: any,
     targetItemParams: any,
 }
 export const PrettyList = (props: ListProps) => {
-    const navigation = useNavigation();
 
     /**
      * Creates a struct of parameters to be passed to the
@@ -35,6 +32,7 @@ export const PrettyList = (props: ListProps) => {
         return obj
 
     }
+    const navigation: NavigationProp<any> = useNavigation();
     return (
         <View>
             <FlatList

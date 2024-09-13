@@ -5,7 +5,8 @@ import {
     Pressable,
     Image,
 } from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {styles} from './Styles.tsx';
 
 // Images
@@ -19,7 +20,7 @@ const gProfileIcon = '../images/gProfileIcon.png';
 const profileIcon = '../images/profileIcon.png';
 
 export const Footer = ({}) => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const route = useRoute();
     return (
         <View style={styles.footer}>

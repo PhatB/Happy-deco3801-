@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, NavigationProp} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Files made by us
@@ -16,8 +16,7 @@ import {AchievementsScreen} from './pages/AchievementsScreen.tsx';
 import {ProfileScreen} from './pages/ProfileScreen.tsx';
 import {MoreInfoScreen} from './pages/MoreInfoScreen.tsx';
 
-// Stack
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 // App
 class App extends React.Component {

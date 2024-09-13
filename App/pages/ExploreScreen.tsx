@@ -8,6 +8,7 @@ import {Search} from '../other/Search.tsx';
 import plants from "../data/PlantTypes.json";
 import pests from "../data/PestTypes.json";
 import {PrettyList} from "../other/PrettyList.tsx";
+import Screen from "react-native-screens/src/components/Screen.tsx";
 
 type PlantType = {
     name: string
