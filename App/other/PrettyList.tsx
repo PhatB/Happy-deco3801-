@@ -58,7 +58,7 @@ export const PrettyList = (props: ListProps) => {
                             </Text>
                             <Text
                                 style={[styles.baseText, {fontSize: 15, color: '#BFBFBF'}]}>
-                                {`${item[props.secondaryField]}`}
+                                <i>{`${item[props.secondaryField]}`}</i>
                             </Text>
                         </View>
 

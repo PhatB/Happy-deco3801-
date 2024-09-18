@@ -12,17 +12,17 @@ import Screen from "react-native-screens/src/components/Screen.tsx";
 
 type PlantType = {
     name: string
-    sci_name: string
+    scientificName: string
     difficulty: string
     location: string
-    moisture_min: number
-    moisture_max: number
-    sun_min: number
-    sun_max: number
-    temp_min: number
-    temp_max: number
-    uv_min: number
-    uv_max: number
+    moistureMin: number
+    moistureMax: number
+    sunlightMin: number
+    sunlightMax: number
+    temperatureMin: number
+    temperatureMax: number
+    uvMin: number
+    uvMax: number
     pests: string
     detail: string
     image: ImageSourcePropType
@@ -106,7 +106,7 @@ export const ExploreScreen = () =>{
                             <PrettyList
                                 data={showPlants ? loadPlants() : pests}
                                 primaryField = {"name"}
-                                secondaryField={"sci_name"}
+                                secondaryField={"scientificName"}
                                 targetPage={"MoreInfo"}
                                 defaultImage={require("../images/gLeafIcon.png")}
                                 targetConstParams={{"isPlant":showPlants}}
