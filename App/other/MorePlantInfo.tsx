@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Image} from 'react-native';
+import React, {useCallback} from 'react';
+import {Alert, View, Text, Image, Pressable, Linking} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
 
@@ -7,6 +7,18 @@ type MorePlantInfoProps = {
     info: any
 }
 export const MorePlantInfo = (props: MorePlantInfoProps) => {
+    const handleURL = useCallback(async () => {
+        // Checking if the link is supported for links with custom URL scheme.
+        const supported = await Linking.canOpenURL(props.info.url);
+
+        if (supported) {
+        // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+        // by some browser in the mobile
+            await Linking.openURL(props.info.url);
+        } else {
+            Alert.alert(`Don't know how to open this URL: ${props.info.url}`);
+        }
+    }, [props.info.url]);
     return (
         <View>
             <Image
@@ -27,6 +39,11 @@ export const MorePlantInfo = (props: MorePlantInfoProps) => {
             />
             <Text style={styles.heading}>Common Pests</Text>
             <Text style={styles.baseText}>{`${props.info.pests}.`}</Text>
+            <Pressable
+            style={[styles.greenButton, {marginHorizontal: 0, marginTop: 20, width: '100%'}]}
+            onPress={handleURL}>
+                <Text style={styles.greenButton}>More Information</Text>
+            </Pressable>
         </View>
     );
 };
