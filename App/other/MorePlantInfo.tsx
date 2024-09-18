@@ -14,7 +14,7 @@ export const MorePlantInfo = (props: MorePlantInfoProps) => {
                 source={require("../images/line.png")}
             />
             <Text style={styles.heading}>Botanic Name</Text>
-            <Text style={styles.baseText}>{`${props.info.sci_name}.`}</Text>
+            <Text style={styles.baseText}>{`${props.info.scientificName}.`}</Text>
             <Image
                 style={styles.line}
                 source={require("../images/line.png")}

@@ -3,7 +3,7 @@
     "name": "Mealybugs",
     "scientificName": "Pseudococcidae family",
     "appearance": "Small (1/20 to 1/5 inch), oval-shaped insects covered in white, waxy coating",
-    "associated_plants": "[Left blank as requested]",
+    "associatedPlants": "[Left blank as requested]",
     "symptoms": "• Stunted growth\n• Yellow or wilted leaves\n• Deformed growth\n• Loss of flower buds\n• Defoliation\n• Chlorosis",
     "manage": "1. Prune affected areas\n2. Use insecticidal soap\n3. Apply neem oil\n4. Introduce natural predators\n5. Use systemic insecticides"
     },
@@ -11,7 +11,7 @@
     "name": "Spider Mites",
     "scientificName": "Tetranychidae family",
     "appearance": "Tiny (0.4 mm), oval-shaped arachnids, varying in color from red and brown to yellow and green",
-    "associated_plants": "[Left blank as requested]",
+    "associatedPlants": "[Left blank as requested]",
     "symptoms": "• Stippling on leaves\n• Yellowing or bronzing of foliage\n• Webbing on plants\n• Leaf drop",
     "manage": "1. Increase humidity\n2. Use insecticidal soap\n3. Apply horticultural oils\n4. Introduce predatory mites\n5. Use miticides"
     },
@@ -19,7 +19,7 @@
     "name": "Scale Insects",
     "scientificName": "Coccoidea superfamily",
     "appearance": "Small (1/16 to 1/8 inch), immobile insects with waxy or armored coverings, varying in color from brown to white",
-    "associated_plants": "[Left blank as requested]",
+    "associatedPlants": "[Left blank as requested]",
     "symptoms": "• Yellowing leaves\n• Branch dieback\n• Sooty mold growth\n• Reduced plant vigor",
     "manage": "1. Prune infested areas\n2. Use horticultural oils\n3. Apply insecticidal soap\n4. Introduce natural predators\n5. Use systemic insecticides"
     },
@@ -27,7 +27,7 @@
     "name": "Fungus Gnats",
     "scientificName": "Sciaridae family",
     "appearance": "Small (about 1/8 inch), dark-bodied flies with long legs and antennae",
-    "associated_plants": "[Left blank as requested]",
+    "associatedPlants": "[Left blank as requested]",
     "symptoms": "• Wilting\n• Yellowing leaves\n• Poor growth\n• Root damage",
     "manage": "1. Reduce watering\n2. Use sticky traps\n3. Apply biological controls\n4. Use insecticidal soil drenches\n5. Improve soil drainage"
     },
@@ -35,7 +35,7 @@
     "name": "Aphids",
     "scientificName": "Aphidoidea superfamily",
     "appearance": "Small (1/16 to 1/8 inch), pear-shaped insects, varying in color from green and yellow to black and red",
-    "associated_plants": "[Left blank as requested]",
+    "associatedPlants": "[Left blank as requested]",
     "symptoms": "• Curled or distorted leaves\n• Stunted growth\n• Honeydew secretion\n• Sooty mold growth",
     "manage": "1. Use strong water spray\n2. Apply insecticidal soap\n3. Use neem oil\n4. Introduce natural predators\n5. Apply systemic insecticides"
     },
@@ -43,7 +43,7 @@
     "name": "Thrips",
     "scientificName": "Thysanoptera order",
     "appearance": "Tiny (1/25 to 1/8 inch), slender insects with fringed wings, varying in color from pale yellow to dark brown",
-    "associated_plants": "[Left blank as requested]",
+    "associatedPlants": "[Left blank as requested]",
     "symptoms": "• Silvery or bronze patches on leaves\n• Distorted growth\n• Scarring on fruits\n• Flower deformation",
     "manage": "1. Use sticky traps\n2. Apply insecticidal soap\n3. Use neem oil\n4. Introduce predatory mites\n5. Apply spinosad-based products"
     }
