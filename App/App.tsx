@@ -15,6 +15,8 @@ import {ExploreScreen} from './pages/ExploreScreen.tsx';
 import {AchievementsScreen} from './pages/AchievementsScreen.tsx';
 import {ProfileScreen} from './pages/ProfileScreen.tsx';
 import {MoreInfoScreen} from './pages/MoreInfoScreen.tsx';
+import {styles} from "./other/Styles.tsx";
+import {Text, View} from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -22,35 +24,36 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 class App extends React.Component {
     render() {
         return (
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName="Home">
-                    <Stack.Screen
-                        name="Home"
-                        component={HomeScreen}
-                        options={{headerShown: false}}
-                    />
-                    <Stack.Screen
-                        name="Achievements"
-                        component={AchievementsScreen}
-                        options={{headerShown: false}}
-                    />
-                    <Stack.Screen
-                        name="Profile"
-                        component={ProfileScreen}
-                        options={{headerShown: false}}
-                    />
-                    <Stack.Screen
-                        name="Explore"
-                        component={ExploreScreen}
-                        options={{headerShown: false}}
-                    />
-                    <Stack.Screen
-                        name="MoreInfo"
-                        component={MoreInfoScreen}
-                        options={{headerShown: false}}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
+
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName="Home">
+                        <Stack.Screen
+                            name="Home"
+                            component={HomeScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="Achievements"
+                            component={AchievementsScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="Profile"
+                            component={ProfileScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="Explore"
+                            component={ExploreScreen}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="MoreInfo"
+                            component={MoreInfoScreen}
+                            options={{headerShown: false}}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
 
         );
     }

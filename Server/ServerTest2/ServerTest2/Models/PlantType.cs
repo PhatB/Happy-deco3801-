@@ -23,7 +23,7 @@ public class PlantType
     public string? Location { get; set; } = null;
     public string? Pests { get; set; } = null;
     public string? Detail { get; set; } = null;
-    
+    public string? url { get; set; } = null;
 
 
 }
