@@ -1,7 +1,7 @@
 [
     {
     "name": "Mealybugs",
-    "sci_name": "Pseudococcidae family",
+    "scientificName": "Pseudococcidae family",
     "appearance": "Small (1/20 to 1/5 inch), oval-shaped insects covered in white, waxy coating",
     "associated_plants": "[Left blank as requested]",
     "symptoms": "• Stunted growth\n• Yellow or wilted leaves\n• Deformed growth\n• Loss of flower buds\n• Defoliation\n• Chlorosis",
@@ -9,7 +9,7 @@
     },
     {
     "name": "Spider Mites",
-    "sci_name": "Tetranychidae family",
+    "scientificName": "Tetranychidae family",
     "appearance": "Tiny (0.4 mm), oval-shaped arachnids, varying in color from red and brown to yellow and green",
     "associated_plants": "[Left blank as requested]",
     "symptoms": "• Stippling on leaves\n• Yellowing or bronzing of foliage\n• Webbing on plants\n• Leaf drop",
@@ -17,7 +17,7 @@
     },
     {
     "name": "Scale Insects",
-    "sci_name": "Coccoidea superfamily",
+    "scientificName": "Coccoidea superfamily",
     "appearance": "Small (1/16 to 1/8 inch), immobile insects with waxy or armored coverings, varying in color from brown to white",
     "associated_plants": "[Left blank as requested]",
     "symptoms": "• Yellowing leaves\n• Branch dieback\n• Sooty mold growth\n• Reduced plant vigor",
@@ -25,7 +25,7 @@
     },
     {
     "name": "Fungus Gnats",
-    "sci_name": "Sciaridae family",
+    "scientificName": "Sciaridae family",
     "appearance": "Small (about 1/8 inch), dark-bodied flies with long legs and antennae",
     "associated_plants": "[Left blank as requested]",
     "symptoms": "• Wilting\n• Yellowing leaves\n• Poor growth\n• Root damage",
@@ -33,7 +33,7 @@
     },
     {
     "name": "Aphids",
-    "sci_name": "Aphidoidea superfamily",
+    "scientificName": "Aphidoidea superfamily",
     "appearance": "Small (1/16 to 1/8 inch), pear-shaped insects, varying in color from green and yellow to black and red",
     "associated_plants": "[Left blank as requested]",
     "symptoms": "• Curled or distorted leaves\n• Stunted growth\n• Honeydew secretion\n• Sooty mold growth",
@@ -41,7 +41,7 @@
     },
     {
     "name": "Thrips",
-    "sci_name": "Thysanoptera order",
+    "scientificName": "Thysanoptera order",
     "appearance": "Tiny (1/25 to 1/8 inch), slender insects with fringed wings, varying in color from pale yellow to dark brown",
     "associated_plants": "[Left blank as requested]",
     "symptoms": "• Silvery or bronze patches on leaves\n• Distorted growth\n• Scarring on fruits\n• Flower deformation",
