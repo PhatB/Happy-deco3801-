@@ -5,7 +5,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {MorePlantInfo}from '../other/MorePlantInfo.tsx';
-import {MorePestInfo}from '../other/MorePlantInfo.tsx';
+import {MorePestInfo}from '../other/MorePestInfo.tsx';
 import {BackButton} from "../other/MiscComponents/BackButton.tsx";
 
 const plusIcon = '../images/plusIcon.png';
