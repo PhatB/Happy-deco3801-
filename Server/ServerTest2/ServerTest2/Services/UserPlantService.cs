@@ -31,7 +31,8 @@ public class UserPlantService
 
     
     
-        return await _plantCollection.Aggregate()
+        return await _plantCollection
+            .Aggregate()
             .Lookup("Devices", "device", "_id", "asDevices")
             .Unwind("asDevices")
             .Match(filter2)
