@@ -4,7 +4,8 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
-import {MorePlantInfo}from '../other/MorePlantInfo.tsx'
+import {MorePlantInfo}from '../other/MorePlantInfo.tsx';
+import {MorePestInfo}from '../other/MorePlantInfo.tsx';
 import {BackButton} from "../other/MiscComponents/BackButton.tsx";
 
 const plusIcon = '../images/plusIcon.png';
@@ -29,8 +30,8 @@ export const MoreInfoScreen = () => {
                             style={{width: '100%', height: 200, alignSelf: 'center', borderRadius: 20}}
                             source={info.hasOwnProperty("image") ? info.image : require("../images/missingTexture.jpg")}
                         />
+                        {isPlant ? <MorePlantInfo info={info}/> : <MorePestInfo info={info}/>}
                     </View>
-                    <MorePlantInfo info={info}/>
                 </ScrollView>
             </View>
 

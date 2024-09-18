@@ -5,14 +5,24 @@ import {
 export const styles = StyleSheet.create({
   baseText: {
     fontFamily: 'Poppins',
-    fontSize: 60,
+    fontSize: 15,
   },
   pageTitle: {
     fontFamily: 'Poppins',
-    color: '#143728',
+    color: '#1B5D42',
     fontSize: 35,
     textAlign: 'center',
     paddingTop: 20,
+  },
+  heading: {
+    fontFamily: 'Poppins',
+    color: '#143728',
+    fontSize: 30,
+    marginBottom: 10,
+  },
+  line: {
+    marginVertical: 20,
+    width: '100%',
   },
   main: {
     fontFamily: 'Poppins',
