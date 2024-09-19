@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, View, Text, Image} from 'react-native';
+import {ScrollView, View, Text, Image, Pressable} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
+
+import {useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
@@ -19,6 +22,9 @@ export const HomeScreen = () => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState<UserPlant[]>([]);
     const [error, setError] = useState<String | null>(null);
+
+    const navigation = useNavigation<any>();
+    const route = useRoute();
 
     const getPlants = async () => {
         try {
@@ -50,12 +56,16 @@ export const HomeScreen = () => {
                     </View>
                     {/* Main box */}
 
-                    <View style={[styles.main, {flexDirection:'column'}]} >
+                    <View style={[styles.main, {flexDirection:'column'}]}
+                    >
                         {/* Add new plant */}
-                        <View style={[styles.greenButton, {marginVertical: 15}]}>
+                        <Pressable
+                        style={[styles.greenButton, {marginVertical: 15}]}
+                        onPress={() => navigation.navigate("Add", {screen: "AddPlantScreen"})}
+                        >
                             <Image source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
-                        </View>
+                        </Pressable>
                         {error !== null
                             ? <Text>{`Error while accessing your plant list. ${error}`}</Text>
                             : <PrettyList
