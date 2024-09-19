@@ -53,7 +53,7 @@ export const PrettyList = (props: ListProps) => {
                             style={{width: '60%', flexDirection: 'column'}}>
                             {/* Name */}
                             <Text
-                                style={[styles.baseText, {fontSize: 20, fontFamily: 'Poppins-Regular'}]}>
+                                style={styles.smallHeading}>
                                 {`${item[props.primaryField]}`}
                             </Text>
                             <Text

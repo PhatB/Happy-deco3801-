@@ -14,6 +14,11 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 20,
   },
+  smallHeading: {
+    fontFamily: 'Poppins-Regular',
+    color: '#143728',
+    fontSize: 20,
+  },
   heading: {
     fontFamily: 'Poppins-Regular',
     color: '#143728',
@@ -51,7 +56,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 20,
+    marginHorizontal: 10,
     padding: 8,
     borderRadius: 10,
     fontFamily: 'Poppins-Regular',
