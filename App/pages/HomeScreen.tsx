@@ -5,7 +5,6 @@ import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
 
-import {useRoute} from '@react-navigation/native';
 import {useNavigation} from '@react-navigation/native';
 
 const testUserId = "66e3848cc14bcef4f162d6e9";
@@ -24,7 +23,6 @@ export const HomeScreen = () => {
     const [error, setError] = useState<String | null>(null);
 
     const navigation = useNavigation<any>();
-    const route = useRoute();
 
     const getPlants = async () => {
         try {

@@ -44,6 +44,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     fontFamily: 'Poppins-Regular',
   },
+  textBox: {
+    fontSize: 20,
+    color: 'black',
+    width: '100%',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
   scrollArea: {
     height: '90%',
     backgroundColor: '#F5F9F3',

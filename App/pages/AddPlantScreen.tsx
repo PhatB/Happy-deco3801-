@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View, Text, Pressable} from 'react-native';
+import {ScrollView, View, Text, Image, Pressable, TextInput} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
@@ -18,27 +18,50 @@ export const AddPlantScreen = () => {
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
                     <Text style={styles.pageTitle}>{'Add a Plant'}</Text>
                     <View style={styles.main}>
-                        {/* Plant Name */}
-                        <Text style={styles.smallHeading}>{'Plant Name'}</Text>
-                        {/* Plant Type */}
-                        <Text style={styles.smallHeading}>{'Plant Type'}</Text>
-                        {/* Plant Location */}
-                        <Text style={styles.smallHeading}>{'Plant Location'}</Text>
-                        {/* Description */}
-                        <Text style={styles.smallHeading}>{'Description (optional)'}</Text>
-                        {/* Device */}
-                        <Text style={styles.smallHeading}>{'Device'}</Text>
+                        <View style={{padding: 8, gap: 20}}>
+                            {/* Plant Name */}
+                            <Text style={styles.smallHeading}>{'Plant Name'}</Text>
+                            <TextInput
+                            style={{...styles.smallWhiteButton,...styles.textBox}}
+                            keyboardType="default"
+                            />
+                            {/* Plant Type */}
+                            <Text style={styles.smallHeading}>{'Plant Type'}</Text>
+                            <View style={[{...styles.smallWhiteButton,...styles.textBox}, {paddingVertical: 12.5}]}>
+                                <Pressable>
+                                    <Image
+                                        style={{width: 20,
+                                            height: 20,
+                                            transform: [{rotate: '90deg'}],
+                                            marginLeft: '95%'}}
+                                        source={require('../images/arrowIcon.png')}
+                                    />
+                                </Pressable>
+                            </View>
+                            {/* Description */}
+                            <Text style={styles.smallHeading}>{'Description (optional)'}</Text>
+                            <TextInput
+                            style={{...styles.smallWhiteButton,...styles.textBox}}
+                            keyboardType="default"
+                            />
+                            <Image
+                                style={styles.line}
+                                source={require("../images/line.png")}
+                            />
+                            {/* Device */}
+                            <Text style={styles.smallHeading}>{'Device'}</Text>
+                        </View>
                         <Pressable
-                        style={[styles.greenButton, {marginVertical: 15, backgroundColor: "#7D9C8F"}]}>
-                            <Text style={[styles.greenButton, {backgroundColor: "#7D9C8F"}]}>{'Connect Device'}</Text>
+                        style={[styles.greenButton, {marginVertical: 15}]}>
+                            <Text style={[styles.greenButton]}>{'Connect Device'}</Text>
                         </Pressable>
                         {/* Plant Now! */}
-                        <Pressable
+                        {/* <Pressable
                         style={[styles.greenButton, {marginVertical: 15}]}
                         onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}
                         >
                             <Text style={styles.greenButton}>{'Plant Now!'}</Text>
-                        </Pressable>
+                        </Pressable> */}
                     </View>
                 </ScrollView>
             </View>
