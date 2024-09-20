@@ -28,6 +28,25 @@ type PlantType = {
     image: ImageSourcePropType
 }
 
+type PestTypes = {
+    name: string,
+    scientificName: string,
+    appearance: string,
+    associatedPlants: string
+    symptoms: string
+    manage: string
+    url: string
+    image: ImageSourcePropType
+}
+
+const pestImages: any = {
+    "Mealybugs": require("../images/mealybugs.jpg"),
+    "Spider Mites": require("../images/spiderMites.jpg"),
+    "Scale Insects": require("../images/scaleInsects.jpg"),
+    "Fungus Gnats": require("../images/fungusGnats.jpg"),
+    "Aphids": require("../images/aphids.jpg"),
+    "Thrips": require("../images/thrips.jpg"),
+}
 const plantImages: any = {
     "Peace Lily" : require("../images/peace.jpg"),
     "Dieffenbachia": require("../images/dieffenbachia.jpg"),
@@ -41,19 +60,18 @@ export const ExploreScreen = () =>{
     /**
      * Converts the plant data from JSON into an array of PlantType structs.
      */
-    const loadPlants = () => {
-            let plantTypes: PlantType[] = []
-            let plantList: any[] = plants
+    function loadJson<Type>(json: any[], images:any) {
+            let types: Type[] = []
             // Go through each element in the JSON
-            for (let index in plantList) {
-                let plant = plantList[index]
+            for (let index in json) {
+                let item = json[index]
 
                 // Add the plant's image
-                plant["image"] = plantImages[plant["name"]]
+                item["image"] = images[item["name"]]
                 // Convert the plant to a PlantType and add it to the array.
-                plantTypes.push(plant);
+                types.push(item);
             }
-            return plantTypes
+            return types
         }
         const [showPlants, setShowPlants] = useState<boolean>(true);
     /**
@@ -104,7 +122,7 @@ export const ExploreScreen = () =>{
                         <View style={styles.main}>
                             {/* Display plants or pests */}
                             <PrettyList
-                                data={showPlants ? loadPlants() : pests}
+                                data={showPlants ? loadJson<PlantType>(plants, plantImages) : loadJson<PlantType>(pests, pestImages)}
                                 primaryField = {"name"}
                                 secondaryField={"scientificName"}
                                 targetPage={"MoreInfo"}
