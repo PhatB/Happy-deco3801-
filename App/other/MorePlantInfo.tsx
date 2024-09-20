@@ -39,6 +39,10 @@ export const MorePlantInfo = (props: MorePlantInfoProps) => {
                     style={{width: 20, height: 20}}
                     source={require("../images/water.png")}
                     />
+                    <Text
+                    style={[styles.baseText, {fontSize: 12, textTransform: 'uppercase', color: '#21828F'}]}>
+                        {`${props.info.water}`}
+                    </Text>
                 </View>
             </View>
 
