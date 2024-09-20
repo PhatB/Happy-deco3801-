@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "assets/fonts/JetBrainsMono-Regular.ttf",
+      "sha1": "50fc729787e6133b511444b185c7397bd3ccd3da"
+    },
+    {
       "path": "assets/fonts/OFL.txt",
       "sha1": "9f27955a401cc9ea5ba3503027a4ea502c87e70c"
     },
