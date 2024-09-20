@@ -6,6 +6,8 @@ import {Footer} from '../other/Footer.tsx';
 
 import {useNavigation} from '@react-navigation/native';
 
+import {BackButton} from "../other/MiscComponents/BackButton.tsx";
+
 export const AddPlantScreen = () => {
 
     const navigation = useNavigation<any>();
@@ -17,6 +19,7 @@ export const AddPlantScreen = () => {
             <View style={styles.scrollArea}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
                     <Text style={styles.pageTitle}>{'Add a Plant'}</Text>
+                    <BackButton/>
                     <View style={styles.main}>
                         <View style={{padding: 8, gap: 20}}>
                             {/* Plant Name */}

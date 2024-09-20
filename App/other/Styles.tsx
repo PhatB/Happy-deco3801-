@@ -80,9 +80,9 @@ export const styles = StyleSheet.create({
     width: '42.5%',
     backgroundColor: 'white',
     borderWidth: 1,
-    borderColor: '#B3B3B3',
+    borderColor: '#D9D9D9',
     marginHorizontal: '2.5%',
-    color: '#B3B3B3',
+    color: '#D9D9D9',
     fontFamily: 'Poppins-Regular',
   },
   smallInfo: {
