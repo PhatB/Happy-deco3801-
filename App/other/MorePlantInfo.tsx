@@ -1,5 +1,5 @@
-import React, {useCallback} from 'react';
-import {Alert, View, Text, Image, Pressable, Linking} from 'react-native';
+import React from 'react';
+import {View, Text, Image} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
 
@@ -8,28 +8,38 @@ type MorePlantInfoProps = {
 }
 export const MorePlantInfo = (props: MorePlantInfoProps) => {
 
-    {/* Open URL */}
-    const handleURL = useCallback(async () => {
-        // Checking if the link is supported for links with custom URL scheme.
-        const supported = await Linking.canOpenURL(props.info.url);
-
-        if (supported) {
-        // Opening the link with some app, if the URL scheme is "http" the web link should be opened
-        // by some browser in the mobile
-            await Linking.openURL(props.info.url);
-        } else {
-            Alert.alert(`Don't know how to open this URL: ${props.info.url}`);
-        }
-    }, [props.info.url]);
-
     return (
         <View>
-            {/* Difficulty/Location/Watering */}
-            <View style={styles.smallInfo}>
-                <Image
-                source={require("../images/difficulty.png")}
-                />
-                <Text style={styles.baseText}>{`${props.info.careDifficulty}`}</Text>
+            <View style={{flexDirection: 'row', marginTop: 20}}>
+                {/* Difficulty */}
+                <View style={[styles.smallInfo, {backgroundColor: '#D1EDCE'}]}>
+                    <Image
+                    style={{width: 20, height: 20}}
+                    source={require("../images/difficulty.png")}
+                    />
+                    <Text
+                    style={[styles.baseText, {fontSize: 12, textTransform: 'uppercase', color: '#218F4A'}]}>
+                        {`${props.info.careDifficulty}`}
+                    </Text>
+                </View>
+                {/* Location */}
+                <View style={[styles.smallInfo, {backgroundColor: '#F2D6AC'}]}>
+                    <Image
+                    style={{width: 20, height: 20}}
+                    source={require("../images/location.png")}
+                    />
+                    <Text
+                    style={[styles.baseText, {fontSize: 12, textTransform: 'uppercase', color: '#A5772D'}]}>
+                        {`${props.info.location}`}
+                    </Text>
+                </View>
+                {/* Watering */}
+                <View style={[styles.smallInfo, {backgroundColor: '#CEEDED'}]}>
+                    <Image
+                    style={{width: 20, height: 20}}
+                    source={require("../images/water.png")}
+                    />
+                </View>
             </View>
 
             {/* Info */}
@@ -51,11 +61,6 @@ export const MorePlantInfo = (props: MorePlantInfoProps) => {
             />
             <Text style={styles.heading}>Common Pests</Text>
             <Text style={styles.baseText}>{`${props.info.pests}.`}</Text>
-            <Pressable
-            style={[styles.greenButton, {marginHorizontal: 0, marginTop: 20, width: '100%'}]}
-            onPress={handleURL}>
-                <Text style={styles.greenButton}>More Information</Text>
-            </Pressable>
         </View>
     );
 };

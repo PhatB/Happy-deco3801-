@@ -89,6 +89,10 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 5,
+    borderRadius: 5,
+    marginRight: 20,
+    paddingHorizontal: '3%',
+    paddingVertical: 2,
   },
   backArrow: {
     width: 30,

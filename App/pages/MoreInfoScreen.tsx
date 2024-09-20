@@ -1,6 +1,6 @@
-import React from 'react';
-import {ScrollView, View, Text, Image, Pressable} from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import React, {useCallback} from 'react';
+import {Alert, ScrollView, View, Text, Image, Linking, Pressable} from 'react-native';
+import {useRoute} from '@react-navigation/native';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
@@ -11,9 +11,22 @@ import {BackButton} from "../other/MiscComponents/BackButton.tsx";
 const plusIcon = '../images/plusIcon.png';
 
 export const MoreInfoScreen = () => {
-    const navigation = useNavigation();
     const route: any = useRoute()
     const {info, isPlant} = route.params;
+
+    {/* Open URL */}
+    const handleURL = useCallback(async () => {
+        // Checking if the link is supported for links with custom URL scheme.
+        const supported = await Linking.canOpenURL(info.url);
+
+        if (supported) {
+        // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+        // by some browser in the mobile
+            await Linking.openURL(info.url);
+        } else {
+            Alert.alert(`Don't know how to open this URL: ${info.url}`);
+        }
+    }, [info.url]);
 
     return (
     // Full view
@@ -31,6 +44,12 @@ export const MoreInfoScreen = () => {
                             source={info.hasOwnProperty("image") ? info.image : require("../images/missingTexture.jpg")}
                         />
                         {isPlant ? <MorePlantInfo info={info}/> : <MorePestInfo info={info}/>}
+                        {/* More Information */}
+                        <Pressable
+                        style={[styles.greenButton, {marginHorizontal: 0, marginTop: 20, width: '100%'}]}
+                        onPress={handleURL}>
+                            <Text style={styles.greenButton}>More Information</Text>
+                        </Pressable>
                     </View>
                 </ScrollView>
             </View>
