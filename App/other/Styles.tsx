@@ -85,6 +85,11 @@ export const styles = StyleSheet.create({
     color: '#B3B3B3',
     fontFamily: 'Poppins-Regular',
   },
+  smallInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 5,
+  },
   backArrow: {
     width: 30,
     height: 30,

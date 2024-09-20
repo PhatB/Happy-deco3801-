@@ -7,6 +7,8 @@ type MorePlantInfoProps = {
     info: any
 }
 export const MorePlantInfo = (props: MorePlantInfoProps) => {
+
+    {/* Open URL */}
     const handleURL = useCallback(async () => {
         // Checking if the link is supported for links with custom URL scheme.
         const supported = await Linking.canOpenURL(props.info.url);
@@ -19,8 +21,18 @@ export const MorePlantInfo = (props: MorePlantInfoProps) => {
             Alert.alert(`Don't know how to open this URL: ${props.info.url}`);
         }
     }, [props.info.url]);
+
     return (
         <View>
+            {/* Difficulty/Location/Watering */}
+            <View style={styles.smallInfo}>
+                <Image
+                source={require("../images/difficulty.png")}
+                />
+                <Text style={styles.baseText}>{`${props.info.careDifficulty}`}</Text>
+            </View>
+
+            {/* Info */}
             <Image
                 style={styles.line}
                 source={require("../images/line.png")}
