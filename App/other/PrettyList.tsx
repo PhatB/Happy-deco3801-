@@ -12,7 +12,10 @@ interface ListProps {
     targetPage:string,
     targetConstParams: any,
     targetItemParams: any,
+    searchString: string,
 }
+
+
 export const PrettyList = (props: ListProps) => {
 
     /**
@@ -35,7 +38,8 @@ export const PrettyList = (props: ListProps) => {
     const navigation: NavigationProp<any> = useNavigation();
     return (
         <View>
-            <FlatList
+
+            {props.data.length > 0 ? <FlatList
                 data={props.data}
                 scrollEnabled={false}
                 renderItem ={({item}) =>
@@ -71,7 +75,11 @@ export const PrettyList = (props: ListProps) => {
                     </View>
                 }
             />
+                : <Text style={{textAlign:'center'}}>We found no matches for '{props.searchString}'...</Text>}
 
         </View>
     )
+}
+PrettyList.defaultProps = {
+    searchString: "",
 }

@@ -135,6 +135,7 @@ export const ExploreScreen = () =>{
                                 defaultImage={require("../images/gLeafIcon.png")}
                                 targetConstParams={{"isPlant":showPlants}}
                                 targetItemParams={{}}
+                                searchString={searchText}
                             />
 
 
