@@ -57,6 +57,7 @@ const plantImages: any = {
 
 export const ExploreScreen = () =>{
 
+    const [searchText, setSearchText] = useState("");
     /**
      * Converts the plant data from JSON into an array of PlantType structs.
      */
@@ -104,7 +105,7 @@ export const ExploreScreen = () =>{
                     <ScrollView contentInsetAdjustmentBehavior="automatic">
                         <Text style={styles.pageTitle}>{'Explore'}</Text>
                         {/* Search bar */}
-                        <Search />
+                        <Search searchCallback={setSearchText}/>
                         {/* Plants/pests buttons */}
                         <View
                         style= {{
@@ -122,7 +123,12 @@ export const ExploreScreen = () =>{
                         <View style={styles.main}>
                             {/* Display plants or pests */}
                             <PrettyList
-                                data={showPlants ? loadJson<PlantType>(plants, plantImages) : loadJson<PlantType>(pests, pestImages)}
+                                data={(showPlants
+                                    ? loadJson<PlantType>(plants, plantImages)
+                                    : loadJson<PlantType>(pests, pestImages))
+                                    .filter((p) =>
+                                        p.name.toLowerCase().includes(searchText.toLowerCase())
+                                    )}
                                 primaryField = {"name"}
                                 secondaryField={"scientificName"}
                                 targetPage={"MoreInfo"}

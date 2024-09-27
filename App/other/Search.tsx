@@ -1,10 +1,12 @@
 import React from 'react';
-import {TextInput, View, Image} from 'react-native';
+import {TextInput, View, Image, ImageSourcePropType} from 'react-native';
 import {styles} from './Styles.tsx';
 
 const searchIcon = '../images/searchIcon.png';
-
-export const Search = ({}) => {
+interface SearchProps {
+    searchCallback: (text: string) => void,
+}
+export const Search = (props: SearchProps) => {
     return (
         <View style={{...styles.main,...styles.search}}>
             <Image
@@ -16,6 +18,7 @@ export const Search = ({}) => {
                 marginHorizontal: 10}}
             placeholder="Search"
             keyboardType="default"
+            onChangeText={props.searchCallback}
             />
         </View>
     );
