@@ -128,6 +128,7 @@ export const ExploreScreen = () =>{
                                     : loadJson<PlantType>(pests, pestImages))
                                     .filter((p) =>
                                         p.name.toLowerCase().includes(searchText.toLowerCase())
+                                        || p.scientificName.toLowerCase().includes(searchText.toLowerCase())
                                     )}
                                 primaryField = {"name"}
                                 secondaryField={"scientificName"}
