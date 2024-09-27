@@ -19,6 +19,7 @@ export const Search = (props: SearchProps) => {
             placeholder="Search"
             keyboardType="default"
             onChangeText={props.searchCallback}
+            maxLength={25}
             />
         </View>
     );
