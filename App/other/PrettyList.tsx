@@ -41,10 +41,9 @@ export const PrettyList = (props: ListProps) => {
 
             {props.data.length > 0 ? <FlatList
                 data={props.searchString !== undefined ?
-                    props.data.filter(item => item[props.primaryField] !== undefined
-                        && item[props.secondaryField] !== undefined
-                        && item[props.primaryField].includes(props.searchString)
-                        || item[props.secondaryField].includes(props.searchString)
+                    props.data.filter(item => (item[props.primaryField] !== undefined
+                        && item[props.primaryField].includes(props.searchString))
+                        || (item[props.secondaryField] !== undefined && item[props.secondaryField].includes(props.searchString))
                     )
                     : props.data
             }
