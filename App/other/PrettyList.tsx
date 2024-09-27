@@ -40,7 +40,14 @@ export const PrettyList = (props: ListProps) => {
         <View>
 
             {props.data.length > 0 ? <FlatList
-                data={props.data}
+                data={props.searchString !== undefined ?
+                    props.data.filter(item => item[props.primaryField] !== undefined
+                        && item[props.secondaryField] !== undefined
+                        && item[props.primaryField].includes(props.searchString)
+                        || item[props.secondaryField].includes(props.searchString)
+                    )
+                    : props.data
+            }
                 scrollEnabled={false}
                 renderItem ={({item}) =>
                     <View style={{flexDirection:'row', paddingVertical: 15}}>

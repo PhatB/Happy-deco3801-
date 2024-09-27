@@ -123,13 +123,10 @@ export const ExploreScreen = () =>{
                         <View style={styles.main}>
                             {/* Display plants or pests */}
                             <PrettyList
-                                data={(showPlants
+                                data={showPlants
                                     ? loadJson<PlantType>(plants, plantImages)
-                                    : loadJson<PlantType>(pests, pestImages))
-                                    .filter((p) =>
-                                        p.name.toLowerCase().includes(searchText.toLowerCase())
-                                        || p.scientificName.toLowerCase().includes(searchText.toLowerCase())
-                                    )}
+                                    : loadJson<PlantType>(pests, pestImages)
+                                    }
                                 primaryField = {"name"}
                                 secondaryField={"scientificName"}
                                 targetPage={"MoreInfo"}
