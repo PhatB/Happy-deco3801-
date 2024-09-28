@@ -14,7 +14,7 @@ import {HomeScreen} from './pages/HomeScreen.tsx';
 import {AddPlantScreen} from './pages/AddPlantScreen.tsx';
 import {ExploreScreen} from './pages/ExploreScreen.tsx';
 import {AchievementsScreen} from './pages/AchievementsScreen.tsx';
-import {ProfileScreen} from './pages/ProfileScreen.tsx';
+import {SettingsScreen} from './pages/SettingsScreen.tsx';
 import {MoreInfoScreen} from './pages/MoreInfoScreen.tsx';
 import {styles} from "./other/Styles.tsx";
 import {Text, View} from "react-native";
@@ -44,8 +44,8 @@ class App extends React.Component {
                             options={{headerShown: false}}
                         />
                         <Stack.Screen
-                            name="Profile"
-                            component={ProfileScreen}
+                            name="Settings"
+                            component={SettingsScreen}
                             options={{headerShown: false}}
                         />
                         <Stack.Screen

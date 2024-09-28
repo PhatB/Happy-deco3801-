@@ -45,10 +45,10 @@ export const Footer = ({}) => {
                 source={route.name == "Achievements" ? require(gTrophyIcon):require(trophyIcon)}
                 />
             </Pressable>
-            <Pressable onPress={() => navigation.navigate("Profile", {screen: "ProfileScreen"})}>
+            <Pressable onPress={() => navigation.navigate("Settings", {screen: "SettingsScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Profile" ? require(gProfileIcon):require(profileIcon)}
+                source={route.name == "Settings" ? require(gProfileIcon):require(profileIcon)}
                 />
             </Pressable>
         </View>

@@ -4,14 +4,14 @@ import {ScrollView, View, Text, Pressable, Image} from 'react-native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 
-export const ProfileScreen = () => {
+export const SettingsScreen = () => {
     return (
         // Full view
         <View style={{height: '100%'}}>
             {/* Scroll view */}
             <View style={styles.scrollArea}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.pageTitle}>{'Profile'}</Text>
+                    <Text style={styles.pageTitle}>{'Settings'}</Text>
 
                     {/* Account */}
                     <View style={[styles.main, {flexDirection: 'row', paddingVertical: 20, marginTop: '22.5%'}]}>
