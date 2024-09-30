@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {FlatList, Text, View, Image, Pressable, ImageSourcePropType} from "react-native";
 import {NavigationProp, useNavigation, useRoute} from '@react-navigation/native';
 
@@ -18,6 +18,8 @@ interface ListProps {
 
 export const PrettyList = (props: ListProps) => {
 
+    const [sortedList, setSortedList] = useState<any[]>();
+
     /**
      * Creates a struct of parameters to be passed to the
      * target page if the given item is pressed.
@@ -32,19 +34,25 @@ export const PrettyList = (props: ListProps) => {
         for (let key in props.targetItemParams){
             obj[key] = item[props.targetItemParams[key]];
         }
-        return obj
-
+        return obj;
     }
+  
+    useEffect(() => {
+        const filtered = props.data.filter(item => (item[props.primaryField] !== undefined
+            && item[props.primaryField].toLowerCase().includes(props.searchString.toLowerCase()))
+            || (item[props.secondaryField] !== undefined 
+                && item[props.secondaryField].toLowerCase().includes(props.searchString.toLowerCase()))
+        )
+        setSortedList(props.searchString.length != 0 ? filtered : props.data);
+    }, [props.searchString]) 
+    
     const navigation: NavigationProp<any> = useNavigation();
     return (
         <View>
 
-            {props.data.length > 0 ? <FlatList
+            {sortedList?.length != 0 ? <FlatList
                 data={props.searchString !== undefined ?
-                    props.data.filter(item => (item[props.primaryField] !== undefined
-                        && item[props.primaryField].includes(props.searchString))
-                        || (item[props.secondaryField] !== undefined && item[props.secondaryField].includes(props.searchString))
-                    )
+                    sortedList
                     : props.data
             }
                 scrollEnabled={false}
