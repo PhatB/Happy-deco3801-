@@ -5,7 +5,8 @@ import {
     Pressable,
     Image,
 } from 'react-native';
-import {useNavigation, useRoute} from '@react-navigation/native';
+import {useRoute} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import {styles} from './Styles.tsx';
 
 // Images
@@ -19,7 +20,7 @@ const gProfileIcon = '../images/gProfileIcon.png';
 const profileIcon = '../images/profileIcon.png';
 
 export const Footer = ({}) => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const route = useRoute();
     return (
         <View style={styles.footer}>
@@ -27,13 +28,15 @@ export const Footer = ({}) => {
             <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Home" ? require(gLeafIcon):require(leafIcon)}
+                source={route.name == "Home" || route.name == "Add"
+                    ? require(gLeafIcon):require(leafIcon)}
                 />
             </Pressable>
             <Pressable onPress={() => navigation.navigate("Explore", {screen: "ExploreScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Explore" ? require(gSearchIcon):require(searchIcon)}
+                source={route.name == "Explore" || route.name == "MoreInfo"
+                        ? require(gSearchIcon):require(searchIcon)}
                 />
             </Pressable>
             <Pressable onPress={() => navigation.navigate("Achievements", {screen: "AchievementsScreen"})}>
@@ -42,10 +45,10 @@ export const Footer = ({}) => {
                 source={route.name == "Achievements" ? require(gTrophyIcon):require(trophyIcon)}
                 />
             </Pressable>
-            <Pressable onPress={() => navigation.navigate("Profile", {screen: "ProfileScreen"})}>
+            <Pressable onPress={() => navigation.navigate("Settings", {screen: "SettingsScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Profile" ? require(gProfileIcon):require(profileIcon)}
+                source={route.name == "Settings" ? require(gProfileIcon):require(profileIcon)}
                 />
             </Pressable>
         </View>
