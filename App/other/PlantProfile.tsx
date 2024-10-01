@@ -1,16 +1,15 @@
 import React from "react"
 import { View } from "react-native"
+import { PlantBadges } from "./MiscComponents/Badges"
 
 interface PlantProfileProps {
     info: any
 }
 
-export const PlantProfile = () => {
+export const PlantProfile = (props: PlantProfileProps) => {
     return (
         <View>
-            <View style={{flexDirection: 'row', marginTop:20}}>
-                    
-            </View>
+            <PlantBadges info={props.info}/>
         </View>
     )
 }

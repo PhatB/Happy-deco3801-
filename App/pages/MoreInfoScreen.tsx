@@ -36,7 +36,7 @@ export const MoreInfoScreen = () => {
             case InfoType.PestInfo:
                 return <MorePestInfo info={info}/>
             case InfoType.PlantProfile:
-                return <PlantProfile/>
+                return <PlantProfile info={info}/>
         }
     }
     return (

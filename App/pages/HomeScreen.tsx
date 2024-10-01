@@ -11,6 +11,7 @@ const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
 import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
+import { InfoType } from './ExploreScreen.tsx';
 
 type UserPlant = {
     id: string;
@@ -72,9 +73,9 @@ export const HomeScreen = () => {
                                 primaryField={"name"}
                                 secondaryField={"plantType"}
                                 defaultImage={require("../images/gLeafIcon.png")}
-                                targetPage = "Home"
+                                targetPage = "MoreInfo"
                                 targetItemParams={{}}
-                                targetConstParams={{}}
+                                targetConstParams={{"infoType":InfoType.PlantProfile}}
                                 searchString={searchText}
                             />}
 
