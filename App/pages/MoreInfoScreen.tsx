@@ -7,12 +7,14 @@ import {Footer} from '../other/Footer.tsx';
 import {MorePlantInfo}from '../other/MorePlantInfo.tsx';
 import {MorePestInfo}from '../other/MorePestInfo.tsx';
 import {BackButton} from "../other/MiscComponents/BackButton.tsx";
+import { InfoType } from './ExploreScreen.tsx';
+import { PlantProfile } from '../other/PlantProfile.tsx';
 
 const plusIcon = '../images/plusIcon.png';
 
 export const MoreInfoScreen = () => {
     const route: any = useRoute()
-    const {info, isPlant} = route.params;
+    const {info, infoType} = route.params;
 
     {/* Open URL */}
     const handleURL = useCallback(async () => {
@@ -27,7 +29,16 @@ export const MoreInfoScreen = () => {
             Alert.alert(`Don't know how to open this URL: ${info.url}`);
         }
     }, [info.url]);
-
+    const WhatToDisplay = () => {
+        switch (infoType) {
+            case InfoType.PlantInfo:
+                return <MorePlantInfo info={info}/>
+            case InfoType.PestInfo:
+                return <MorePestInfo info={info}/>
+            case InfoType.PlantProfile:
+                return <PlantProfile/>
+        }
+    }
     return (
     // Full view
         <View style={{height: '100%', backgroundColor: 'white'}}>
@@ -43,7 +54,7 @@ export const MoreInfoScreen = () => {
                             style={{width: '100%', height: 200, alignSelf: 'center', borderRadius: 20}}
                             source={info.hasOwnProperty("image") ? info.image : require("../images/missingTexture.jpg")}
                         />
-                        {isPlant ? <MorePlantInfo info={info}/> : <MorePestInfo info={info}/>}
+                        <WhatToDisplay />
                         {/* More Information */}
                         <Pressable
                         style={[styles.greenButton, {marginHorizontal: 0, marginTop: 20, width: '100%'}]}

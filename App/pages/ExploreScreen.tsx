@@ -39,6 +39,12 @@ type PestTypes = {
     image: ImageSourcePropType
 }
 
+export enum InfoType {
+    PlantInfo,
+    PestInfo,
+    PlantProfile
+}
+
 const pestImages: any = {
     "Mealybugs": require("../images/mealybugs.jpg"),
     "Spider Mites": require("../images/spiderMites.jpg"),
@@ -131,7 +137,7 @@ export const ExploreScreen = () =>{
                                 secondaryField={"scientificName"}
                                 targetPage={"MoreInfo"}
                                 defaultImage={require("../images/gLeafIcon.png")}
-                                targetConstParams={{"isPlant":showPlants}}
+                                targetConstParams={{"infoType":showPlants ? InfoType.PlantInfo : InfoType.PestInfo}}
                                 targetItemParams={{}}
                                 searchString={searchText}
                             />
