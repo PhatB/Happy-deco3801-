@@ -27,11 +27,14 @@ export const PrettyList = (props: ListProps) => {
      */
     const generateParams = (item: any) => {
         let obj: any = {}
-        obj["info"] = item;
         for (let key in props.targetConstParams){
             obj[key] = props.targetConstParams[key];
         }
         for (let key in props.targetItemParams){
+            if (props.targetItemParams[key] === "self") {
+                obj[key] = item;
+                continue;
+            }
             obj[key] = item[props.targetItemParams[key]];
         }
         return obj;

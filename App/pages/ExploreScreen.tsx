@@ -10,7 +10,7 @@ import pests from "../data/PestTypes.json";
 import {PrettyList} from "../other/PrettyList.tsx";
 import Screen from "react-native-screens/src/components/Screen.tsx";
 
-type PlantType = {
+export type PlantType = {
     name: string
     scientificName: string
     difficulty: string
@@ -45,7 +45,7 @@ export enum InfoType {
     PlantProfile
 }
 
-const pestImages: any = {
+export const pestImages: any = {
     "Mealybugs": require("../images/mealybugs.jpg"),
     "Spider Mites": require("../images/spiderMites.jpg"),
     "Scale Insects": require("../images/scaleInsects.jpg"),
@@ -53,33 +53,33 @@ const pestImages: any = {
     "Aphids": require("../images/aphids.jpg"),
     "Thrips": require("../images/thrips.jpg"),
 }
-const plantImages: any = {
+export const plantImages: any = {
     "Peace Lily" : require("../images/peace.jpg"),
     "Dieffenbachia": require("../images/dieffenbachia.jpg"),
     "Monstera" : require("../images/monstera.jpg"),
     "Orchid" : require("../images/orchid.jpg"),
     "Burro's Tail" : require("../images/succulent.jpg"),
 }
+export function loadJson<Type>(json: any[], images:any) {
+    let types: Type[] = []
+    // Go through each element in the JSON
+    for (let index in json) {
+        let item = json[index]
 
+        // Add the plant's image
+        item["image"] = images[item["name"]]
+        // Convert the plant to a PlantType and add it to the array.
+        types.push(item);
+    }
+    return types
+}
 export const ExploreScreen = () =>{
 
     const [searchText, setSearchText] = useState("");
     /**
      * Converts the plant data from JSON into an array of PlantType structs.
      */
-    function loadJson<Type>(json: any[], images:any) {
-            let types: Type[] = []
-            // Go through each element in the JSON
-            for (let index in json) {
-                let item = json[index]
-
-                // Add the plant's image
-                item["image"] = images[item["name"]]
-                // Convert the plant to a PlantType and add it to the array.
-                types.push(item);
-            }
-            return types
-        }
+    
         const [showPlants, setShowPlants] = useState<boolean>(true);
     /**
      * Component for the buttons that switch between displaying plants and pests
@@ -138,7 +138,7 @@ export const ExploreScreen = () =>{
                                 targetPage={"MoreInfo"}
                                 defaultImage={require("../images/gLeafIcon.png")}
                                 targetConstParams={{"infoType":showPlants ? InfoType.PlantInfo : InfoType.PestInfo}}
-                                targetItemParams={{}}
+                                targetItemParams={{"info":"self"}}
                                 searchString={searchText}
                             />
 

@@ -11,17 +11,25 @@ const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
 import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
-import { InfoType } from './ExploreScreen.tsx';
+import { InfoType, PlantType } from './ExploreScreen.tsx';
 
-type UserPlant = {
+type UserPlantJSON = {
     id: string;
     name: string,
     plantType: string,
     device: string,
 }
+
+type UserPlant = {
+    id: string;
+    name: string,
+    plantType: PlantType,
+    device: string,
+}
+
 export const HomeScreen = () => {
     const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState<UserPlant[]>([]);
+    const [data, setData] = useState<UserPlantJSON[]>([]);
     const [error, setError] = useState<String | null>(null);
     const [searchText, setSearchText] = useState<string>("");
     const navigation = useNavigation<any>();
