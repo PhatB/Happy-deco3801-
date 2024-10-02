@@ -13,43 +13,44 @@ export const SettingsScreen = () => {
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
                     <Text style={styles.pageTitle}>{'Settings'}</Text>
 
-                    {/* Account */}
-                    <View style={[styles.main, {flexDirection: 'row', paddingVertical: 20, marginTop: '22.5%'}]}>
-                        <View style={{width: '92.5%'}}>
-                            <Text style={styles.smallHeading}>Account</Text>
+                    <View style={[styles.main, {flexDirection: 'column', paddingVertical: 20, marginTop: '22.5%'}]}>
+                        
+                        <View style={{flexDirection: 'row', paddingVertical: 20}}>
+                            <View style={{width: '92.5%'}}>
+                                <Text style={styles.smallHeading}>Account</Text>
+                            </View>
+                            <Pressable>
+                                <Image
+                                    style={{direction: 'rtl', width: 20, height: 20}}
+                                    source={require('../images/arrowIcon.png')}
+                                />
+                            </Pressable>
                         </View>
-                        <Pressable>
-                            <Image
-                                style={{direction: 'rtl', width: 20, height: 20}}
-                                source={require('../images/arrowIcon.png')}
-                            />
-                        </Pressable>
-                    </View>
 
-                    {/* Notification */}
-                    <View style={[styles.main, {flexDirection: 'row', paddingVertical: 20}]}>
-                        <View style={{width: '92.5%'}}>
-                            <Text style={styles.smallHeading}>Notification</Text>
+                        <View style={{flexDirection: 'row', paddingVertical: 30}}>
+                            <View style={{width: '92.5%'}}>
+                                <Text style={styles.smallHeading}>Notification</Text>
+                            </View>
+                            <Pressable>
+                                <Image
+                                    style={{direction: 'rtl', width: 20, height: 20}}
+                                    source={require('../images/arrowIcon.png')}
+                                />
+                            </Pressable>
                         </View>
-                        <Pressable>
-                            <Image
-                                style={{direction: 'rtl', width: 20, height: 20}}
-                                source={require('../images/arrowIcon.png')}
-                            />
-                        </Pressable>
-                    </View>
 
-                    {/* Help & Privacy */}
-                    <View style={[styles.main, {flexDirection: 'row', paddingVertical: 20}]}>
-                        <View style={{width: '92.5%'}}>
-                            <Text style={styles.smallHeading}>Help & Privacy</Text>
+                        <View style={{flexDirection: 'row', paddingVertical: 20}}>
+                            <View style={{width: '92.5%'}}>
+                                <Text style={styles.smallHeading}>Help & Privacy</Text>
+                            </View>
+                            <Pressable>
+                                <Image
+                                    style={{direction: 'rtl', width: 20, height: 20}}
+                                    source={require('../images/arrowIcon.png')}
+                                />
+                            </Pressable>
                         </View>
-                        <Pressable>
-                            <Image
-                                style={{direction: 'rtl', width: 20, height: 20}}
-                                source={require('../images/arrowIcon.png')}
-                            />
-                        </Pressable>
+
                     </View>
 
                     {/* Logout */}
