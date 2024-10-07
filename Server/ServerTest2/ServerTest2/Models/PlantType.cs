@@ -20,10 +20,11 @@ public class PlantType
     [BsonElement("temp_max")]public int TemperatureMax { get; set; } = 0;
     [BsonElement("uv_min")]public int UVMin { get; set; } = 0;
     [BsonElement("uv_max")]public int UVMax { get; set; } = 0;
-    public string? Location { get; set; } = null;
-    public string? Pests { get; set; } = null;
-    public string? Detail { get; set; } = null;
-    public string? url { get; set; } = null;
+    [BsonElement("Location")]public string Location { get; set; } = null!;
+    [BsonElement("Pests")]public string Pests { get; set; } = null!;
+    [BsonElement("Detail")]public string Detail { get; set; } = null!;
+    [BsonElement("Url")] public string Url { get; set; } = null!;
+    public string Water {get; set;} = null!;
 
 
 }

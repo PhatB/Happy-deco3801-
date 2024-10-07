@@ -22,5 +22,6 @@ export const Search = (props: SearchProps) => {
             maxLength={25}
             />
         </View>
+        
     );
 }

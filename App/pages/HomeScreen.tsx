@@ -11,30 +11,31 @@ const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
 import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
-type UserPlant = {
-    id: string;
-    name: string,
-    plantType: string,
-    device: string,
-}
+import { InfoType } from './ExploreScreen.tsx';
+import {PlantType, UserPlant, userPlantsFromUser} from '../api.ts'
+
+
+
 export const HomeScreen = () => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState<UserPlant[]>([]);
-    const [error, setError] = useState<String | null>(null);
-
+    const [error, setError] = useState<Error | null>(null);
+    const [searchText, setSearchText] = useState<string>("");
     const navigation = useNavigation<any>();
 
+    
     const getPlants = async () => {
+        setLoading(true);
         try {
-            const response = await fetch("https://deco3801-teamhappy.uqcloud.net/api/UserPlant/FromUser/" + testUserId);
-            const json = await response.json();
-            console.log(json)
-            setData(json);
-        } catch (err) {
-            setError(err as String);
+            let plants = await userPlantsFromUser(testUserId);
+            setData(plants);
+        } catch (e: any) {
+            setError(e)
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
+
+       
     }
     useEffect(() => {
         getPlants().then();
@@ -45,12 +46,11 @@ export const HomeScreen = () => {
             {/* Scroll view */}
             <View style={styles.scrollArea}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.pageTitle}>{'My Plants'}</Text>
+                    <Text style={styles.pageTitle}>{"A"}</Text>
                     {/* Search bar */}
-                    <Search />
+                    <Search searchCallback={setSearchText}/>
                     {/* Weather box */}
                     <View>
-                        
                     </View>
                     {/* Main box */}
 
@@ -64,16 +64,17 @@ export const HomeScreen = () => {
                             <Image source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </Pressable>
-                        {error !== null
-                            ? <Text>{`Error while accessing your plant list. ${error}`}</Text>
+                        {error !== null || isLoading
+                            ? <Text>{`Error while accessing your plant list. ${error?.message}`}</Text>
                             : <PrettyList
                                 data={data}
                                 primaryField={"name"}
-                                secondaryField={"plantType"}
+                                secondaryField={"name"}
                                 defaultImage={require("../images/gLeafIcon.png")}
-                                targetPage = "Home"
-                                targetItemParams={{}}
-                                targetConstParams={{}}
+                                targetPage = "MoreInfo"
+                                targetItemParams={{"info":"self", "extra": "self"}}
+                                targetConstParams={{"infoType":InfoType.PlantProfile}}
+                                searchString={searchText}
                             />}
 
                     </View>
