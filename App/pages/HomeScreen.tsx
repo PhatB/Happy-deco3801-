@@ -29,7 +29,7 @@ type UserPlant = {
 
 export const HomeScreen = () => {
     const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState<UserPlantJSON[]>([]);
+    const [data, setData] = useState<UserPlant[]>([]);
     const [error, setError] = useState<String | null>(null);
     const [searchText, setSearchText] = useState<string>("");
     const navigation = useNavigation<any>();
@@ -39,6 +39,8 @@ export const HomeScreen = () => {
         try {
             const response = await fetch("https://deco3801-teamhappy.uqcloud.net/api/UserPlant/FromUser/" + testUserId);
             const json = await response.json();
+            const id = json.plantType;
+            const plantResponse = await fetch("https://deco3801-teamhappy.uqcloud.net/api/PlantType/")
             console.log(json)
             setData(json);
         } catch (err) {
