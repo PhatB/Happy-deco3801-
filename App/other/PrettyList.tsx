@@ -97,6 +97,3 @@ export const PrettyList = (props: ListProps) => {
         </View>
     )
 }
-PrettyList.defaultProps = {
-    searchString: "",
-}

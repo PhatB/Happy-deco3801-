@@ -11,7 +11,7 @@ const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
 import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
-import { InfoType, PlantType } from './ExploreScreen.tsx';
+import { InfoType, PlantType, loadJson, plantImages } from './ExploreScreen.tsx';
 
 type UserPlantJSON = {
     id: string;
@@ -21,7 +21,6 @@ type UserPlantJSON = {
 }
 
 type UserPlant = {
-    id: string;
     name: string,
     plantType: PlantType,
     device: string,
@@ -29,36 +28,57 @@ type UserPlant = {
 
 export const HomeScreen = () => {
     const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState<UserPlant[]>([]);
-    const [error, setError] = useState<String | null>(null);
+    const [data, setData] = useState<UserPlantJSON[]>([]);
+    const [error, setError] = useState<string | null>(null);
     const [searchText, setSearchText] = useState<string>("");
     const navigation = useNavigation<any>();
 
     
     const getPlants = async () => {
-        try {
+      
+            console.log("STart");
             const response = await fetch("https://deco3801-teamhappy.uqcloud.net/api/UserPlant/FromUser/" + testUserId);
-            const json = await response.json();
-            const id = json.plantType;
-            const plantResponse = await fetch("https://deco3801-teamhappy.uqcloud.net/api/PlantType/")
-            console.log(json)
-            setData(json);
-        } catch (err) {
-            setError(err as String);
-        } finally {
+            console.log("end");
+            const uPlantJson = await response.json();
+            /*
+            if (response.status != 200) {
+                setError(response.statusText)
+            }
+           
+            let plantTypes: UserPlant[] = [];
+            for (let plant of uPlantJson) {
+                const id = plant.plantType;
+
+                const plantResponse = await fetch("https://deco3801-teamhappy.uqcloud.net/api/PlantType/" + id)
+                const plantJson = await plantResponse.json();
+                let plantType: PlantType = loadJson<PlantType>([plantJson], plantImages)[0]
+                let newUserPlant: UserPlant = {name: plantJson.name, device: plantJson.device, plantType: plantType}
+                plantTypes.push(newUserPlant);
+            }
+            
+           
+         
+
+            
+            
+            */
+            setData(uPlantJson);
             setLoading(false);
-        }
+       
     }
     useEffect(() => {
-        getPlants().then();
-    }, [])
+        console.log("AAA")
+        getPlants().then(() => {
+            console.log("ERRN")
+        });
+    }, [setData, setError, setLoading])
     return (
     // Full view
         <View style={{height: '100%'}}>
             {/* Scroll view */}
             <View style={styles.scrollArea}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.pageTitle}>{'My Plants'}</Text>
+                    <Text style={styles.pageTitle}>{"A"}</Text>
                     {/* Search bar */}
                     <Search searchCallback={setSearchText}/>
                     {/* Weather box */}
@@ -76,12 +96,12 @@ export const HomeScreen = () => {
                             <Image source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </Pressable>
-                        {error !== null
+                        {error !== null || isLoading
                             ? <Text>{`Error while accessing your plant list. ${error}`}</Text>
                             : <PrettyList
                                 data={data}
                                 primaryField={"name"}
-                                secondaryField={"plantType"}
+                                secondaryField={"name"}
                                 defaultImage={require("../images/gLeafIcon.png")}
                                 targetPage = "MoreInfo"
                                 targetItemParams={{}}
