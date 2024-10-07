@@ -4,6 +4,7 @@ import {ImageSourcePropType} from 'react-native';
 const API_BASE_URL: string = "https://deco3801-teamhappy.uqcloud.net/api/"
 const IMAGE_PREFIX: string = "./images/"
 export type PlantType = {
+    id : string
     name: string
     scientificName: string
     difficulty: string
@@ -21,10 +22,20 @@ export type PlantType = {
     image: ImageSourcePropType
 }
 export type UserPlant = {
+    id : string
     name: string,
     plantType: PlantType,
     device: string,
     image: ImageSourcePropType,
+}
+
+export type EnvironmentRecord = {
+    id: string,
+    device: string,
+    time: string,
+    temperature: number,
+    moisture: number,
+    sunlight: number
 }
 export const pestImages: any = {
     "Mealybugs": require(IMAGE_PREFIX + "mealybugs.jpg"),
@@ -78,6 +89,7 @@ export async function userPlantsFromUser(userID: string) {
         const plantType: PlantType = addImage<PlantType>([rawPlantType],
              plantImages)[0];
         const userPlant: UserPlant = {
+            id: rawUserPlant.id,
             name: rawUserPlant.name,
             device: rawUserPlant.device,
             plantType:plantType,
@@ -85,6 +97,18 @@ export async function userPlantsFromUser(userID: string) {
         userPlants.push(userPlant);
     }
     return userPlants;
+}
+
+export async function getEnvironmentRecords(deviceID: string) {
+    return apiRequest(`EnvironmentRecords/FromDevice/${deviceID}`)
+}
+
+export async function mostRecentEnvironmentRecord(deviceID: string) {
+    let records:EnvironmentRecord[] = await getEnvironmentRecords(deviceID)
+    if (records.length == 0) {
+        return null
+    }
+    return records.sort((a, b) => a.time > b.time ? -1 : 1)[0]
 }
 
 export async function getPlantType(typeID: string) {

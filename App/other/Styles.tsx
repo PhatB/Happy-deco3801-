@@ -15,9 +15,15 @@ export const styles = StyleSheet.create({
     paddingTop: 20,
   },
   smallHeading: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Medium',
     color: '#143728',
     fontSize: 20,
+  },
+  smallBold: {
+    fontFamily: 'Poppins-SemiBold',
+    color: '#143728',
+    fontSize: 20,
+    fontWeight: "medium"
   },
   heading: {
     fontFamily: 'Poppins-Regular',
