@@ -3,6 +3,7 @@ import {View, Text, Image} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
 import { DiffcultyBadge, LocationBadge, PlantBadges, WaterBadge } from './MiscComponents/Badges.tsx';
+import { Line } from './MiscComponents/Line.tsx';
 
 type MorePlantInfoProps = {
     info: any
@@ -14,22 +15,13 @@ export const MorePlantInfo = (props: MorePlantInfoProps) => {
             
             <PlantBadges info={props.info}/>
             {/* Info */}
-            <Image
-                style={styles.line}
-                source={require("../images/line.png")}
-            />
+            <Line/>
             <Text style={styles.heading}>Botanic Name</Text>
             <Text style={styles.baseText}>{`${props.info.scientificName}.`}</Text>
-            <Image
-                style={styles.line}
-                source={require("../images/line.png")}
-            />
+            <Line/>
             <Text style={styles.heading}>About</Text>
             <Text style={styles.baseText}>{`${props.info.detail}.`}</Text>
-            <Image
-                style={styles.line}
-                source={require("../images/line.png")}
-            />
+            <Line/>
             <Text style={styles.heading}>Common Pests</Text>
             <Text style={styles.baseText}>{`${props.info.pests}.`}</Text>
         </View>
