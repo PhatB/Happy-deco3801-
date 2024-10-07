@@ -46,7 +46,7 @@ export const HomeScreen = () => {
             {/* Scroll view */}
             <View style={styles.scrollArea}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.pageTitle}>{"A"}</Text>
+                    <Text style={styles.pageTitle}>{"Your Plants"}</Text>
                     {/* Search bar */}
                     <Search searchCallback={setSearchText}/>
                     {/* Weather box */}

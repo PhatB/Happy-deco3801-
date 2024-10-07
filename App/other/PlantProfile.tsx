@@ -25,13 +25,14 @@ export const PlantProfile = (props: PlantProfileProps) => {
         return false;
     }
     const setAttention = async () => {
-        setMostRecent(await mostRecentEnvironmentRecord(info.device));
-        if (mostRecent === null) {
+        const recent = await mostRecentEnvironmentRecord(info.device);
+        if (recent === null) {
             setNeedsAttention(true);
             return;
         }
+        setMostRecent(recent)
         console.log(mostRecent)
-       setNeedsAttention(attentionCheck(mostRecent))
+       setNeedsAttention(attentionCheck(recent))
     }
     const inBounds = (value: number, min: number, max: number) => {
         return value >= min && value <= max
