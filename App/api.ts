@@ -7,7 +7,7 @@ export type PlantType = {
     id : string
     name: string
     scientificName: string
-    difficulty: string
+    careDifficulty: string
     location: string
     moistureMin: number
     moistureMax: number

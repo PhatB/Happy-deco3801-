@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { Image, Pressable, Text, View } from "react-native"
-import { AttentionBadge, HealthyBadge, PlantBadges } from "./MiscComponents/Badges"
+import { Image, Pressable, Switch, Text, View } from "react-native"
+import { AttentionBadge, HealthyBadge, PlantBadges, WaterBadge } from "./MiscComponents/Badges"
 import { useRoute } from "@react-navigation/native"
 import { Line } from "./MiscComponents/Line"
 import { styles } from "./Styles"
@@ -103,7 +103,23 @@ export const PlantProfile = (props: PlantProfileProps) => {
                 <WhichAttentionBadge />
             </View>
             <CurrentStatusBody/>
-            
+            <Line></Line>
+            <View style={{flexDirection: "row", alignItems: "center"}}>
+                <Text style={[styles.smallBold, {flex:1}]}>Watering</Text>
+                <WaterBadge info={info.plantType}/>
+            </View>
+            <View style={{flexDirection: "row", alignItems: "center", marginTop:15}}>
+                <Text style={[styles.smallHeading, {flex:1, fontSize:15,}]}>Reminders</Text>
+                <Switch thumbColor="#FFFFFF" trackColor={{true: "#D1EDCE", false:"#D1EDCE"}} style={{marginRight:10}}/>
+            </View>
+            <Line></Line>
+            <Text style={[styles.smallBold]}>Pest Management</Text>
+            <Pressable
+                    style={[styles.greenButton, {marginHorizontal: 0, marginTop: 30, width: '100%', height: 60}]}>
+                        <Text style={styles.greenButton}>I've detected a pest!</Text>
+                    </Pressable> 
+            <Line></Line>
+            <Text style={[styles.smallBold]}>Description</Text>
         </View>
     )
 }
