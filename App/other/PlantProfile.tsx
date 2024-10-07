@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Image, Pressable, Text, View } from "react-native"
-import { AttentionBadge, HealthyBadge, PlantBadges } from "./MiscComponents/Badges"
+import { AttentionBadge, HealthyBadge, PlantBadges, WaterBadge } from "./MiscComponents/Badges"
 import { useRoute } from "@react-navigation/native"
 import { Line } from "./MiscComponents/Line"
 import { styles } from "./Styles"
@@ -103,6 +103,11 @@ export const PlantProfile = (props: PlantProfileProps) => {
                 <WhichAttentionBadge />
             </View>
             <CurrentStatusBody/>
+            <Line></Line>
+            <View style={{flexDirection: "row", alignContent: "center", alignItems: "center"}}>
+                <Text style={[styles.smallBold, {flex:1}]}>Watering</Text>
+                <WaterBadge info={info.plantType}/>
+            </View>
             
         </View>
     )
