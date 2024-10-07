@@ -24,6 +24,7 @@ export type UserPlant = {
     name: string,
     plantType: PlantType,
     device: string,
+    image: ImageSourcePropType,
 }
 export const pestImages: any = {
     "Mealybugs": require(IMAGE_PREFIX + "mealybugs.jpg"),
@@ -79,7 +80,8 @@ export async function userPlantsFromUser(userID: string) {
         const userPlant: UserPlant = {
             name: rawUserPlant.name,
             device: rawUserPlant.device,
-            plantType:plantType};
+            plantType:plantType,
+            image: plantImages[plantType.name]};
         userPlants.push(userPlant);
     }
     return userPlants;

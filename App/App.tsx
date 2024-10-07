@@ -18,6 +18,7 @@ import {SettingsScreen} from './pages/SettingsScreen.tsx';
 import {MoreInfoScreen} from './pages/MoreInfoScreen.tsx';
 import {styles} from "./other/Styles.tsx";
 import {Text, View} from "react-native";
+import { PlantProfile } from './other/PlantProfile.tsx';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -58,6 +59,7 @@ class App extends React.Component {
                             component={MoreInfoScreen}
                             options={{headerShown: false}}
                         />
+                      
                     </Stack.Navigator>
                 </NavigationContainer>
 

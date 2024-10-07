@@ -72,7 +72,7 @@ export const HomeScreen = () => {
                                 secondaryField={"name"}
                                 defaultImage={require("../images/gLeafIcon.png")}
                                 targetPage = "MoreInfo"
-                                targetItemParams={{}}
+                                targetItemParams={{"info":"self", "extra": "self"}}
                                 targetConstParams={{"infoType":InfoType.PlantProfile}}
                                 searchString={searchText}
                             />}

@@ -14,7 +14,7 @@ const plusIcon = '../images/plusIcon.png';
 
 export const MoreInfoScreen = () => {
     const route: any = useRoute()
-    const {info, infoType} = route.params;
+    const {info, infoType, extra} = route.params;
 
     {/* Open URL */}
     const handleURL = useCallback(async () => {
@@ -36,7 +36,7 @@ export const MoreInfoScreen = () => {
             case InfoType.PestInfo:
                 return <MorePestInfo info={info}/>
             case InfoType.PlantProfile:
-                return <PlantProfile info={info}/>
+                return <PlantProfile info={extra}/>
         }
     }
     return (
@@ -56,11 +56,15 @@ export const MoreInfoScreen = () => {
                         />
                         <WhatToDisplay />
                         {/* More Information */}
-                        <Pressable
-                        style={[styles.greenButton, {marginHorizontal: 0, marginTop: 20, width: '100%'}]}
-                        onPress={handleURL}>
-                            <Text style={styles.greenButton}>More Information</Text>
-                        </Pressable>
+                        {
+                            infoType === InfoType.PlantProfile ? <></> : 
+                            <Pressable
+                            style={[styles.greenButton, {marginHorizontal: 0, marginTop: 20, width: '100%'}]}
+                            onPress={handleURL}>
+                                <Text style={styles.greenButton}>More Information</Text>
+                            </Pressable> 
+                        }
+                        
                     </View>
                 </ScrollView>
             </View>
