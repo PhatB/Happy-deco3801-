@@ -6,6 +6,30 @@ interface BadgeProps {
     info: any
 }
 
+
+export const AttentionBadge = () => {
+    return(
+        <View style={[styles.smallInfo, {backgroundColor: '#F5D4C9', height:25, alignItems: "center", }]}>
+                  
+                    <Text
+                    style={[styles.baseText, {fontSize: 12, textTransform: 'uppercase', color: '#D83400', textAlign: "center", fontWeight: "bold"}]}>
+                        Needs Attention
+                    </Text>
+                </View>
+    )
+}
+export const HealthyBadge = () => {
+    return (
+    <View style={[styles.smallInfo, {backgroundColor: '#D1EDCE'}]}>
+                  
+                    <Text
+                    style={[styles.baseText, {fontSize: 12, textTransform: 'uppercase', color: '#218F4A'}]}>
+                        Healthy
+                    </Text>
+                </View>
+    )
+}
+
 export const DiffcultyBadge = (props: BadgeProps) => {
     return (
         <View style={[styles.smallInfo, {backgroundColor: '#D1EDCE'}]}>
