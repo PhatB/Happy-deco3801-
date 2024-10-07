@@ -21,14 +21,14 @@ export const InfoCircle = (props: InfoCircleProps) =>{
     }
     const safe_range = 5
     const diff = value_max - value_min;
-    const safe_min = value_min + (diff / safe_range)
-    const safe_max = value_max - (diff / safe_range)
+    const safe_min = value_min - (diff / safe_range)
+    const safe_max = value_max + (diff / safe_range)
     const true_min = value_min - diff/2;
     const true_max = value_max + diff/2;
     let dangerLevel: "danger" | "warning" | "safe"
-    if (value < value_min || value > value_max) {
+    if (value < safe_min || value > safe_max) {
         dangerLevel = "danger"
-    } else if (value < safe_min || value > safe_max) {
+    } else if (value < value_min || value > value_max) {
         dangerLevel = "warning"
     } else {
         dangerLevel = "safe"
