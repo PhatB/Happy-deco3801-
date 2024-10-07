@@ -11,67 +11,35 @@ const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
 import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
-import { InfoType, PlantType, loadJson, plantImages } from './ExploreScreen.tsx';
+import { InfoType } from './ExploreScreen.tsx';
+import {PlantType, UserPlant, userPlantsFromUser} from '../api.ts'
 
-type UserPlantJSON = {
-    id: string;
-    name: string,
-    plantType: string,
-    device: string,
-}
 
-type UserPlant = {
-    name: string,
-    plantType: PlantType,
-    device: string,
-}
 
 export const HomeScreen = () => {
     const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState<UserPlantJSON[]>([]);
-    const [error, setError] = useState<string | null>(null);
+    const [data, setData] = useState<UserPlant[]>([]);
+    const [error, setError] = useState<Error | null>(null);
     const [searchText, setSearchText] = useState<string>("");
     const navigation = useNavigation<any>();
 
     
     const getPlants = async () => {
-      
-            console.log("STart");
-            const response = await fetch("https://deco3801-teamhappy.uqcloud.net/api/UserPlant/FromUser/" + testUserId);
-            console.log("end");
-            const uPlantJson = await response.json();
-            /*
-            if (response.status != 200) {
-                setError(response.statusText)
-            }
-           
-            let plantTypes: UserPlant[] = [];
-            for (let plant of uPlantJson) {
-                const id = plant.plantType;
+        setLoading(true);
+        try {
+            let plants = await userPlantsFromUser(testUserId);
+            setData(plants);
+        } catch (e: any) {
+            setError(e)
+        } finally {
+            setLoading(false)
+        }
 
-                const plantResponse = await fetch("https://deco3801-teamhappy.uqcloud.net/api/PlantType/" + id)
-                const plantJson = await plantResponse.json();
-                let plantType: PlantType = loadJson<PlantType>([plantJson], plantImages)[0]
-                let newUserPlant: UserPlant = {name: plantJson.name, device: plantJson.device, plantType: plantType}
-                plantTypes.push(newUserPlant);
-            }
-            
-           
-         
-
-            
-            
-            */
-            setData(uPlantJson);
-            setLoading(false);
        
     }
     useEffect(() => {
-        console.log("AAA")
-        getPlants().then(() => {
-            console.log("ERRN")
-        });
-    }, [setData, setError, setLoading])
+        getPlants().then();
+    }, [])
     return (
     // Full view
         <View style={{height: '100%'}}>
@@ -97,7 +65,7 @@ export const HomeScreen = () => {
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </Pressable>
                         {error !== null || isLoading
-                            ? <Text>{`Error while accessing your plant list. ${error}`}</Text>
+                            ? <Text>{`Error while accessing your plant list. ${error?.message}`}</Text>
                             : <PrettyList
                                 data={data}
                                 primaryField={"name"}
