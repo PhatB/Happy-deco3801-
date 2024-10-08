@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Image, Pressable, Switch, Text, View } from "react-native"
 import { AttentionBadge, HealthyBadge, PlantBadges, WaterBadge } from "./MiscComponents/Badges"
-import { useRoute } from "@react-navigation/native"
+import { useNavigation, useRoute } from "@react-navigation/native"
 import { Line } from "./MiscComponents/Line"
 import { styles } from "./Styles"
 import { EnvironmentRecord, mostRecentEnvironmentRecord, PlantType, UserPlant } from "../api"
@@ -14,6 +14,7 @@ interface PlantProfileProps {
 
 
 export const PlantProfile = (props: PlantProfileProps) => {
+    const navigation = useNavigation();
     let {info} = props;
     const [needsAttention, setNeedsAttention] = useState(false);
     const [mostRecent, setMostRecent] = useState<EnvironmentRecord | null>(null);
@@ -83,6 +84,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
                     </View>
                     
                     <Pressable
+                    onPress={() => navigation.navigate("History" as never)}
                     style={[styles.greenButton, {marginHorizontal: 0, marginTop: 30, width: '100%', height: 60}]}>
                         <Text style={styles.greenButton}>View Plant History</Text>
                     </Pressable> 

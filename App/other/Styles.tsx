@@ -64,6 +64,18 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F5F9F3',
     fontFamily: 'Poppins-Regular',
   },
+
+  historyCalendar : {
+    backgroundColor: '#218F4A',
+    flexDirection: 'column',
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    fontFamily: 'Poppins-Regular',
+    marginHorizontal: 20,
+    padding: 8,
+  },
   greenButton: {
     backgroundColor: '#218F4A',
     flexDirection: 'row',
@@ -77,6 +89,30 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
 
   },
+
+  weekDay: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 20,
+    color: "white",
+    textAlign: "center",
+    flex:1,
+
+    height:50,
+    paddingVertical: 10,
+  },
+
+  weekDaySelected: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 20,
+    color:"black",
+    backgroundColor:"#F2F2F2",
+    textAlign: "center",
+    paddingVertical: 10,
+    flex:1,
+    height:50,
+    borderRadius:2000
+  },
+
   smallGreenButton: {
     width: '42.5%',
     marginHorizontal: '2.5%',
