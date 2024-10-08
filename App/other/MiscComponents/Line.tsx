@@ -9,3 +9,11 @@ export const Line = () => {
         source={require("../../images/line.png")}
     />)
 }
+
+
+export const SmallLine = () => {
+    return (<Image
+        style={styles.smallLine}
+        source={require("../../images/line.png")}
+    />)
+}

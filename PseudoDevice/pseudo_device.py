@@ -20,7 +20,7 @@ while command != "exit":
             continue;
         body = {
             "device":id,
-            "time":datetime.datetime.now().isoformat(),
+            "time":datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "moisture": int(inp[1]),
             "temperature": int(inp[2]),
             "sunlight": int(inp[3]),
