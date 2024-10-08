@@ -68,6 +68,13 @@ export const PlantProfile = (props: PlantProfileProps) => {
                         suffix="%"
                         label="Moisture"
                         />
+                        <InfoCircle 
+                        value={mostRecent.temperature} 
+                        value_max = {plantType.temperatureMax} 
+                        value_min={plantType.temperatureMin} 
+                        suffix="°C"
+                        label="Temperature"
+                    />
                     <InfoCircle 
                         value={mostRecent.sunlight*10} 
                         value_max = {plantType.sunlightMax*10} 
@@ -75,13 +82,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
                         suffix="%"
                         label="Sunlight"
                         />
-                    <InfoCircle 
-                        value={mostRecent.temperature} 
-                        value_max = {plantType.temperatureMax} 
-                        value_min={plantType.temperatureMin} 
-                        suffix="°C"
-                        label="Temperature"
-                    />
+                   
                     </View>
                     
                     <Pressable
