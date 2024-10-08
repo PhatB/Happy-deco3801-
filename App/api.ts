@@ -66,7 +66,6 @@ export function addImage<Type>(json: any[], images:any) {
     return types
 }
 async function apiRequest(endpoint: string) {
-    console.log(`${API_BASE_URL}${endpoint}`);
     const response = await fetch(`${API_BASE_URL}${endpoint}`);
     if (!response.ok) {
         try {

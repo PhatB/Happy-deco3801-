@@ -4,6 +4,7 @@ import {FlatList, Text, View, Image, Pressable, ImageSourcePropType} from "react
 import {NavigationProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import {styles} from './Styles.tsx';
+import { Line, SmallLine } from './MiscComponents/Line.tsx';
 interface ListProps {
     data: any[],
     primaryField: string,
@@ -60,6 +61,8 @@ export const PrettyList = (props: ListProps) => {
             }
                 scrollEnabled={false}
                 renderItem ={({item}) =>
+                    <>
+                   
                     <View style={{flexDirection:'row', paddingVertical: 15}}>
                         <Image
                             style={styles.display}
@@ -90,6 +93,7 @@ export const PrettyList = (props: ListProps) => {
                             />
                         </Pressable>
                     </View>
+                    </>
                 }
             />
                 : <Text style={{textAlign:'center'}}>We found no matches for '{props.searchString}'...</Text>}

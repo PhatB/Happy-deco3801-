@@ -32,8 +32,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
             return;
         }
         setMostRecent(recent)
-        console.log(mostRecent)
-       setNeedsAttention(attentionCheck(recent))
+        setNeedsAttention(attentionCheck(recent))
     }
     const inBounds = (value: number, min: number, max: number) => {
         return value >= min && value <= max
