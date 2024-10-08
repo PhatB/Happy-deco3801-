@@ -19,12 +19,12 @@ export const InfoCircle = (props: InfoCircleProps) =>{
         "warning": "#FBB93A",
         "safe" : "#208F4A"
     }
-    const safe_range = 5
+    const safe_range = 2
     const diff = value_max - value_min;
     const safe_min = value_min - (diff / safe_range)
     const safe_max = value_max + (diff / safe_range)
-    const true_min = value_min - diff/2;
-    const true_max = value_max + diff/2;
+    const true_min = value_min - diff;
+    const true_max = value_max + diff;
     let dangerLevel: "danger" | "warning" | "safe"
     if (value < safe_min || value > safe_max) {
         dangerLevel = "danger"
