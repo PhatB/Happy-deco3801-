@@ -51,7 +51,7 @@ export const HealthyBadge = () => {
     )
 }
 
-export const DiffcultyBadge = (props: BadgeProps) => {
+export const DifficultyBadge = (props: BadgeProps) => {
     return (
         <IconBadge 
             icon={require("../../images/difficulty.png")} 
@@ -91,7 +91,7 @@ export const PlantBadges = (props: BadgeProps) => {
     return(
         <View style={{flexDirection: 'row', marginTop: 20}}>
                 {/* Difficulty */}
-                <DiffcultyBadge info={props.info} />
+                <DifficultyBadge info={props.info} />
                 {/* Location */}
                 <LocationBadge info={props.info}/>
                 {/* Watering */}

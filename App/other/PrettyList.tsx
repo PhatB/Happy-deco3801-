@@ -5,6 +5,8 @@ import {NavigationProp, useNavigation, useRoute} from '@react-navigation/native'
 
 import {styles} from './Styles.tsx';
 import { Line, SmallLine } from './MiscComponents/Line.tsx';
+import { DifficultyBadge, LocationBadge, PlantBadges, WaterBadge } from './MiscComponents/Badges.tsx';
+
 interface ListProps {
     data: any[],
     primaryField: string,
@@ -84,6 +86,13 @@ export const PrettyList = (props: ListProps) => {
                                 style={[styles.baseText, {fontSize: 15, color: '#BFBFBF', fontFamily: 'Poppins-Italic'}]}>
                                 {`${item[props.secondaryField]}`}
                             </Text>
+                            {/* Badges? */}
+                            {item.hasOwnProperty('water') ?
+                            <View style={{flexDirection: 'row', marginTop: 5}}>
+                                <DifficultyBadge
+                                info={item}/>
+                            </View>
+                            : null}
                         </View>
 
                         <Pressable onPress={() => navigation.navigate(props.targetPage, generateParams(item))}>
