@@ -20,6 +20,6 @@ public class EnvironmentRecord
 
     [BsonElement("temp")] public int? Temperature { get; set; } = null!;
 
-    [BsonElement("humidity")] public int? Humidity { get; set; } = null!;
-    
+    [BsonElement("moisture")] public int? Moisture { get; set; } = null!;
+    public int? Sunlight {get; set;} = null!;
 }

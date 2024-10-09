@@ -1,9 +1,12 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {FlatList, Text, View, Image, Pressable, ImageSourcePropType} from "react-native";
 import {NavigationProp, useNavigation, useRoute} from '@react-navigation/native';
 
 import {styles} from './Styles.tsx';
+import { Line, SmallLine } from './MiscComponents/Line.tsx';
+import { DifficultyBadge, LocationBadge, PlantBadges, WaterBadge } from './MiscComponents/Badges.tsx';
+
 interface ListProps {
     data: any[],
     primaryField: string,
@@ -18,6 +21,8 @@ interface ListProps {
 
 export const PrettyList = (props: ListProps) => {
 
+    const [sortedList, setSortedList] = useState<any[]>();
+
     /**
      * Creates a struct of parameters to be passed to the
      * target page if the given item is pressed.
@@ -25,30 +30,41 @@ export const PrettyList = (props: ListProps) => {
      */
     const generateParams = (item: any) => {
         let obj: any = {}
-        obj["info"] = item;
         for (let key in props.targetConstParams){
             obj[key] = props.targetConstParams[key];
         }
         for (let key in props.targetItemParams){
+            if (props.targetItemParams[key] === "self") {
+                obj[key] = item;
+                continue;
+            }
             obj[key] = item[props.targetItemParams[key]];
         }
-        return obj
-
+        return obj;
     }
+  
+    useEffect(() => {
+        const filtered = props.data.filter(item => (item[props.primaryField] !== undefined
+            && item[props.primaryField].toLowerCase().includes(props.searchString.toLowerCase()))
+            || (item[props.secondaryField] !== undefined 
+                && item[props.secondaryField].toLowerCase().includes(props.searchString.toLowerCase()))
+        || props.searchString === "*")
+        setSortedList(props.searchString.length != 0 ? filtered : props.data);
+    }, [props.searchString]) 
+    
     const navigation: NavigationProp<any> = useNavigation();
     return (
         <View>
 
-            {props.data.length > 0 ? <FlatList
+            {sortedList?.length != 0 ? <FlatList
                 data={props.searchString !== undefined ?
-                    props.data.filter(item => (item[props.primaryField] !== undefined
-                        && item[props.primaryField].includes(props.searchString))
-                        || (item[props.secondaryField] !== undefined && item[props.secondaryField].includes(props.searchString))
-                    )
+                    sortedList
                     : props.data
             }
                 scrollEnabled={false}
                 renderItem ={({item}) =>
+                    <>
+                   
                     <View style={{flexDirection:'row', paddingVertical: 15}}>
                         <Image
                             style={styles.display}
@@ -70,6 +86,13 @@ export const PrettyList = (props: ListProps) => {
                                 style={[styles.baseText, {fontSize: 15, color: '#BFBFBF', fontFamily: 'Poppins-Italic'}]}>
                                 {`${item[props.secondaryField]}`}
                             </Text>
+                            {/* Badges? */}
+                            {item.hasOwnProperty('water') ?
+                            <View style={{flexDirection: 'row', marginTop: 5}}>
+                                <DifficultyBadge
+                                info={item}/>
+                            </View>
+                            : null}
                         </View>
 
                         <Pressable onPress={() => navigation.navigate(props.targetPage, generateParams(item))}>
@@ -79,13 +102,11 @@ export const PrettyList = (props: ListProps) => {
                             />
                         </Pressable>
                     </View>
+                    </>
                 }
             />
                 : <Text style={{textAlign:'center'}}>We found no matches for '{props.searchString}'...</Text>}
 
         </View>
     )
-}
-PrettyList.defaultProps = {
-    searchString: "",
 }

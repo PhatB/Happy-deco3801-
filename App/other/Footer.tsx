@@ -35,7 +35,7 @@ export const Footer = ({}) => {
             <Pressable onPress={() => navigation.navigate("Explore", {screen: "ExploreScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Explore" || route.name == "MoreInfo"
+                source={route.name == "Explore" || route.name == "MoreInfo" || route.name == "History"
                         ? require(gSearchIcon):require(searchIcon)}
                 />
             </Pressable>

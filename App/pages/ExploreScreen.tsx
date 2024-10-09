@@ -10,23 +10,8 @@ import pests from "../data/PestTypes.json";
 import {PrettyList} from "../other/PrettyList.tsx";
 import Screen from "react-native-screens/src/components/Screen.tsx";
 
-type PlantType = {
-    name: string
-    scientificName: string
-    difficulty: string
-    location: string
-    moistureMin: number
-    moistureMax: number
-    sunlightMin: number
-    sunlightMax: number
-    temperatureMin: number
-    temperatureMax: number
-    uvMin: number
-    uvMax: number
-    pests: string
-    detail: string
-    image: ImageSourcePropType
-}
+import {PlantType, pestImages, plantImages, addImage} from '../api.ts'
+
 
 type PestTypes = {
     name: string,
@@ -39,42 +24,27 @@ type PestTypes = {
     image: ImageSourcePropType
 }
 
-const pestImages: any = {
-    "Mealybugs": require("../images/mealybugs.jpg"),
-    "Spider Mites": require("../images/spiderMites.jpg"),
-    "Scale Insects": require("../images/scaleInsects.jpg"),
-    "Fungus Gnats": require("../images/fungusGnats.jpg"),
-    "Aphids": require("../images/aphids.jpg"),
-    "Thrips": require("../images/thrips.jpg"),
+export enum InfoType {
+    PlantInfo,
+    PestInfo,
+    PlantProfile
 }
-const plantImages: any = {
-    "Peace Lily" : require("../images/peace.jpg"),
-    "Dieffenbachia": require("../images/dieffenbachia.jpg"),
-    "Monstera" : require("../images/monstera.jpg"),
-    "Orchid" : require("../images/orchid.jpg"),
-    "Burro's Tail" : require("../images/succulent.jpg"),
-}
+
+
 
 export const ExploreScreen = () =>{
 
-    const [searchText, setSearchText] = useState("");
-    /**
-     * Converts the plant data from JSON into an array of PlantType structs.
-     */
-    function loadJson<Type>(json: any[], images:any) {
-            let types: Type[] = []
-            // Go through each element in the JSON
-            for (let index in json) {
-                let item = json[index]
-
-                // Add the plant's image
-                item["image"] = images[item["name"]]
-                // Convert the plant to a PlantType and add it to the array.
-                types.push(item);
-            }
-            return types
-        }
-        const [showPlants, setShowPlants] = useState<boolean>(true);
+    const [searchText, setSearchText] = useState("");   
+    const [showPlants, setShowPlants] = useState<boolean>(true);
+    const UpdateWhatsShowing = (val: boolean) => {
+        setShowPlants(val);
+        let old = searchText
+        setSearchText("*")
+        setTimeout(() => {
+            setSearchText("")
+        }, 1)
+    }
+    
     /**
      * Component for the buttons that switch between displaying plants and pests
      * @param props Contains `showPlants: boolean`
@@ -87,7 +57,7 @@ export const ExploreScreen = () =>{
                         ? styles.smallGreenButton
                         : styles.smallWhiteButton
                     ]}
-                    onPress={() => setShowPlants(props.showPlants)}>
+                    onPress={() => UpdateWhatsShowing(props.showPlants)}>
                     <Text style={[styles.greenButton, showPlants !== props.showPlants
                         ? {backgroundColor: 'white',color: '#B3B3B3'}
                         :{}
@@ -124,15 +94,15 @@ export const ExploreScreen = () =>{
                             {/* Display plants or pests */}
                             <PrettyList
                                 data={showPlants
-                                    ? loadJson<PlantType>(plants, plantImages)
-                                    : loadJson<PlantType>(pests, pestImages)
+                                    ? addImage<PlantType>(plants, plantImages)
+                                    : addImage<PestTypes>(pests, pestImages)
                                     }
                                 primaryField = {"name"}
                                 secondaryField={"scientificName"}
                                 targetPage={"MoreInfo"}
                                 defaultImage={require("../images/gLeafIcon.png")}
-                                targetConstParams={{"isPlant":showPlants}}
-                                targetItemParams={{}}
+                                targetConstParams={{"infoType":showPlants ? InfoType.PlantInfo : InfoType.PestInfo}}
+                                targetItemParams={{"info":"self"}}
                                 searchString={searchText}
                             />
 

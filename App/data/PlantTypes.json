@@ -16,7 +16,8 @@
    "pests": "Mealybugs, spider mites, scale insects, fungus gnats, aphids, thrips",
    "detail": "Native to tropical Americas, Peace Lilies thrive in low-light, humid environments. They bloom year-round with white spathes, purify air, and prefer moist soil. Ideal for indoor spaces, they symbolize peace and tranquility",
    "url": "https://www.bunnings.com.au/diy-advice/garden/planting-and-growing/how-to-grow-and-care-for-a-peace-lily?srsltid=AfmBOoqGQTN4FRNd3a5o2Ikffl2yZnxGEG14d89fnGZMsAUHmvoPhEz8"
- },
+    
+  },
  {
    "name": "Dieffenbachia",
    "scientificName": "Dieffenbachia",
@@ -31,7 +32,7 @@
    "temperatureMax": 24,
    "uvMin": 1,
    "uvMax": 3,
-   "pests": "Mealybugs, spider mites, scale, thrips, aphids",
+   "pests": "Mealybugs, spid\er mites, scale, thrips, aphids",
    "detail": "Originating from the Caribbean and South America, Dieffenbachias prefer bright, indirect light. They rarely flower indoors, featuring variegated foliage. Thriving in warm, humid conditions, they're popular houseplants known for air-purifying qualities",
    "url": "https://www.gardeningknowhow.com/houseplants/dumb-cane/growing-dumbcane-dieffenbachia.htm"
  },

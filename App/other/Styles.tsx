@@ -15,9 +15,21 @@ export const styles = StyleSheet.create({
     paddingTop: 20,
   },
   smallHeading: {
-    fontFamily: 'Poppins-Regular',
+    fontFamily: 'Poppins-Medium',
     color: '#143728',
     fontSize: 20,
+  },
+  smallBold: {
+    fontFamily: 'Poppins-SemiBold',
+    color: '#143728',
+    fontSize: 20,
+    fontWeight: "medium"
+  },
+  historyPanelHeading: {
+    fontFamily: 'Poppins-Medium',
+    color: '#143728',
+    fontSize: 25,
+    marginBottom: 0,
   },
   heading: {
     fontFamily: 'Poppins-Regular',
@@ -25,9 +37,41 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     marginBottom: 10,
   },
+
+  historyPanelList: {
+    
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    alignItems: "center"
+  },
+
+  historyPanelListText: {
+    fontFamily: 'Poppins-Medium',
+    color: '#143728',
+    fontSize: 15,
+  },
+  historyPercent: {
+    fontFamily: 'Poppins-Bold',
+    color: '#143728',
+    fontSize: 16,
+  
+  },
   line: {
     marginVertical: 20,
     width: '100%',
+  },
+  smallLine: {
+    marginVertical: 2,
+    width: '100%',
+  },
+
+  historyPanel: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    alignSelf: 'center',
+    width: '90%',
+    marginTop: 30,
+    padding:10
   },
   main: {
     fontFamily: 'Poppins-Regular',
@@ -58,6 +102,18 @@ export const styles = StyleSheet.create({
     backgroundColor: '#F5F9F3',
     fontFamily: 'Poppins-Regular',
   },
+
+  historyCalendar : {
+    backgroundColor: '#218F4A',
+    flexDirection: 'column',
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 20,
+    fontFamily: 'Poppins-Regular',
+    marginHorizontal: 20,
+    padding: 8,
+  },
   greenButton: {
     backgroundColor: '#218F4A',
     flexDirection: 'row',
@@ -71,6 +127,40 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
 
   },
+
+  weekDay: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 20,
+    color: "white",
+    textAlign: "center",
+    flex:1,
+
+    height:50,
+    paddingVertical: 10,
+  },
+  weekDayText: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 20,
+    textAlign: "center",
+    color:"white",
+  },
+  weekDaySelectedText: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 20,
+    textAlign: "center",
+    color:"black",
+  },
+  weekDaySelected: {
+    
+   
+    backgroundColor:"#F2F2F2",
+
+    paddingVertical: 10,
+    flex:1,
+    height:50,
+    borderRadius:2000
+  },
+
   smallGreenButton: {
     width: '42.5%',
     marginHorizontal: '2.5%',
@@ -84,6 +174,10 @@ export const styles = StyleSheet.create({
     marginHorizontal: '2.5%',
     color: '#D9D9D9',
     fontFamily: 'Poppins-Regular',
+  },
+  achievementBox: {
+    textAlign: 'center',
+    color: 'white',
   },
   smallInfo: {
     flexDirection: 'row',
