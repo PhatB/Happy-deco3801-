@@ -125,10 +125,10 @@ export const History = () => {
                     {getDates().map((day, idx) => (
                             // Different styling for the current day
                             idx === selectedDay
-                            ? <Pressable style={[styles.weekDaySelected]} onPress={() => {selectDay(idx)}}>
+                            ? <Pressable style={[styles.weekDaySelected]} key={idx} onPress={() => {selectDay(idx)}}>
                                 <Text key={idx} style={[styles.weekDaySelectedText]}>{day}</Text>
                             </Pressable>
-                            : <Pressable style={[styles.weekDay]} onPress={() => {selectDay(idx)}}>
+                            : <Pressable style={[styles.weekDay]} key={idx} onPress={() => {selectDay(idx)}}>
                                 <Text key={idx} style={[styles.weekDayText]}>{day}</Text>
                             </Pressable>
                         ))}

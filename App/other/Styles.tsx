@@ -92,6 +92,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
     width: '100%',
+    fontFamily: 'Poppins-Regular',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10,

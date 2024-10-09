@@ -66,8 +66,16 @@ export function addImage<Type>(json: any[], images:any) {
     }
     return types
 }
-async function apiRequest(endpoint: string) {
-    const response = await fetch(`${API_BASE_URL}${endpoint}`);
+async function apiRequest(endpoint: string, body:any = null, method = "GET") {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`,
+        {
+            method: method,
+            body: body === null ? "" : JSON.stringify(body),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+              }
+        }
+    );
     if (!response.ok) {
         try {
             const responseBody = await response.json()
@@ -78,6 +86,9 @@ async function apiRequest(endpoint: string) {
     }
 
     return response.json();
+}
+export async function addUserPlant(body: any) {
+    return apiRequest("UserPlant", body, "POST")
 }
 
 export async function userPlantsFromUser(userID: string) {
@@ -111,6 +122,10 @@ export async function mostRecentEnvironmentRecord(deviceID: string) {
         return null
     }
     return records.sort((a, b) => a.time > b.time ? -1 : 1)[0]
+}
+
+export async function getPlantTypes() {
+    return apiRequest('PlantType');
 }
 
 export async function getPlantType(typeID: string) {

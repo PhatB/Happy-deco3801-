@@ -5,7 +5,7 @@ import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
 
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
@@ -16,7 +16,7 @@ import {PlantType, UserPlant, userPlantsFromUser} from '../api.ts'
 
 
 
-export const HomeScreen = () => {
+export const HomeScreen = (props: any) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState<UserPlant[]>([]);
     const [error, setError] = useState<Error | null>(null);
@@ -29,6 +29,7 @@ export const HomeScreen = () => {
         try {
             let plants = await userPlantsFromUser(testUserId);
             setData(plants);
+            //console.error(plants)
         } catch (e: any) {
             setError(e)
         } finally {
@@ -39,7 +40,7 @@ export const HomeScreen = () => {
     }
     useEffect(() => {
         getPlants().then();
-    }, [])
+    }, [props])
     return (
     // Full view
         <View style={{height: '100%'}}>
