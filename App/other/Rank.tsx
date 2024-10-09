@@ -21,7 +21,7 @@ export const Rank = (props: ListProps) => {
         }
         />
         <View style={{flexDirection: 'column', justifyContent: 'center'}}>
-            <Text style={styles.baseText}>{`${props.name}`}</Text>
+            <Text style={[styles.baseText, {fontSize: 17.5}]}>{`${props.name}`}</Text>
             <Text style={styles.baseText}>{`${props.lvl}`}</Text>
         </View>
     </View>
