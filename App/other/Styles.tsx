@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   historyPanelList: {
     
     paddingVertical: 8,
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     alignItems: "center"
   },
 

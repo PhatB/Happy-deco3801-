@@ -29,9 +29,9 @@ const EnvironmentRecordPanel = (props: {time: string, moisture: number, temperat
         <Text style={[styles.historyPanelHeading, {paddingHorizontal: 15}]}>{props.time}</Text>
         <SmallLine/>
         <View style={[{flexDirection: "column", marginVertical:5}]}>
-            <EnvironmentRecordPanelItem label="Moisture" value={props.moisture + "%"} icon = {require("../images/water_green.png")}/>
+            <EnvironmentRecordPanelItem label="Moisture" value={props.moisture*10 + "%"} icon = {require("../images/water_green.png")}/>
             <EnvironmentRecordPanelItem label="Temperature" value={props.temperature + "°C"} icon = {require("../images/temp_green.png")}/>
-            <EnvironmentRecordPanelItem label="Sunlight" value={props.sunlight + "%"} icon = {require("../images/sun_green.png")}/>  
+            <EnvironmentRecordPanelItem label="Sunlight" value={props.sunlight*10 + "%"} icon = {require("../images/sun_green.png")}/>  
         </View>
     </View>
     )

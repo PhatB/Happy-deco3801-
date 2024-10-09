@@ -21,9 +21,9 @@ while command != "exit":
         body = {
             "device":id,
             "time":datetime.datetime.now(datetime.timezone.utc).isoformat(),
-            "moisture": int(inp[1]),
-            "temperature": int(inp[2]),
-            "sunlight": int(inp[3]),
+            "moisture": float(inp[1]),
+            "temperature": float(inp[2]),
+            "sunlight": float(inp[3]),
         }
         response = requests.post(api_url, json=body)
         print(response.text)
