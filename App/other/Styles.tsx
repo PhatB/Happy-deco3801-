@@ -175,6 +175,10 @@ export const styles = StyleSheet.create({
     color: '#D9D9D9',
     fontFamily: 'Poppins-Regular',
   },
+  achievementBox: {
+    textAlign: 'center',
+    color: 'white',
+  },
   smallInfo: {
     flexDirection: 'row',
     alignItems: 'center',

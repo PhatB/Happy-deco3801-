@@ -26,13 +26,13 @@ export const PlantProfile = (props: PlantProfileProps) => {
         return false;
     }
     const setAttention = async () => {
-        setMostRecent(await mostRecentEnvironmentRecord(info.device));
-        if (mostRecent === null) {
+        const recent = await mostRecentEnvironmentRecord(info.device);
+        if (recent === null) {
             setNeedsAttention(true);
             return;
         }
-        console.log(mostRecent)
-       setNeedsAttention(attentionCheck(mostRecent))
+        setMostRecent(recent)
+        setNeedsAttention(attentionCheck(recent))
     }
     const inBounds = (value: number, min: number, max: number) => {
         return value >= min && value <= max
@@ -67,6 +67,13 @@ export const PlantProfile = (props: PlantProfileProps) => {
                         suffix="%"
                         label="Moisture"
                         />
+                        <InfoCircle 
+                        value={mostRecent.temperature} 
+                        value_max = {plantType.temperatureMax} 
+                        value_min={plantType.temperatureMin} 
+                        suffix="°C"
+                        label="Temperature"
+                    />
                     <InfoCircle 
                         value={mostRecent.sunlight*10} 
                         value_max = {plantType.sunlightMax*10} 
@@ -74,13 +81,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
                         suffix="%"
                         label="Sunlight"
                         />
-                    <InfoCircle 
-                        value={mostRecent.temperature} 
-                        value_max = {plantType.temperatureMax} 
-                        value_min={plantType.temperatureMin} 
-                        suffix="°C"
-                        label="Temperature"
-                    />
+                   
                     </View>
                     
                     <Pressable

@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
-import { DiffcultyBadge, LocationBadge, PlantBadges, WaterBadge } from './MiscComponents/Badges.tsx';
+import { DifficultyBadge, LocationBadge, PlantBadges, WaterBadge } from './MiscComponents/Badges.tsx';
 import { Line } from './MiscComponents/Line.tsx';
 
 type MorePlantInfoProps = {
