@@ -7,10 +7,6 @@ import { Line, SmallLine } from "../other/MiscComponents/Line"
 import { EnvironmentRecord, getEnvironmentRecords } from "../api"
 import { useRoute } from "@react-navigation/native"
 
-<<<<<<< Updated upstream
-export const HistoryPanel = (props: {time: string, moisture: number, temperature: number, sunlight: number}) => {
-  
-=======
 /**
  * Item in the list of environment measurements in an EnvironmentRecordPanel
  */
@@ -28,30 +24,14 @@ const EnvironmentRecordPanelItem = (props: {label: string, value: string, icon: 
  * Panel showing the data from a single environment record.
  */
 const EnvironmentRecordPanel = (props: {time: string, moisture: number, temperature: number, sunlight: number}) => {
->>>>>>> Stashed changes
     return (
     <View style={[styles.historyPanel, {flexDirection: "column"}]}>
         <Text style={[styles.historyPanelHeading, {paddingHorizontal: 15}]}>{props.time}</Text>
         <SmallLine/>
         <View style={[{flexDirection: "column", marginVertical:5}]}>
-<<<<<<< Updated upstream
-            <View style={[styles.historyPanelList,{flexDirection: "row"}]}>
-                <Text style={[styles.historyPanelListText, {flex:1}]}>Moisture</Text>
-                <Text style={[styles.historyPercent]}>{props.moisture*10}%</Text>
-            </View>
-            <View style={[styles.historyPanelList,{flexDirection: "row"}]}>
-                <Text style={[styles.historyPanelListText, {flex:1}]}>Temperature</Text>
-                <Text style={[styles.historyPercent]}>{props.temperature}°C</Text>
-            </View>
-            <View style={[styles.historyPanelList,{flexDirection: "row"}]}>
-                <Text style={[styles.historyPanelListText, {flex:1}]}>Sunlight</Text>
-                <Text style={[styles.historyPercent]}>{props.sunlight*10}%</Text>
-            </View>
-=======
             <EnvironmentRecordPanelItem label="Moisture" value={props.moisture + "%"} icon = {require("../images/water_green.png")}/>
             <EnvironmentRecordPanelItem label="Temperature" value={props.temperature + "°C"} icon = {require("../images/temp_green.png")}/>
             <EnvironmentRecordPanelItem label="Sunlight" value={props.sunlight + "%"} icon = {require("../images/sun_green.png")}/>  
->>>>>>> Stashed changes
         </View>
     </View>
     )
@@ -132,22 +112,6 @@ export const History = () => {
                     </View>
                    
                 </View>
-<<<<<<< Updated upstream
-                <ScrollView style={[{flexDirection: "column"}]}>
-                    {
-                        records.map((record, idx) => {
-                            const time = new Date(record.time)
-                            const isPM = time.getHours() > 12
-                            let hours = isPM ? time.getHours() - 12 : time.getHours()
-                            if (time.getHours() == 0) hours = 12;
-                            const amPM = isPM ? "pm" : "am"
-                            const timeString = hours + ":" + time.getMinutes() + amPM
-                            return (
-                                <HistoryPanel key={idx} time={timeString} moisture={record.moisture} temperature={record.temperature} sunlight={record.sunlight}></HistoryPanel>
-                            )
-                        })
-                    }
-=======
             </View>
             {/* Display the panels for the environment records. */}
             <ScrollView style={[{flexDirection: "column"}]}>
@@ -166,12 +130,11 @@ export const History = () => {
                         )
                     })
                 }
->>>>>>> Stashed changes
                     
                  
                 </ScrollView>
                 
-             </View>
+             
              <Footer />
         </View>
     )
