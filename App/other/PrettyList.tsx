@@ -45,7 +45,7 @@ export const PrettyList = (props: ListProps) => {
             && item[props.primaryField].toLowerCase().includes(props.searchString.toLowerCase()))
             || (item[props.secondaryField] !== undefined 
                 && item[props.secondaryField].toLowerCase().includes(props.searchString.toLowerCase()))
-        )
+        || props.searchString === "*")
         setSortedList(props.searchString.length != 0 ? filtered : props.data);
     }, [props.searchString]) 
     
