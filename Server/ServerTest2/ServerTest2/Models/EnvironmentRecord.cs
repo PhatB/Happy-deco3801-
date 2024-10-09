@@ -18,8 +18,8 @@ public class EnvironmentRecord
     [BsonRepresentation(BsonType.DateTime)]
     public DateTime? Time { get; set; } = null!;
 
-    [BsonElement("temp")] public int? Temperature { get; set; } = null!;
+    [BsonElement("temp")] public float? Temperature { get; set; } = null!;
 
-    [BsonElement("moisture")] public int? Moisture { get; set; } = null!;
-    public int? Sunlight {get; set;} = null!;
+    [BsonElement("moisture")] public float? Moisture { get; set; } = null!;
+    public float? Sunlight {get; set;} = null!;
 }
