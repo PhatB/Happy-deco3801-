@@ -41,7 +41,7 @@ export const InfoCircle = (props: InfoCircleProps) =>{
         <CircularProgress
                     size={80}
                     width={6}
-                    fill={ratio*100}
+                    fill={Math.max(ratio*100,5)}
                     rotation={-140}
                     tintColor={colors[dangerLevel]}
                     arcSweepAngle={280}
