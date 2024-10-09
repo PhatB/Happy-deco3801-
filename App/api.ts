@@ -26,6 +26,7 @@ export type UserPlant = {
     name: string,
     plantType: PlantType,
     device: string,
+    description: string,
     image: ImageSourcePropType,
 }
 
@@ -91,6 +92,7 @@ export async function userPlantsFromUser(userID: string) {
             id: rawUserPlant.id,
             name: rawUserPlant.name,
             device: rawUserPlant.device,
+            description: rawUserPlant.description,
             plantType:plantType,
             image: plantImages[plantType.name]};
         userPlants.push(userPlant);
