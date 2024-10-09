@@ -34,12 +34,17 @@ export enum InfoType {
 
 export const ExploreScreen = () =>{
 
-    const [searchText, setSearchText] = useState("");
-    /**
-     * Converts the plant data from JSON into an array of PlantType structs.
-     */
+    const [searchText, setSearchText] = useState("");   
+    const [showPlants, setShowPlants] = useState<boolean>(true);
+    const UpdateWhatsShowing = (val: boolean) => {
+        setShowPlants(val);
+        let old = searchText
+        setSearchText("*")
+        setTimeout(() => {
+            setSearchText("")
+        }, 1)
+    }
     
-        const [showPlants, setShowPlants] = useState<boolean>(true);
     /**
      * Component for the buttons that switch between displaying plants and pests
      * @param props Contains `showPlants: boolean`
@@ -52,7 +57,7 @@ export const ExploreScreen = () =>{
                         ? styles.smallGreenButton
                         : styles.smallWhiteButton
                     ]}
-                    onPress={() => setShowPlants(props.showPlants)}>
+                    onPress={() => UpdateWhatsShowing(props.showPlants)}>
                     <Text style={[styles.greenButton, showPlants !== props.showPlants
                         ? {backgroundColor: 'white',color: '#B3B3B3'}
                         :{}
@@ -90,7 +95,7 @@ export const ExploreScreen = () =>{
                             <PrettyList
                                 data={showPlants
                                     ? addImage<PlantType>(plants, plantImages)
-                                    : addImage<PlantType>(pests, pestImages)
+                                    : addImage<PestTypes>(pests, pestImages)
                                     }
                                 primaryField = {"name"}
                                 secondaryField={"scientificName"}
