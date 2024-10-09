@@ -18,4 +18,6 @@ public class UserPlant
     [BsonElement("device")]
     [BsonRepresentation(BsonType.ObjectId)]
     public string Device { get; set; } = null!;
+
+    public string Description {get; set;} = null!;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {ScrollView, View, Text, Image, Pressable, TextInput} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
@@ -11,7 +11,7 @@ import {BackButton} from "../other/MiscComponents/BackButton.tsx";
 export const AddPlantScreen = () => {
 
     const navigation = useNavigation<any>();
-
+    const [plantName, setPlantName] = useState("");
     return (
         // Full view
         <View style={{height: '100%'}}>
