@@ -13,6 +13,7 @@ import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
 import { InfoType } from './ExploreScreen.tsx';
 import {PlantType, UserPlant, userPlantsFromUser} from '../api.ts'
+import { Loading } from '../other/MiscComponents/Loading.tsx';
 
 
 
@@ -65,7 +66,8 @@ export const HomeScreen = (props: any) => {
                             <Image source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </Pressable>
-                        {error !== null || isLoading
+                        {isLoading ? <Loading/> :
+                            error !== null
                             ? <Text>{`Error while accessing your plant list. ${error?.message}`}</Text>
                             : <PrettyList
                                 data={data}
@@ -76,7 +78,9 @@ export const HomeScreen = (props: any) => {
                                 targetItemParams={{"info":"self", "extra": "self"}}
                                 targetConstParams={{"infoType":InfoType.PlantProfile}}
                                 searchString={searchText}
-                            />}
+                            />
+                        }        
+                      
 
                     </View>
                 </ScrollView>

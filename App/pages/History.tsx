@@ -6,6 +6,7 @@ import { Footer } from "../other/Footer"
 import { Line, SmallLine } from "../other/MiscComponents/Line"
 import { EnvironmentRecord, getEnvironmentRecords } from "../api"
 import { useRoute } from "@react-navigation/native"
+import { Loading } from "../other/MiscComponents/Loading"
 
 /**
  * Item in the list of environment measurements in an EnvironmentRecordPanel
@@ -43,9 +44,11 @@ const EnvironmentRecordPanel = (props: {time: string, moisture: number, temperat
 export const History = () => {
     // Selected day of the week.
     const [selectedDay, setSelectedDay] = useState(0);
-
     // Valid environment records for the current day of the week.
     const [records, setRecords] = useState<EnvironmentRecord[]>([]);
+    // Are we waiting for the API?
+    const [isLoading, setIsLoading] = useState(true);
+
 
     const route: any = useRoute();
     const {plant} = route.params;
@@ -92,6 +95,7 @@ export const History = () => {
      * @param date The date to get records for.
      */
     const updateRecordsByDate = async (date: Date) => {
+        setIsLoading(true);
         const records = await getEnvironmentRecords(plant.device)
         const validRecords = records.filter((record: EnvironmentRecord) => {
             const time = new Date(record.time);
@@ -101,6 +105,7 @@ export const History = () => {
                 return false;
         })
         setRecords(validRecords);
+        setIsLoading(false);
     }
 
 
@@ -135,7 +140,9 @@ export const History = () => {
                 </View>
             </View>
             {/* Display the panels for the environment records. */}
-            <ScrollView style={[{flexDirection: "column"}]}>
+            {
+                isLoading ? <Loading/> :
+                <ScrollView style={[{flexDirection: "column"}]}>
                 {
                     records.map((record, idx) => {
                         //Convert the time to AM or PM
@@ -154,6 +161,8 @@ export const History = () => {
                     
                  
                 </ScrollView>
+            }
+            
                 
              
              <Footer />
