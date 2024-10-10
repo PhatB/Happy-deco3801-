@@ -7,6 +7,8 @@ import { styles } from "./Styles"
 import { EnvironmentRecord, mostRecentEnvironmentRecord, PlantType, UserPlant } from "../api"
 import { CircularProgress } from "react-native-circular-progress"
 import { InfoCircle } from "./MiscComponents/InfoCircle"
+import { Loading } from "./MiscComponents/Loading"
+
 interface PlantProfileProps {
     info: UserPlant
 }
@@ -18,6 +20,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
     let {info} = props;
     const [needsAttention, setNeedsAttention] = useState(false);
     const [mostRecent, setMostRecent] = useState<EnvironmentRecord | null>(null);
+    const [isLoading, setIsLoading] = useState(true);
     const attentionCheck = (record: EnvironmentRecord) => {
         const plantType: PlantType = info.plantType;
         if (!inBounds(record.moisture, plantType.moistureMin, plantType.moistureMax)) return true;
@@ -25,7 +28,8 @@ export const PlantProfile = (props: PlantProfileProps) => {
         if (!inBounds(record.temperature, plantType.temperatureMin, plantType.temperatureMax)) return true;
         return false;
     }
-    const setAttention = async () => {
+    const getMostRecentRecord = async () => {
+        setIsLoading(true);
         const recent = await mostRecentEnvironmentRecord(info.device);
         if (recent === null) {
             setNeedsAttention(true);
@@ -33,6 +37,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
         }
         setMostRecent(recent)
         setNeedsAttention(attentionCheck(recent))
+        setIsLoading(false);
     }
     const inBounds = (value: number, min: number, max: number) => {
         return value >= min && value <= max
@@ -46,12 +51,13 @@ export const PlantProfile = (props: PlantProfileProps) => {
         }
     }
     
-    
-    
-    
-
     const CurrentStatusBody = () => {
         const plantType: PlantType = info.plantType;
+        if (isLoading) {
+            return (
+                <Loading/>
+            )
+        }
         if (mostRecent === null) {
             return (
                 <Text>No environmental records found... Ensure your device has been turned on.</Text>
@@ -95,7 +101,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
     }
 
     useEffect(() => {
-        setAttention().then()
+        getMostRecentRecord().then()
     }, [])
 
     return (

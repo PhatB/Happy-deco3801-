@@ -108,7 +108,7 @@ export async function userPlantsFromUser(userID: string) {
             image: plantImages[plantType.name]};
         userPlants.push(userPlant);
     }
-    console.log(userPlants)
+
     return userPlants;
 }
 
