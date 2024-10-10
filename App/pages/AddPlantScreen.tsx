@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {ScrollView, View, Text, Image, Pressable, TextInput} from 'react-native';
+import {ScrollView, View, Text, Image, Pressable, TextInput, Modal} from 'react-native';
 
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
@@ -8,7 +8,8 @@ import {useNavigation} from '@react-navigation/native';
 
 import {BackButton} from "../other/MiscComponents/BackButton.tsx";
 import { Dropdown } from 'react-native-element-dropdown';
-import { addUserPlant, getPlantTypes, UserPlant } from '../api.ts';
+import { addUserPlant, getDevice, getPlantTypes, UserPlant } from '../api.ts';
+import { Loading } from '../other/MiscComponents/Loading.tsx';
 
 export const AddPlantScreen = () => {
 
@@ -17,8 +18,12 @@ export const AddPlantScreen = () => {
     const [plantTypes, setPlantTypes] = useState([]);
     const [deviceID, setDeviceID] = useState("");
     const [selectedPlantType, setSelectedPlantType] = useState("");
-
+    const [issues, setIssues] = useState<string>("");
+    const [infoVisible, setInfoVisible] = useState(false);
     const submitPlant = async () => {
+        if (! await checkValidity()) {
+            return;
+        }
         let plant = {
             name: plantName,
             device: deviceID,
@@ -40,6 +45,63 @@ export const AddPlantScreen = () => {
             console.error(e.message);
         }
     }
+
+    const deviceExists = async () => {
+        if (deviceID === "") {
+            return false;
+        }
+        try {
+            const device = await getDevice(deviceID);
+            return true;
+        } catch (e: any) {
+            return false;
+        }
+    }
+
+    const checkValidity = async () => {
+        let valid = false;
+        let newIssues = ""
+        
+        let exists = await deviceExists()
+        if (!exists) {
+            valid = false;
+            newIssues += "\nInvalid device ID"
+        }
+        if (selectedPlantType === "") {
+            valid = false;
+            newIssues += "\nPlease select a plant type."
+        }
+        setIssues(newIssues)       
+        return valid;
+    }
+
+    const InfoModal = () => {
+        return (
+        <Modal
+            animationType='fade'
+            visible={infoVisible}
+            transparent={true}
+            onRequestClose={() => {setInfoVisible(false)}}
+        >
+            <View style={[styles.modalView, styles.main]}>
+                <Text style={styles.smallHeading}>Finding your device ID</Text>
+                <Image style={{borderRadius:100, marginVertical:20}}source={require("../images/device_diagram.png")}></Image>
+                <Text style={{color:"black", fontSize: 18}}>
+                    The serial number of your HappyPlants device is located on a small
+                    sticker near the bottom of the device.
+                </Text>
+                <Pressable onPress={() => {
+                    setInfoVisible(false)
+                }}
+                style={[styles.smallGreenButton, {marginVertical: 15}]}>
+                            <Text style={[styles.greenButton, {textAlign: "center"}]}>{'Got it.'}</Text>
+                </Pressable>
+            </View>
+           
+        </Modal>
+        )
+    }
+
     useEffect(() => {
         setupPlantTypes().then();
     },[])
@@ -51,6 +113,9 @@ export const AddPlantScreen = () => {
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
                     <Text style={styles.pageTitle}>{'Add a Plant'}</Text>
                     <BackButton/>
+                    <InfoModal/>
+
+
                     <View style={styles.main}>
                         <View style={{padding: 8, gap: 20}}>
                             {/* Plant Name */}
@@ -59,6 +124,7 @@ export const AddPlantScreen = () => {
                             style={{...styles.smallWhiteButton,...styles.textBox}}
                             keyboardType="default"
                             onChangeText={setPlantName}
+                            maxLength={20}
                             />
                             {/* Plant Type */}
                             <Text style={styles.smallHeading}>{'Plant Type'}</Text>
@@ -79,7 +145,15 @@ export const AddPlantScreen = () => {
                             style={{...styles.smallWhiteButton,...styles.textBox}}
                             keyboardType="default"
                             />
-                            <Text style={styles.smallHeading}>{'Device'}</Text>
+                            <View style={[{display: "flex", flexDirection: "row", alignItems:"center"}]}>
+                                <Text style={[styles.smallHeading, {flex: 1}]}>{'Device ID'}</Text>
+                                <Pressable onPress={() => {
+                                    setInfoVisible(true)
+                                }} style={{flex:1, alignItems:"flex-end"}}>
+                                    <Image style={{width:30, height: 30}}source={require("../images/help_icon.png")}/>
+                                </Pressable>
+                            </View>
+                            
                             <TextInput
                             style={{...styles.smallWhiteButton,...styles.textBox}}
                             keyboardType="default"
@@ -92,18 +166,12 @@ export const AddPlantScreen = () => {
                             {/* Device */}
                            
                         </View>
+                        <Text style={styles.error}>{issues}</Text>
                         <Pressable
                         onPress={submitPlant}
                         style={[styles.greenButton, {marginVertical: 15}]}>
                             <Text style={[styles.greenButton]}>{'Plant now!'}</Text>
                         </Pressable>
-                        {/* Plant Now! */}
-                        {/* <Pressable
-                        style={[styles.greenButton, {marginVertical: 15}]}
-                        onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}
-                        >
-                            <Text style={styles.greenButton}>{'Plant Now!'}</Text>
-                        </Pressable> */}
                     </View>
                 </ScrollView>
             </View>
