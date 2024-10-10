@@ -1,4 +1,3 @@
-
 import {ImageSourcePropType} from 'react-native';
 
 const API_BASE_URL: string = "https://deco3801-teamhappy.uqcloud.net/api/"
@@ -84,7 +83,6 @@ async function apiRequest(endpoint: string, body:any = null, method = "GET") {
             throw new Error(`Could not access the api.Status: ${response.status}`)
         }
     }
-
     return response.json();
 }
 export async function addUserPlant(body: any) {
@@ -130,4 +128,8 @@ export async function getPlantTypes() {
 
 export async function getPlantType(typeID: string) {
     return apiRequest(`PlantType/${typeID}`)
+}
+
+export async function getDevice(deviceID: string) {
+    return apiRequest(`Devices/${deviceID}`);
 }

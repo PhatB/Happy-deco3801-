@@ -25,6 +25,26 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "medium"
   },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  error: {
+    fontFamily: 'Poppins-SemiBold',
+    color: '#D83400',
+    fontSize: 15,
+  },
   historyPanelHeading: {
     fontFamily: 'Poppins-Medium',
     color: '#143728',
@@ -119,13 +139,14 @@ export const styles = StyleSheet.create({
     backgroundColor: '#218F4A',
     flexDirection: 'row',
     color: 'white',
-    fontSize: 20,
+    fontSize: 17,
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: "center",
     marginHorizontal: 10,
-    padding: 8,
-    borderRadius: 10,
-    fontFamily: 'Poppins-Regular',
+    padding: 6,
+    borderRadius: 5,
+    fontFamily: 'Poppins-Medium',
 
   },
 
@@ -166,6 +187,7 @@ export const styles = StyleSheet.create({
     width: '42.5%',
     marginHorizontal: '2.5%',
     fontFamily: 'Poppins-Regular',
+    textAlign: "center"
   },
   smallWhiteButton: {
     width: '42.5%',

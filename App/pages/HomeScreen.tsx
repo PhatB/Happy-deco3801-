@@ -60,10 +60,10 @@ export const HomeScreen = (props: any) => {
                     >
                         {/* Add new plant */}
                         <Pressable
-                        style={[styles.greenButton, {marginVertical: 15}]}
+                        style={[styles.greenButton, {marginVertical: 15, flexDirection: "row", display: "flex", alignItems:"center"}]}
                         onPress={() => navigation.navigate("Add", {screen: "AddPlantScreen"})}
                         >
-                            <Image source={require(plusIcon)} />
+                            <Image style = {{width: 27, height:27, transform: [{translateY: -2}, {translateX: 7}]}}source={require(plusIcon)} />
                             <Text style={styles.greenButton}>{'Add new plant'}</Text>
                         </Pressable>
                         {isLoading ? <Loading/> :
