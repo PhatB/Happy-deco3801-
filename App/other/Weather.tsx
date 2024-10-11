@@ -3,25 +3,21 @@ import { fetchWeatherApi } from 'openmeteo';
 import {Alert, ScrollView, View, Text, Image, Pressable} from 'react-native';
 import 'react-native-url-polyfill/auto';
 
+import { styles } from './Styles.tsx';
+import codes from "../data/WeatherCodes.json";
+
 export const Weather = () => {
 
     const [temp, setTemp] = useState<number>(0);
     const [humidity, setHumidity] = useState<number>(0);
     const [rain, setRain] = useState<number>(0);
-    const [weatherCode, setWeatherCode] = useState<number>(0);
+    const [weatherCode, setWeatherCode] = useState<string>("");
     const [wind, setWind] = useState<number>(0);
-
-    // Helper function to form time ranges
-    const range = (start: number, stop: number, step: number) =>
-        Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
-        
 
     {/* Get weather */}
     const GetWeather = useCallback(async () => {
 
         const params = {
-            //latitude: [27.5021],
-            //longitude: [152.9968],
             latitude: [27.29455],
             longitude: [153.00381],
             current: ["temperature_2m", "relative_humidity_2m", "rain", "weather_code", "wind_speed_10m"]
@@ -40,19 +36,17 @@ export const Weather = () => {
             const longitude = response.longitude();
             const current = response.current()!;
 
-            const temp = current.variables(0)!.value();
-            const humidity = current.variables(1)!.value();
+            const temp = current.variables(0)!.value().toFixed(0);
+            const humidity = current.variables(1)!.value().toFixed(0);
             const rain = current.variables(2)!.value();
             const weatherCode = current.variables(3)!.value();
-            const wind = current.variables(4)!.value();
+            const wind = current.variables(4)!.value().toFixed(0);
 
             setTemp(temp);
             setHumidity(humidity);
             setRain(rain);
-            setWeatherCode(weatherCode);
+            setWeatherCode((codes[weatherCode]["day"]["description"]));
             setWind(wind);
-
-            console.log("getweather");
         }
         catch(e) {
             {/* Error */}
@@ -63,12 +57,19 @@ export const Weather = () => {
     GetWeather();
 
     return(
-        <View>
-            <Text>Temperature: {`${temp}`}˚C</Text>
-            <Text>Humidity: {`${humidity}`}%</Text>
-            <Text>Rain: {`${rain}`}</Text>
-            <Text>Weather code: {`${weatherCode}`}</Text>
-            <Text>Wind: {`${wind}`}km/h</Text>
+        <View style={{flexDirection: 'row'}}>
+            {/* Details */}
+            <View style={{flexDirection: 'column', paddingLeft: 10}}>
+                <Text style={[styles.baseText, {fontSize: 32}]}>{`${temp}`}˚C</Text>
+                <View style={{flexDirection: 'row'}}>
+                    <Text>{`${weatherCode}`} | </Text>
+                    <Image style={[{width: 18, height: 18}]} source={require('../images/humidity.png')}></Image>
+                    <Text>{`${humidity}`}% | </Text>
+                    <Image style={[{width: 18, height: 18}]} source={require('../images/wind.png')}></Image>
+                    <Text>{`${wind}`}km/h</Text>
+                </View>
+            </View>
+            {/* Weather image */}
         </View>
             
     );
