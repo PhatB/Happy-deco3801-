@@ -14,6 +14,11 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     paddingTop: 20,
   },
+  notificationBell: {
+    transform: [{scale:0.4}, {translateY: -20}],
+    position: "absolute",
+    alignSelf: "flex-end"
+  },
   smallHeading: {
     fontFamily: 'Poppins-Medium',
     color: '#143728',

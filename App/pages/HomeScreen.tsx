@@ -36,7 +36,7 @@ export const HomeScreen = (props: any) => {
             setError(e)
         } finally {
             setLoading(false)
-        }
+    }
 
        
     }
@@ -51,8 +51,13 @@ export const HomeScreen = (props: any) => {
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
                 
                         
-                    <Text style={[styles.pageTitle, {flex:6}]}>{"Your Plants"}</Text>
-                    <Image style={[{transform: [{scale:0.4}, {translateY: -20}], position: "absolute",  alignSelf: "flex-end"}]} source={require(bellIcon)}></Image>
+                    <Text style={[styles.pageTitle]}>{"Your Plants"}</Text>
+                    <Pressable onPress = {() => {
+                        navigation.navigate("Notifications", {screen:"Notifications"})
+                    }}style={styles.notificationBell}>
+                        <Image source={require(bellIcon)}></Image>
+                    </Pressable>
+                    
                 
                     
                     {/* Search bar */}
