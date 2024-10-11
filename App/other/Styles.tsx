@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
     fontSize: 15,
   },
   pageTitle: {
-    fontFamily: 'Poppins-Regular',
-    color: '#1B5D42',
-    fontSize: 35,
+    fontFamily: 'Poppins-Medium',
+    color: '#262626',
+    fontSize: 28,
     textAlign: 'center',
     paddingTop: 20,
   },

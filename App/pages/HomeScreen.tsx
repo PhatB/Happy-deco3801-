@@ -9,6 +9,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 
 const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
+const bellIcon = '../images/notification_bell.png'
 import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
 import { InfoType } from './ExploreScreen.tsx';
@@ -48,7 +49,12 @@ export const HomeScreen = (props: any) => {
             {/* Scroll view */}
             <View style={styles.scrollArea}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
-                    <Text style={styles.pageTitle}>{"Your Plants"}</Text>
+                
+                        
+                    <Text style={[styles.pageTitle, {flex:6}]}>{"Your Plants"}</Text>
+                    <Image style={[{transform: [{scale:0.4}, {translateY: -20}], position: "absolute",  alignSelf: "flex-end"}]} source={require(bellIcon)}></Image>
+                
+                    
                     {/* Search bar */}
                     <Search searchCallback={setSearchText}/>
                     {/* Weather box */}
