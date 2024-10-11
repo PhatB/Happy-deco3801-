@@ -5,10 +5,11 @@ namespace ServerTest2.Models;
 
 public class Notification {
 
-    public string Type = null!;
+    public string Type { get; set; } = null!;
 
-    [BsonElement("time")] [BsonRepresentation(BsonType.DateTime)]
-    public DateTime? Time = null;
-    
+    [BsonElement("time")]
+    [BsonRepresentation(BsonType.DateTime)]
+    public DateTime? Time { get; set; } = null;
+
 
 }
