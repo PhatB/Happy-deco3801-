@@ -6,12 +6,16 @@ import 'react-native-url-polyfill/auto';
 import { styles } from './Styles.tsx';
 import codes from "../data/WeatherCodes.json";
 
+const sunny = '../images/sunny.png';
+const partlyCloudy = '../images/partlyCloudy.png';
+const rain = '../images/rain.png';
+
 export const Weather = () => {
 
     const [temp, setTemp] = useState<number>(0);
     const [humidity, setHumidity] = useState<number>(0);
-    const [rain, setRain] = useState<number>(0);
-    const [weatherCode, setWeatherCode] = useState<string>("");
+    const [weatherCode, setWeatherCode] = useState<number>(0);
+    const [weather, setWeather] = useState<string>("");
     const [wind, setWind] = useState<number>(0);
 
     {/* Get weather */}
@@ -44,9 +48,11 @@ export const Weather = () => {
 
             setTemp(temp);
             setHumidity(humidity);
-            setRain(rain);
-            setWeatherCode((codes[weatherCode]["day"]["description"]));
+            setWeatherCode(weatherCode);
+            setWeather((codes[weatherCode]["day"]["description"]));
             setWind(wind);
+
+            console.log("getweather");
         }
         catch(e) {
             {/* Error */}
@@ -59,10 +65,10 @@ export const Weather = () => {
     return(
         <View style={{flexDirection: 'row'}}>
             {/* Details */}
-            <View style={{flexDirection: 'column', paddingLeft: 10}}>
+            <View style={{flexDirection: 'column', paddingLeft: 10, width: '75%'}}>
                 <Text style={[styles.baseText, {fontSize: 32}]}>{`${temp}`}˚C</Text>
                 <View style={{flexDirection: 'row'}}>
-                    <Text>{`${weatherCode}`} | </Text>
+                    <Text>{`${weather}`} | </Text>
                     <Image style={[{width: 18, height: 18}]} source={require('../images/humidity.png')}></Image>
                     <Text>{`${humidity}`}% | </Text>
                     <Image style={[{width: 18, height: 18}]} source={require('../images/wind.png')}></Image>
@@ -70,6 +76,13 @@ export const Weather = () => {
                 </View>
             </View>
             {/* Weather image */}
+                <Image
+                style={{width: 75, height: 75}}
+                source={weatherCode < 2 ? require(sunny)
+                    : weatherCode < 49 ? require(partlyCloudy)
+                    : require(rain)
+                    }
+                />
         </View>
             
     );
