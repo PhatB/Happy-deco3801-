@@ -17,5 +17,7 @@ public class Device
     [BsonRepresentation(BsonType.ObjectId)]
     public string? User { get; set; } = null!;
 
-    public List<Notification>? Notifications = new List<Notification>();
+    public List<string>? Test { get; set; }
+
+    public List<Notification>? Notifications { get; set; }
 }
