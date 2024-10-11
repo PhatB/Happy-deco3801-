@@ -91,7 +91,7 @@ export const HomeScreen = (props: any) => {
                         
                     <Text style={[styles.pageTitle]}>{"Your Plants"}</Text>
                     <Pressable onPress = {() => {
-                        navigation.navigate("Notifications", {screen:"Notifications"})
+                        navigation.navigate("Notifications", {screen:"Notifications", notifs:notifications})
                     }}style={styles.notificationBell}>
                         <Image source={notifications.length == 0 ? require(bellIcon): require(activeBell)}></Image>
                     </Pressable>

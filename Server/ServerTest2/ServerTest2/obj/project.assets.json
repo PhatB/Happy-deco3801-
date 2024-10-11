@@ -9117,19 +9117,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bill\\.nuget\\packages\\": {}
+    "C:\\Users\\billj\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
+      "projectUniqueName": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
       "projectName": "ServerTest2",
-      "projectPath": "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
-      "packagesPath": "C:\\Users\\Bill\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Bill\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\obj\\",
+      "projectPath": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\ServerTest2.csproj",
+      "packagesPath": "C:\\Users\\billj\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\billj\\Documents\\GitHub\\Happy-deco3801-\\Server\\ServerTest2\\ServerTest2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Bill\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\billj\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -9147,11 +9147,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -9216,7 +9211,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
