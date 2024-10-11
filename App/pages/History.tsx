@@ -113,59 +113,57 @@ export const History = () => {
         selectDay(new Date().getDay()).then()
     }, [])
     return (
-        <View style={[styles.scrollArea,{height:"100%"}]}>
-             
-            <Text style={[styles.pageTitle]}>History</Text>
-            <BackButton/>
-            {/* Calendar at the top of the history page */}
-            <View style={[styles.historyCalendar, {marginTop:30}]}>
-                {/* Days of the week */}
-                <View style={[{flexDirection:"row", alignItems:"center", justifyContent:"center"}]}>
-                    {weekDays.map((day, idx) => (
-                            <Text key={idx} style={[styles.weekDay, {flex:1,  height:50,}]}>{day}</Text>
-                        ))}
-                </View>
-                {/* Dates for this week */}
-                <View style={[{flexDirection:"row", alignItems:"center"}]}>
-                    {getDates().map((day, idx) => (
-                            // Different styling for the current day
-                            idx === selectedDay
-                            ? <Pressable style={[styles.weekDaySelected]} key={idx} onPress={() => {selectDay(idx)}}>
-                                <Text key={idx} style={[styles.weekDaySelectedText]}>{day}</Text>
-                            </Pressable>
-                            : <Pressable style={[styles.weekDay]} key={idx} onPress={() => {selectDay(idx)}}>
-                                <Text key={idx} style={[styles.weekDayText]}>{day}</Text>
-                            </Pressable>
-                        ))}
-                </View>
-            </View>
-            {/* Display the panels for the environment records. */}
-            {
-                isLoading ? <Loading/> :
-                <ScrollView style={[{flexDirection: "column"}]}>
-                {
-                    records.map((record, idx) => {
-                        //Convert the time to AM or PM
-                        const time = new Date(record.time)
-                        const isPM = time.getHours() > 12
-                        let hours = isPM ? time.getHours() - 12 : time.getHours()
-                        if (time.getHours() == 0) hours = 12;
-                        let mins = time.getMinutes() < 10 ? "0" + time.getMinutes() : "" + time.getMinutes() ;
-                        const amPM = isPM ? "pm" : "am"
-                        const timeString = hours + ":" + mins + amPM
-                        return (
-                            <EnvironmentRecordPanel key={idx} time={timeString} moisture={record.moisture} temperature={record.temperature} sunlight={record.sunlight}></EnvironmentRecordPanel>
-                        )
-                    })
-                }
-                    
-                 
+        <View style={{height:"100%"}}>
+            <View style={styles.scrollArea}>
+                <ScrollView style={[{flexDirection: "column"}]}
+                    contentInsetAdjustmentBehavior="automatic">
+                    <Text style={[styles.pageTitle]}>History</Text>
+                    <BackButton/>
+                    {/* Calendar at the top of the history page */}
+                    <View style={[styles.historyCalendar, {marginTop:30}]}>
+                        {/* Days of the week */}
+                        <View style={[{flexDirection:"row", alignItems:"center", justifyContent:"center"}]}>
+                            {weekDays.map((day, idx) => (
+                                    <Text key={idx} style={[styles.weekDay, {flex:1,  height:50,}]}>{day}</Text>
+                                ))}
+                        </View>
+                        {/* Dates for this week */}
+                        <View style={[{flexDirection:"row", alignItems:"center"}]}>
+                            {getDates().map((day, idx) => (
+                                    // Different styling for the current day
+                                    idx === selectedDay
+                                    ? <Pressable style={[styles.weekDaySelected]} key={idx} onPress={() => {selectDay(idx)}}>
+                                        <Text key={idx} style={[styles.weekDaySelectedText]}>{day}</Text>
+                                    </Pressable>
+                                    : <Pressable style={[styles.weekDay]} key={idx} onPress={() => {selectDay(idx)}}>
+                                        <Text key={idx} style={[styles.weekDayText]}>{day}</Text>
+                                    </Pressable>
+                                ))}
+                        </View>
+                    </View>
+                    {/* Display the panels for the environment records. */}
+                    {
+                        isLoading ? <Loading/> : <View>
+                        {
+                            records.map((record, idx) => {
+                                //Convert the time to AM or PM
+                                const time = new Date(record.time)
+                                const isPM = time.getHours() > 12
+                                let hours = isPM ? time.getHours() - 12 : time.getHours()
+                                if (time.getHours() == 0) hours = 12;
+                                let mins = time.getMinutes() < 10 ? "0" + time.getMinutes() : "" + time.getMinutes() ;
+                                const amPM = isPM ? "pm" : "am"
+                                const timeString = hours + ":" + mins + amPM
+                                return (
+                                    <EnvironmentRecordPanel key={idx} time={timeString} moisture={record.moisture} temperature={record.temperature} sunlight={record.sunlight}></EnvironmentRecordPanel>
+                                )
+                            })
+                        }
+                        </View>
+                    }
                 </ScrollView>
-            }
-            
-                
-             
-             <Footer />
+            </View>
+            <Footer />
         </View>
     )
 }
