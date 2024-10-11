@@ -4,6 +4,8 @@ import {ScrollView, View, Text, Image, Pressable} from 'react-native';
 import {styles} from '../other/Styles.tsx';
 import {Footer} from '../other/Footer.tsx';
 import {Search} from '../other/Search.tsx';
+import {Weather} from '../other/Weather.tsx';
+
 
 import {useNavigation, useRoute} from '@react-navigation/native';
 
@@ -58,8 +60,7 @@ export const HomeScreen = (props: any) => {
                     {/* Search bar */}
                     <Search searchCallback={setSearchText}/>
                     {/* Weather box */}
-                    <View>
-                    </View>
+                    <Weather />
                     {/* Main box */}
 
                     <View style={[styles.main, {flexDirection:'column'}]}
