@@ -3,11 +3,13 @@ import { fetchWeatherApi } from 'openmeteo';
 import {Alert, ScrollView, View, Text, Image, Pressable} from 'react-native';
 import 'react-native-url-polyfill/auto';
 
-import {styles} from '../other/Styles.tsx';
-
 export const Weather = () => {
 
     const [temp, setTemp] = useState<number>(0);
+    const [humidity, setHumidity] = useState<number>(0);
+    const [rain, setRain] = useState<number>(0);
+    const [weatherCode, setWeatherCode] = useState<number>(0);
+    const [wind, setWind] = useState<number>(0);
 
     // Helper function to form time ranges
     const range = (start: number, stop: number, step: number) =>
@@ -18,9 +20,11 @@ export const Weather = () => {
     const GetWeather = useCallback(async () => {
 
         const params = {
-            latitude: [27.4705],
-            longitude: [153.0260],
-            current: "temperature_2m"
+            //latitude: [27.5021],
+            //longitude: [152.9968],
+            latitude: [27.29455],
+            longitude: [153.00381],
+            current: ["temperature_2m", "relative_humidity_2m", "rain", "weather_code", "wind_speed_10m"]
         };
         const url = "https://api.open-meteo.com/v1/forecast";
 
@@ -36,7 +40,17 @@ export const Weather = () => {
             const longitude = response.longitude();
             const current = response.current()!;
 
-            setTemp(current.variables(0)!.value());
+            const temp = current.variables(0)!.value();
+            const humidity = current.variables(1)!.value();
+            const rain = current.variables(2)!.value();
+            const weatherCode = current.variables(3)!.value();
+            const wind = current.variables(4)!.value();
+
+            setTemp(temp);
+            setHumidity(humidity);
+            setRain(rain);
+            setWeatherCode(weatherCode);
+            setWind(wind);
 
             console.log("getweather");
         }
@@ -50,7 +64,11 @@ export const Weather = () => {
 
     return(
         <View>
-            <Text>{`${temp}`}˚C</Text>
+            <Text>Temperature: {`${temp}`}˚C</Text>
+            <Text>Humidity: {`${humidity}`}%</Text>
+            <Text>Rain: {`${rain}`}</Text>
+            <Text>Weather code: {`${weatherCode}`}</Text>
+            <Text>Wind: {`${wind}`}km/h</Text>
         </View>
             
     );
