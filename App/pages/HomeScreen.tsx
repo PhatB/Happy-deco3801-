@@ -49,14 +49,10 @@ export const HomeScreen = () => {
             <View style={styles.scrollArea}>
                 <ScrollView contentInsetAdjustmentBehavior="automatic">
                     <Text style={styles.pageTitle}>{"Your Plants"}</Text>
-
-                    <View style={styles.main}>
-                        {/* Weather box */}
-                        <Weather />
-                    </View>
-
                     {/* Search bar */}
                     <Search searchCallback={setSearchText}/>
+                    {/* Weather box */}
+                    <Weather />
                     {/* Main box */}
 
                     <View style={[styles.main, {flexDirection:'column'}]}
