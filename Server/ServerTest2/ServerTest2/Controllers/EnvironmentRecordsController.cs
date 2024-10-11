@@ -46,10 +46,7 @@ namespace ServerTest2.Controllers
 
             return user;
         }
-
-        private void CheckNotifs(EnvironmentRecord newEnvironmentRecord) 
-        {
-        }
+        
 
         // POST api/<UserController>
         [HttpPost]

@@ -10,12 +10,19 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 const testUserId = "66e3848cc14bcef4f162d6e9";
 const plusIcon = '../images/plusIcon.png';
 const bellIcon = '../images/notification_bell.png'
+const activeBell = '../images/notification_active.png'
 import {PrettyList} from '../other/PrettyList.tsx';
 import plants from "../data/PlantTypes.json";
 import { InfoType } from './ExploreScreen.tsx';
-import {PlantType, UserPlant, userPlantsFromUser} from '../api.ts'
+import {EnvironmentRecord, getDeviceFromUser, getEnvironmentRecords, mostRecentEnvironmentRecord, PlantType, UserPlant, userPlantsFromUser} from '../api.ts'
 import { Loading } from '../other/MiscComponents/Loading.tsx';
+import { inBounds } from '../other/PlantProfile.tsx';
 
+type Notification = {
+    type: "water" | "sunlight" | "temperature",
+    time: Date
+    plant: UserPlant
+}
 
 
 export const HomeScreen = (props: any) => {
@@ -24,7 +31,37 @@ export const HomeScreen = (props: any) => {
     const [error, setError] = useState<Error | null>(null);
     const [searchText, setSearchText] = useState<string>("");
     const navigation = useNavigation<any>();
+    const [notifications, setNotifications] = useState<Notification[]>([])
+    
+    const whatsWrong = (record: EnvironmentRecord, plantType: PlantType) => {
+        if (!inBounds(record.moisture, plantType.moistureMin, plantType.moistureMax)) return "water";
+        if (!inBounds(record.sunlight, plantType.sunlightMin, plantType.sunlightMax)) return "sunlight";
+        if (!inBounds(record.temperature, plantType.temperatureMin, plantType.temperatureMax)) return "temperature";
+        return "nothing"
+    }
+    
+    const checkNotifications = async () => {
+        let notifs = []
+        let plants = await userPlantsFromUser(testUserId)
+        for (let i = 0; i < plants.length; i++) {
+            let device = plants[i].device;
+            let recent = await mostRecentEnvironmentRecord(device);
+            if (recent === null) {
+                continue;
+            }
+            let wrong = whatsWrong(recent, plants[i].plantType)
+            switch (wrong) {
+                case "nothing":
+                    continue
+                default:
+                    notifs.push({type: wrong, time: new Date(recent.time), plant: plants[i]} as Notification) 
 
+            }
+            
+        }
+        console.log(notifs)
+        setNotifications(notifs)
+    }
     
     const getPlants = async () => {
         setLoading(true);
@@ -41,6 +78,7 @@ export const HomeScreen = (props: any) => {
        
     }
     useEffect(() => {
+        checkNotifications().then();
         getPlants().then();
     }, [props])
     return (
@@ -55,7 +93,7 @@ export const HomeScreen = (props: any) => {
                     <Pressable onPress = {() => {
                         navigation.navigate("Notifications", {screen:"Notifications"})
                     }}style={styles.notificationBell}>
-                        <Image source={require(bellIcon)}></Image>
+                        <Image source={notifications.length == 0 ? require(bellIcon): require(activeBell)}></Image>
                     </Pressable>
                     
                 
