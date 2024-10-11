@@ -13,7 +13,9 @@ interface PlantProfileProps {
     info: UserPlant
 }
 
-
+export const inBounds = (value: number, min: number, max: number) => {
+    return value >= min && value <= max
+}
 
 export const PlantProfile = (props: PlantProfileProps) => {
     const navigation: NavigationProp<any> = useNavigation();
@@ -21,8 +23,8 @@ export const PlantProfile = (props: PlantProfileProps) => {
     const [needsAttention, setNeedsAttention] = useState(false);
     const [mostRecent, setMostRecent] = useState<EnvironmentRecord | null>(null);
     const [isLoading, setIsLoading] = useState(true);
-    const attentionCheck = (record: EnvironmentRecord) => {
-        const plantType: PlantType = info.plantType;
+    const attentionCheck = (record: EnvironmentRecord, plantType: PlantType) => {
+    
         if (!inBounds(record.moisture, plantType.moistureMin, plantType.moistureMax)) return true;
         if (!inBounds(record.sunlight, plantType.sunlightMin, plantType.sunlightMax)) return true;
         if (!inBounds(record.temperature, plantType.temperatureMin, plantType.temperatureMax)) return true;
@@ -36,12 +38,10 @@ export const PlantProfile = (props: PlantProfileProps) => {
             return;
         }
         setMostRecent(recent)
-        setNeedsAttention(attentionCheck(recent))
+        setNeedsAttention(attentionCheck(recent, info.plantType))
         setIsLoading(false);
     }
-    const inBounds = (value: number, min: number, max: number) => {
-        return value >= min && value <= max
-    }
+    
 
     const WhichAttentionBadge = () => {
         if (needsAttention) {
