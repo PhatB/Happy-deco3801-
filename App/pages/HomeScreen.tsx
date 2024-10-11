@@ -56,11 +56,11 @@ export const HomeScreen = (props: any) => {
                     <Text style={[styles.pageTitle, {flex:6}]}>{"Your Plants"}</Text>
                     <Image style={[{transform: [{scale:0.4}, {translateY: -20}], position: "absolute",  alignSelf: "flex-end"}]} source={require(bellIcon)}></Image>
                 
+                    {/* Weather box */}
+                    <View style={styles.main}><Weather /></View>
                     
                     {/* Search bar */}
                     <Search searchCallback={setSearchText}/>
-                    {/* Weather box */}
-                    <Weather />
                     {/* Main box */}
 
                     <View style={[styles.main, {flexDirection:'column'}]}
