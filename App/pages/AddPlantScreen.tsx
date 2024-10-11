@@ -22,6 +22,7 @@ export const AddPlantScreen = () => {
     const [infoVisible, setInfoVisible] = useState(false);
     const submitPlant = async () => {
         if (! await checkValidity()) {
+            console.log("BAD")
             return;
         }
         let plant = {
@@ -59,7 +60,7 @@ export const AddPlantScreen = () => {
     }
 
     const checkValidity = async () => {
-        let valid = false;
+        let valid = true;
         let newIssues = ""
         
         let exists = await deviceExists()

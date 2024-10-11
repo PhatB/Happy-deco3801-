@@ -130,6 +130,10 @@ export async function getPlantType(typeID: string) {
     return apiRequest(`PlantType/${typeID}`)
 }
 
+export async function getDeviceFromUser(userID: string) {
+    return apiRequest(`Devices/FromUser/%{userID}`)
+}
+
 export async function getDevice(deviceID: string) {
     return apiRequest(`Devices/${deviceID}`);
 }

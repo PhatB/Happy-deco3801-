@@ -20,6 +20,7 @@ import {styles} from "./other/Styles.tsx";
 import {Text, View} from "react-native";
 import { PlantProfile } from './other/PlantProfile.tsx';
 import { History } from './pages/History.tsx';
+import { Notifications } from './pages/Notifications.tsx';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -63,6 +64,11 @@ class App extends React.Component {
                         <Stack.Screen
                             name="History"
                             component={History}
+                            options={{headerShown: false}}
+                        />
+                        <Stack.Screen
+                            name="Notifications"
+                            component={Notifications}
                             options={{headerShown: false}}
                         />
                       

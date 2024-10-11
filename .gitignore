@@ -117,3 +117,4 @@ Server/ServerTest2/ServerTest2/obj/rider.project.restore.info
 Server/ServerTest2/ServerTest2/obj/ServerTest2.csproj.nuget.dgspec.json
 Server/ServerTest2/ServerTest2/obj/ServerTest2.csproj.nuget.g.props
 *.cache
+Server/ServerTest2/ServerTest2/bin/Debug/net8.0/appsettings.json
