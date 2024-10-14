@@ -22,4 +22,6 @@ public class EnvironmentRecord
 
     [BsonElement("moisture")] public float? Moisture { get; set; } = null!;
     public float? Sunlight {get; set;} = null!;
+
+    public bool SuppressNotifications { get; set; }  = false;
 }

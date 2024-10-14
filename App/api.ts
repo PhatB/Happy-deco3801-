@@ -37,7 +37,8 @@ export type EnvironmentRecord = {
     time: string,
     temperature: number,
     moisture: number,
-    sunlight: number
+    sunlight: number,
+    suppress_notifications: boolean,
 }
 export const pestImages: any = {
     "Mealybugs": require(IMAGE_PREFIX + "mealybugs.jpg"),
@@ -116,6 +117,11 @@ export async function userPlantsFromUser(userID: string) {
 
 export async function getEnvironmentRecords(deviceID: string) {
     return apiRequest(`EnvironmentRecords/FromDevice/${deviceID}`)
+}
+
+export async function suppressRecord(record: EnvironmentRecord) {
+    record.suppress_notifications = true;
+    return apiRequest(`EnvironmentRecords/${record.id}`, record, "PUT")
 }
 
 export async function mostRecentEnvironmentRecord(deviceID: string) {

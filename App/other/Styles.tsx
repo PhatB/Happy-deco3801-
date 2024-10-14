@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
   baseText: {
     fontFamily: 'Poppins-Regular',
     fontSize: 15,
+    color: "black"
   },
   pageTitle: {
     fontFamily: 'Poppins-Medium',
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
     paddingTop: 20,
   },
   notificationBell: {
-    transform: [{scale:0.4}, {translateY: -20}],
+    transform: [{ scale: 0.4 }, { translateY: -20 }],
     position: "absolute",
     alignSelf: "flex-end"
   },
@@ -64,7 +65,7 @@ export const styles = StyleSheet.create({
   },
 
   historyPanelList: {
-    
+
     paddingVertical: 8,
     paddingHorizontal: 10,
     alignItems: "center"
@@ -79,7 +80,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     color: '#143728',
     fontSize: 16,
-  
+
   },
   line: {
     marginVertical: 20,
@@ -96,7 +97,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     width: '90%',
     marginTop: 30,
-    padding:10
+    padding: 10
   },
   main: {
     fontFamily: 'Poppins-Regular',
@@ -129,7 +130,7 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
   },
 
-  historyCalendar : {
+  historyCalendar: {
     backgroundColor: '#218F4A',
     flexDirection: 'column',
     color: 'white',
@@ -160,32 +161,32 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
     textAlign: "center",
-    flex:1,
+    flex: 1,
 
-    height:50,
+    height: 50,
     paddingVertical: 10,
   },
   weekDayText: {
     fontFamily: 'Poppins-Regular',
     fontSize: 20,
     textAlign: "center",
-    color:"white",
+    color: "white",
   },
   weekDaySelectedText: {
     fontFamily: 'Poppins-Regular',
     fontSize: 20,
     textAlign: "center",
-    color:"black",
+    color: "black",
   },
   weekDaySelected: {
-    
-   
-    backgroundColor:"#F2F2F2",
+
+
+    backgroundColor: "#F2F2F2",
 
     paddingVertical: 10,
-    flex:1,
-    height:50,
-    borderRadius:2000
+    flex: 1,
+    height: 50,
+    borderRadius: 2000
   },
 
   smallGreenButton: {
@@ -219,7 +220,7 @@ export const styles = StyleSheet.create({
   backArrow: {
     width: 30,
     height: 30,
-    transform: [{rotate: '180deg'}],
+    transform: [{ rotate: '180deg' }],
     marginTop: -35,
     marginLeft: '5%',
     fontFamily: 'Poppins-Regular',
@@ -263,6 +264,6 @@ export const styles = StyleSheet.create({
   },
   plantList: {
     fontFamily: 'Poppins-Regular',
-    height:'100%',
+    height: '100%',
   },
 });
