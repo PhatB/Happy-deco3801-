@@ -22,7 +22,7 @@ export const Weather = () => {
     const GetWeather = useCallback(async () => {
 
         const params = {
-            latitude: [27.29455],
+            latitude: [-27.29455],
             longitude: [153.00381],
             current: ["temperature_2m", "relative_humidity_2m", "rain", "weather_code", "wind_speed_10m"]
         };
