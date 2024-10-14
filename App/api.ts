@@ -1,9 +1,11 @@
-import {ImageSourcePropType} from 'react-native';
+import { ImageSourcePropType } from 'react-native';
+
+const TEST_KEY = "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY2YWMwZTY0MWI4MWZhZDE3NzIyOGZiNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJVc2VyMSIsIm5iZiI6MTcyODg4OTYyMiwiZXhwIjoxNzMxNDgxNjIyfQ.XjKkpZ8b05rJjpDURmbFq-4ueOxvpuvNGTvRd1cDxGs"
 
 const API_BASE_URL: string = "https://deco3801-teamhappy.uqcloud.net/api/"
 const IMAGE_PREFIX: string = "./images/"
 export type PlantType = {
-    id : string
+    id: string
     name: string
     scientificName: string
     careDifficulty: string
@@ -21,7 +23,7 @@ export type PlantType = {
     image: ImageSourcePropType
 }
 export type UserPlant = {
-    id : string
+    id: string
     name: string,
     plantType: PlantType,
     device: string,
@@ -46,13 +48,13 @@ export const pestImages: any = {
     "Thrips": require(IMAGE_PREFIX + "thrips.jpg"),
 }
 export const plantImages: any = {
-    "Peace Lily" : require(IMAGE_PREFIX + "peace.jpg"),
+    "Peace Lily": require(IMAGE_PREFIX + "peace.jpg"),
     "Dieffenbachia": require(IMAGE_PREFIX + "dieffenbachia.jpg"),
-    "Monstera" : require(IMAGE_PREFIX + "monstera.jpg"),
-    "Orchid" : require(IMAGE_PREFIX + "orchid.jpg"),
-    "Burro's Tail" : require(IMAGE_PREFIX + "succulent.jpg"),
+    "Monstera": require(IMAGE_PREFIX + "monstera.jpg"),
+    "Orchid": require(IMAGE_PREFIX + "orchid.jpg"),
+    "Burro's Tail": require(IMAGE_PREFIX + "succulent.jpg"),
 }
-export function addImage<Type>(json: any[], images:any) {
+export function addImage<Type>(json: any[], images: any) {
     let types: Type[] = []
     // Go through each element in the JSON
     for (let index in json) {
@@ -65,14 +67,15 @@ export function addImage<Type>(json: any[], images:any) {
     }
     return types
 }
-async function apiRequest(endpoint: string, body:any = null, method = "GET") {
+async function apiRequest(endpoint: string, body: any = null, method = "GET") {
     const response = await fetch(`${API_BASE_URL}${endpoint}`,
         {
             method: method,
             body: body === null ? "" : JSON.stringify(body),
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
-              }
+                "Content-type": "application/json; charset=UTF-8",
+                "Authorization": `Bearer ${TEST_KEY}`
+            }
         }
     );
     if (!response.ok) {
@@ -96,14 +99,15 @@ export async function userPlantsFromUser(userID: string) {
         const rawUserPlant = response[i];
         const rawPlantType = await getPlantType(rawUserPlant.plantType);
         const plantType: PlantType = addImage<PlantType>([rawPlantType],
-             plantImages)[0];
+            plantImages)[0];
         const userPlant: UserPlant = {
             id: rawUserPlant.id,
             name: rawUserPlant.name,
             device: rawUserPlant.device,
             description: rawUserPlant.description,
-            plantType:plantType,
-            image: plantImages[plantType.name]};
+            plantType: plantType,
+            image: plantImages[plantType.name]
+        };
         userPlants.push(userPlant);
     }
 
@@ -115,7 +119,7 @@ export async function getEnvironmentRecords(deviceID: string) {
 }
 
 export async function mostRecentEnvironmentRecord(deviceID: string) {
-    let records:EnvironmentRecord[] = await getEnvironmentRecords(deviceID)
+    let records: EnvironmentRecord[] = await getEnvironmentRecords(deviceID)
     if (records.length == 0) {
         return null
     }
