@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerTest2.Models;
 using ServerTest2.Services;
@@ -10,6 +11,8 @@ namespace ServerTest2.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+    
     public class DevicesController : ControllerBase
     {
         private readonly DeviceService _deviceService;

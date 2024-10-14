@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerTest2.Models;
@@ -11,6 +12,7 @@ namespace ServerTest2.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserPlantController : ControllerBase
     {
         private readonly UserPlantService _userPlantService;
