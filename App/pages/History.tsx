@@ -158,6 +158,13 @@ export const History = () => {
                     {/* Display the panels for the environment records. */}
                     {
                         isLoading ? <Loading /> : <View>
+                            {/* No records */}
+                            {records.length > 0 ? null :
+                                <View style={[styles.historyPanel]}>
+                                    <Text style={[styles.historyPanelListText]}>No records found.</Text>
+                                </View>
+                            }
+                            {/* Display records */}
                             {
                                 records.map((record, idx) => {
                                     //Convert the time to AM or PM
