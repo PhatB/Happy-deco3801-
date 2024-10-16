@@ -124,7 +124,7 @@ export const HomeScreen = (props: any) => {
                                 : <PrettyList
                                     data={data}
                                     primaryField={"name"}
-                                    secondaryField={"name"}
+                                    secondaryField={"description"}
                                     defaultImage={require("../images/gLeafIcon.png")}
                                     targetPage="MoreInfo"
                                     targetItemParams={{ "info": "self", "extra": "self" }}
