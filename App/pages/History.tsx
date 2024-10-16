@@ -132,13 +132,26 @@ export const History = () => {
                             {/* <Text>{selectedDay == Date.prototype.getDay() ? "same day" : "different day"}</Text> */}
                             {getDates().map((day, idx) => (
                                 // Different styling for the current day
-                                idx === selectedDay
-                                    ? <Pressable style={[styles.weekDaySelected]} key={idx} onPress={() => { selectDay(idx) }}>
-                                        <Text key={idx} style={[styles.weekDaySelectedText]}>{day}</Text>
-                                    </Pressable>
-                                    : <Pressable style={[styles.weekDay]} key={idx} onPress={() => { selectDay(idx) }}>
-                                        <Text key={idx} style={[styles.weekDayText]}>{day}</Text>
-                                    </Pressable>
+                                idx === selectedDay ?
+                                    (selectedDay == new Date().getDay() ?
+                                        // SELECTED + CURRENT
+                                        <Pressable style={[{...styles.weekDaySelected, ...styles.currentDay}]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDaySelectedText, {color: 'black'}]}>{day}</Text>
+                                        </Pressable> :
+                                        // SELECTED + NOT CURRENT
+                                        <Pressable style={[styles.weekDaySelected]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDaySelectedText]}>{day}</Text>
+                                        </Pressable>
+                                    ) : (idx == new Date().getDay() ?
+                                        // UNSELECTED + CURRENT
+                                        <Pressable style={[{...styles.weekDay, ...styles.currentDay}]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDayText, {color: 'black'}]}>{day}</Text>
+                                        </Pressable> :
+                                        // UNSELECTED + NOT CURRENT
+                                        <Pressable style={[styles.weekDay]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDayText]}>{day}</Text>
+                                        </Pressable>
+                                    )
                             ))}
                         </View>
                     </View>
