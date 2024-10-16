@@ -148,6 +148,10 @@ export const PlantProfile = (props: PlantProfileProps) => {
         getMostRecentRecord().then()
     }, [])
 
+    // Reminder Switch State
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
     return (
         <View>
             <WarningModal />
@@ -163,8 +167,15 @@ export const PlantProfile = (props: PlantProfileProps) => {
                 <WaterBadge info={info.plantType} />
             </View>
             <View style={{ flexDirection: "row", alignItems: "center", marginTop: 15 }}>
+                {/* Reminders Switch */}
                 <Text style={[styles.smallHeading, { flex: 1, fontSize: 15, }]}>Reminders</Text>
-                <Switch thumbColor="#FFFFFF" trackColor={{ true: "#D1EDCE", false: "#D1EDCE" }} style={{ marginRight: 10 }} />
+                <Switch
+                    thumbColor="#FFFFFF"
+                    trackColor={{ true: "#D1EDCE", false: "#D1EDCE" }}
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
+                    style={{ marginRight: 10 }}
+                    />
             </View>
             <Line></Line>
             <Text style={[styles.smallBold]}>Pest Management</Text>
