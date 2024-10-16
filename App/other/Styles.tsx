@@ -113,6 +113,7 @@ export const styles = StyleSheet.create({
   },
   search: {
     flexDirection: 'row',
+    alignItems: 'center',
     fontFamily: 'Poppins-Regular',
   },
   textBox: {
