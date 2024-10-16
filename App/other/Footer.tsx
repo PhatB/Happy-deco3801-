@@ -23,21 +23,32 @@ const profileIcon = '../images/profileIcon.png';
 export const Footer = ({}) => {
     const navigation = useNavigation<any>();
     const route = useRoute();
-    const {info, infoType, extra} = route.params;
+    const getInfoType = () => {
+        if (route.name == "MoreInfo") {
+            let {info, infoType, extra} = route.params;
+            return infoType;
+        } else {
+            return null;
+        }
+    }
+    //let infoType = null;
+    // if (route.name == "MoreInfo") {
+    //     let {info, infoType, extra} = route.params;
+    // }
     return (
         <View style={styles.footer}>
             {/* Footer Icons */}
             <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Home" || route.name == "Add" || route.name == "Notifications"|| route.name == "History" || infoType == InfoType.PlantProfile
+                source={route.name == "Home" || route.name == "Add" || route.name == "Notifications"|| route.name == "History" || getInfoType() == InfoType.PlantProfile
                     ? require(gLeafIcon):require(leafIcon)}
                 />
             </Pressable>
             <Pressable onPress={() => navigation.navigate("Explore", {screen: "ExploreScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Explore" || (route.name == "MoreInfo" && infoType != InfoType.PlantProfile)
+                source={route.name == "Explore" || (route.name == "MoreInfo" && getInfoType() != InfoType.PlantProfile)
                         ? require(gSearchIcon):require(searchIcon)}
                 />
             </Pressable>

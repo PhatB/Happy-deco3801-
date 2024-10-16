@@ -129,6 +129,7 @@ export const History = () => {
                         </View>
                         {/* Dates for this week */}
                         <View style={[{ flexDirection: "row", alignItems: "center" }]}>
+                            {/* <Text>{selectedDay == Date.prototype.getDay() ? "same day" : "different day"}</Text> */}
                             {getDates().map((day, idx) => (
                                 // Different styling for the current day
                                 idx === selectedDay
