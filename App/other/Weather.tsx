@@ -22,8 +22,6 @@ export const Weather = () => {
     const GetWeather = async () => {
 
         const params = {
-            // latitude: [-0.29455],
-            // longitude: [1.00381],
             latitude: [-27.29455],
             longitude: [153.00381],
             current: ["temperature_2m", "relative_humidity_2m", "rain", "weather_code", "wind_speed_10m"]
