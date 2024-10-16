@@ -80,6 +80,7 @@ export const AddPlantScreen = () => {
     const InfoModal = () => {
         return (
             <Modal
+
                 animationType='fade'
                 visible={infoVisible}
                 transparent={true}

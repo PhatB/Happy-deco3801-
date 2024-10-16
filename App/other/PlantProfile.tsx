@@ -34,6 +34,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
     const WarningModal = () => {
         return (
             <Modal
+
                 animationType='fade'
                 visible={warningVisisble}
                 transparent={true}
@@ -173,6 +174,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
             </Pressable>
             <Line></Line>
             <Text style={[styles.smallBold]}>Description</Text>
+            <Text style={styles.baseText}>{info.description}</Text>
             <Pressable
                 style={[styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}
                 onPress={() => { setWarningVisible(true) }}>

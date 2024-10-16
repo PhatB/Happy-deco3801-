@@ -32,11 +32,12 @@ export const styles = StyleSheet.create({
     fontWeight: "medium"
   },
   modalView: {
-    margin: 20,
+    margin: 50,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
     paddingTop: '10%',
+
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
