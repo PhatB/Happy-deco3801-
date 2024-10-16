@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Image, Pressable, Switch, Text, View } from "react-native"
+import { Image, Modal, Pressable, Switch, Text, View } from "react-native"
 import { AttentionBadge, HealthyBadge, PlantBadges, WaterBadge } from "./MiscComponents/Badges"
 import { NavigationProp, useNavigation, useRoute } from "@react-navigation/native"
 import { Line } from "./MiscComponents/Line"
@@ -23,12 +23,47 @@ export const PlantProfile = (props: PlantProfileProps) => {
     const [needsAttention, setNeedsAttention] = useState(false);
     const [mostRecent, setMostRecent] = useState<EnvironmentRecord | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [warningVisisble, setWarningVisible] = useState(false)
     const attentionCheck = (record: EnvironmentRecord, plantType: PlantType) => {
 
         if (!inBounds(record.moisture, plantType.moistureMin, plantType.moistureMax)) return true;
         if (!inBounds(record.sunlight, plantType.sunlightMin, plantType.sunlightMax)) return true;
         if (!inBounds(record.temperature, plantType.temperatureMin, plantType.temperatureMax)) return true;
         return false;
+    }
+    const WarningModal = () => {
+        return (
+            <Modal
+                animationType='fade'
+                visible={warningVisisble}
+                transparent={true}
+                onRequestClose={() => { setWarningVisible(false) }}
+            >
+                <View style={[styles.modalView, styles.main]}>
+                    <Text style={styles.smallHeading}>Are you sure?</Text>
+
+                    <Text style={{ color: "black", fontSize: 18 }}>
+                        Are you sure you want to delete {info.name}?
+                    </Text>
+                    <View style={{ display: "flex", flexDirection: "row" }}>
+                        <Pressable onPress={() => {
+                            deletePlant()
+                        }}
+                            style={[styles.smallGreenButton, { marginVertical: 15 }]}>
+                            <Text style={[styles.redButton, { textAlign: "center" }]}>{'Delete'}</Text>
+                        </Pressable>
+                        <Pressable onPress={() => {
+                            setWarningVisible(false)
+                        }}
+                            style={[styles.smallGreenButton, { marginVertical: 15 }]}>
+                            <Text style={[styles.greenButton, { textAlign: "center" }]}>{'Cancel'}</Text>
+                        </Pressable>
+                    </View>
+                </View>
+
+            </Modal >
+
+        )
     }
     const getMostRecentRecord = async () => {
         setIsLoading(true);
@@ -114,6 +149,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
 
     return (
         <View>
+            <WarningModal />
             <Line></Line>
             <View style={{ flexDirection: "row", alignContent: "center", alignItems: "center" }}>
                 <Text style={[styles.smallBold, { flex: 1 }]}>Current Status</Text>
@@ -139,7 +175,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
             <Text style={[styles.smallBold]}>Description</Text>
             <Pressable
                 style={[styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}
-                onPress={deletePlant}>
+                onPress={() => { setWarningVisible(true) }}>
                 <Text style={styles.redButton}>Delete Plant</Text>
             </Pressable>
         </View>
