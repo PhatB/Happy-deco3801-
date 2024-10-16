@@ -35,6 +35,7 @@ export const Notifications = () => {
                     <Text style={[styles.baseText]}>Ensure {notif.plant.name} is {messages[notif.type]}</Text>
                 </View>
                 <Pressable onPress={async () => {
+
                     suppressRecord(notif.record)
                     setNotifications(await checkNotifications())
                 }}
@@ -57,13 +58,14 @@ export const Notifications = () => {
                     <BackButton />
                     <View style={styles.main}>
                         {
-                            notifs.map((notif: Notification, idx: number) => {
-                                if (notif.record.suppress_notifications) {
-                                    return (<></>)
-                                } else {
-                                    return <NotifcationPanel key={idx} notif={notif} />
-                                }
-                            })
+                            notifications.length == 0 ? (<Text>No notifications.</Text>) :
+                                notifications.map((notif: Notification, idx: number) => {
+                                    if (notif.record.suppressNotifications) {
+                                        return (<></>)
+                                    } else {
+                                        return <NotifcationPanel key={idx} notif={notif} />
+                                    }
+                                })
                         }
                     </View>
 

@@ -38,7 +38,7 @@ export type EnvironmentRecord = {
     temperature: number,
     moisture: number,
     sunlight: number,
-    suppress_notifications: boolean,
+    suppressNotifications: boolean,
 }
 export const pestImages: any = {
     "Mealybugs": require(IMAGE_PREFIX + "mealybugs.jpg"),
@@ -79,9 +79,12 @@ async function apiRequest(endpoint: string, body: any = null, method = "GET") {
             }
         }
     );
+
     if (!response.ok) {
+
         try {
             const responseBody = await response.json()
+
             throw new Error(`Could not access the api.Status: ${response.status} message: ${responseBody.message}`)
         } catch (_) {
             throw new Error(`Could not access the api.Status: ${response.status}`)
@@ -120,7 +123,7 @@ export async function getEnvironmentRecords(deviceID: string) {
 }
 
 export async function suppressRecord(record: EnvironmentRecord) {
-    record.suppress_notifications = true;
+    record.suppressNotifications = true;
     return apiRequest(`EnvironmentRecords/${record.id}`, record, "PUT")
 }
 
