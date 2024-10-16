@@ -4,7 +4,7 @@ import { AttentionBadge, HealthyBadge, PlantBadges, WaterBadge } from "./MiscCom
 import { NavigationProp, useNavigation, useRoute } from "@react-navigation/native"
 import { Line } from "./MiscComponents/Line"
 import { styles } from "./Styles"
-import { EnvironmentRecord, mostRecentEnvironmentRecord, PlantType, UserPlant } from "../api"
+import { deleteUserPlant, EnvironmentRecord, mostRecentEnvironmentRecord, PlantType, UserPlant } from "../api"
 import { CircularProgress } from "react-native-circular-progress"
 import { InfoCircle } from "./MiscComponents/InfoCircle"
 import { Loading } from "./MiscComponents/Loading"
@@ -42,6 +42,14 @@ export const PlantProfile = (props: PlantProfileProps) => {
         setIsLoading(false);
     }
 
+    const deletePlant = async () => {
+        try {
+            await deleteUserPlant(info.id);
+        } catch (e: any) {
+            console.log(e)
+        }
+        navigation.navigate("Home", { "dummy": "dummy" })
+    }
 
     const WhichAttentionBadge = () => {
         if (needsAttention) {
@@ -129,6 +137,11 @@ export const PlantProfile = (props: PlantProfileProps) => {
             </Pressable>
             <Line></Line>
             <Text style={[styles.smallBold]}>Description</Text>
+            <Pressable
+                style={[styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}
+                onPress={deletePlant}>
+                <Text style={styles.redButton}>Delete Plant</Text>
+            </Pressable>
         </View>
     )
 }

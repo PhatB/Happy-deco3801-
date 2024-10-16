@@ -143,6 +143,20 @@ export const styles = StyleSheet.create({
     marginHorizontal: 20,
     padding: 8,
   },
+  redButton: {
+    backgroundColor: '#D83400',
+    flexDirection: 'row',
+    color: 'white',
+    fontSize: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: "center",
+    marginHorizontal: 10,
+    padding: 6,
+    borderRadius: 5,
+    fontFamily: 'Poppins-Medium',
+
+  },
   greenButton: {
     backgroundColor: '#218F4A',
     flexDirection: 'row',

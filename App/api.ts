@@ -96,6 +96,11 @@ export async function addUserPlant(body: any) {
     return apiRequest("UserPlant", body, "POST")
 }
 
+export async function deleteUserPlant(plantID: string) {
+    return apiRequest(`UserPlant/${plantID}`, null, "DELETE")
+}
+
+
 export async function userPlantsFromUser(userID: string) {
     let userPlants: UserPlant[] = []
     const response = await apiRequest(`UserPlant/FromUser/${userID}`)
