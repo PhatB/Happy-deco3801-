@@ -129,21 +129,42 @@ export const History = () => {
                         </View>
                         {/* Dates for this week */}
                         <View style={[{ flexDirection: "row", alignItems: "center" }]}>
+                            {/* <Text>{selectedDay == Date.prototype.getDay() ? "same day" : "different day"}</Text> */}
                             {getDates().map((day, idx) => (
                                 // Different styling for the current day
-                                idx === selectedDay
-                                    ? <Pressable style={[styles.weekDaySelected]} key={idx} onPress={() => { selectDay(idx) }}>
-                                        <Text key={idx} style={[styles.weekDaySelectedText]}>{day}</Text>
-                                    </Pressable>
-                                    : <Pressable style={[styles.weekDay]} key={idx} onPress={() => { selectDay(idx) }}>
-                                        <Text key={idx} style={[styles.weekDayText]}>{day}</Text>
-                                    </Pressable>
+                                idx === selectedDay ?
+                                    (selectedDay == new Date().getDay() ?
+                                        // SELECTED + CURRENT
+                                        <Pressable style={[{...styles.weekDaySelected, ...styles.currentDay}]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDaySelectedText, {color: 'black'}]}>{day}</Text>
+                                        </Pressable> :
+                                        // SELECTED + NOT CURRENT
+                                        <Pressable style={[styles.weekDaySelected]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDaySelectedText]}>{day}</Text>
+                                        </Pressable>
+                                    ) : (idx == new Date().getDay() ?
+                                        // UNSELECTED + CURRENT
+                                        <Pressable style={[{...styles.weekDay, ...styles.currentDay}]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDayText, {color: 'black'}]}>{day}</Text>
+                                        </Pressable> :
+                                        // UNSELECTED + NOT CURRENT
+                                        <Pressable style={[styles.weekDay]} key={idx} onPress={() => { selectDay(idx) }}>
+                                            <Text key={idx} style={[styles.weekDayText]}>{day}</Text>
+                                        </Pressable>
+                                    )
                             ))}
                         </View>
                     </View>
                     {/* Display the panels for the environment records. */}
                     {
                         isLoading ? <Loading /> : <View>
+                            {/* No records */}
+                            {records.length > 0 ? null :
+                                <View style={[styles.historyPanel]}>
+                                    <Text style={[styles.historyPanelListText]}>No records found.</Text>
+                                </View>
+                            }
+                            {/* Display records */}
                             {
                                 records.map((record, idx) => {
                                     //Convert the time to AM or PM
