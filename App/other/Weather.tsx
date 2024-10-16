@@ -22,6 +22,8 @@ export const Weather = () => {
     const GetWeather = async () => {
 
         const params = {
+            // latitude: [-0.29455],
+            // longitude: [1.00381],
             latitude: [-27.29455],
             longitude: [153.00381],
             current: ["temperature_2m", "relative_humidity_2m", "rain", "weather_code", "wind_speed_10m"]
@@ -70,17 +72,17 @@ export const Weather = () => {
             {/* Details */}
             <View style={{ flexDirection: 'column', paddingLeft: 10, width: '75%' }}>
                 <Text style={[styles.baseText, { fontSize: 32 }]}>{`${temp}`}˚C</Text>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text>{`${weather}`} | </Text>
+                <View style={[{ flexDirection: 'row'}]}>
+                    <Text style={[styles.baseText, {fontSize: 14.5}]}>{`${weather}`} | </Text>
                     <Image style={[{ width: 18, height: 18 }]} source={require('../images/humidity.png')}></Image>
-                    <Text>{`${humidity}`}% | </Text>
+                    <Text style={[styles.baseText, {fontSize: 14.5}]}>{`${humidity}`}% | </Text>
                     <Image style={[{ width: 18, height: 18 }]} source={require('../images/wind.png')}></Image>
-                    <Text>{`${wind}`}km/h</Text>
+                    <Text style={[styles.baseText, {fontSize: 14.5}]}>{`${wind}`}km/h</Text>
                 </View>
             </View>
             {/* Weather image */}
             <Image
-                style={{ width: 75, height: 75 }}
+                style={{ width: 70, height: 70 }}
                 source={weatherCode < 2 ? require(sunny)
                     : weatherCode < 49 ? require(partlyCloudy)
                         : require(rain)
