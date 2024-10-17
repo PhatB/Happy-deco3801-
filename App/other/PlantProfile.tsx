@@ -169,6 +169,9 @@ export const PlantProfile = (props: PlantProfileProps) => {
             <Line></Line>
             <Text style={[styles.smallBold]}>Pest Management</Text>
             <Pressable
+                onPress={() => {
+                    navigation.navigate("PestDetected", { "plant": info })
+                }}
                 style={[styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}>
                 <Text style={styles.greenButton}>I've detected a pest!</Text>
             </Pressable>
