@@ -143,7 +143,7 @@ export async function mostRecentEnvironmentRecord(deviceID: string) {
 export async function UpdateVibration(deviceID: string, vibration: number) {
     let device = await getDevice(deviceID)
     device.vibrationFrequency = vibration
-    return apiRequest(`Device/${deviceID}`, device, "PUT")
+    return apiRequest(`Devices/${deviceID}`, device, "PUT")
 }
 
 export async function getPlantTypes() {
