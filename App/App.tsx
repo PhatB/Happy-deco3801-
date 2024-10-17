@@ -6,22 +6,22 @@
  */
 
 import React from 'react';
-import {NavigationContainer, NavigationProp} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { NavigationContainer, NavigationProp } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Files made by us
-import {HomeScreen} from './pages/HomeScreen.tsx';
-import {AddPlantScreen} from './pages/AddPlantScreen.tsx';
-import {ExploreScreen} from './pages/ExploreScreen.tsx';
-import {AchievementsScreen} from './pages/AchievementsScreen.tsx';
-import {SettingsScreen} from './pages/SettingsScreen.tsx';
-import {MoreInfoScreen} from './pages/MoreInfoScreen.tsx';
-import {styles} from "./other/Styles.tsx";
-import {Text, View} from "react-native";
+import { HomeScreen } from './pages/HomeScreen.tsx';
+import { AddPlantScreen } from './pages/AddPlantScreen.tsx';
+import { ExploreScreen } from './pages/ExploreScreen.tsx';
+import { AchievementsScreen } from './pages/AchievementsScreen.tsx';
+import { SettingsScreen } from './pages/SettingsScreen.tsx';
+import { MoreInfoScreen } from './pages/MoreInfoScreen.tsx';
+import { styles } from "./other/Styles.tsx";
+import { Text, View } from "react-native";
 import { PlantProfile } from './other/PlantProfile.tsx';
 import { History } from './pages/History.tsx';
 import { Notifications } from './pages/Notifications.tsx';
-
+import { PestDetectedScreen } from './pages/PestDetectedScreen.tsx';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 // App
@@ -29,51 +29,56 @@ class App extends React.Component {
     render() {
         return (
 
-                <NavigationContainer>
-                    <Stack.Navigator initialRouteName="Home">
-                        <Stack.Screen
-                            name="Home"
-                            component={HomeScreen}
-                            options={{headerShown: false}}
-                        />
-                        <Stack.Screen
-                            name="Add"
-                            component={AddPlantScreen}
-                            options={{headerShown: false}}
-                        />
-                        <Stack.Screen
-                            name="Achievements"
-                            component={AchievementsScreen}
-                            options={{headerShown: false}}
-                        />
-                        <Stack.Screen
-                            name="Settings"
-                            component={SettingsScreen}
-                            options={{headerShown: false}}
-                        />
-                        <Stack.Screen
-                            name="Explore"
-                            component={ExploreScreen}
-                            options={{headerShown: false}}
-                        />
-                        <Stack.Screen
-                            name="MoreInfo"
-                            component={MoreInfoScreen}
-                            options={{headerShown: false}}
-                        />
-                        <Stack.Screen
-                            name="History"
-                            component={History}
-                            options={{headerShown: false}}
-                        />
-                        <Stack.Screen
-                            name="Notifications"
-                            component={Notifications}
-                            options={{headerShown: false}}
-                        />
-                      
-                    </Stack.Navigator>
-                </NavigationContainer>
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName="Home">
+                    <Stack.Screen
+                        name="Home"
+                        component={HomeScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Add"
+                        component={AddPlantScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Achievements"
+                        component={AchievementsScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Settings"
+                        component={SettingsScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Explore"
+                        component={ExploreScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="MoreInfo"
+                        component={MoreInfoScreen}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="History"
+                        component={History}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="Notifications"
+                        component={Notifications}
+                        options={{ headerShown: false }}
+                    />
+                    <Stack.Screen
+                        name="PestDetected"
+                        component={PestDetectedScreen}
+                        options={{ headerShown: false }}
+                    />
+
+                </Stack.Navigator>
+            </NavigationContainer>
 
         );
     }

@@ -40,7 +40,7 @@ export const checkNotifications = async () => {
     for (let i = 0; i < plants.length; i++) {
         let device = plants[i].device;
         let recent = await mostRecentEnvironmentRecord(device);
-        if (recent === null) {
+        if (recent === null || recent.suppressNotifications) {
             continue;
         }
         let wrong = whatsWrong(recent, plants[i].plantType)
@@ -53,6 +53,7 @@ export const checkNotifications = async () => {
         }
 
     }
+    console.log(notifs)
     return notifs;
 }
 export const HomeScreen = (props: any) => {
@@ -123,7 +124,7 @@ export const HomeScreen = (props: any) => {
                                 : <PrettyList
                                     data={data}
                                     primaryField={"name"}
-                                    secondaryField={"name"}
+                                    secondaryField={"description"}
                                     defaultImage={require("../images/gLeafIcon.png")}
                                     targetPage="MoreInfo"
                                     targetItemParams={{ "info": "self", "extra": "self" }}

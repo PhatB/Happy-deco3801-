@@ -25,7 +25,10 @@ while command != "exit":
             "temperature": float(inp[2]),
             "sunlight": float(inp[3]),
         }
-        response = requests.post(api_url, json=body)
+        header = {
+            "Authorization":"Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjY2YWMwZTY0MWI4MWZhZDE3NzIyOGZiNSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJVc2VyMSIsIm5iZiI6MTcyODg4OTYyMiwiZXhwIjoxNzMxNDgxNjIyfQ.XjKkpZ8b05rJjpDURmbFq-4ueOxvpuvNGTvRd1cDxGs"
+        }
+        response = requests.post(api_url, json=body, headers=header)
         print(response.text)
 
     if command == "id":

@@ -1,6 +1,6 @@
-import React, {useCallback, useState} from 'react';	
+import React, { useCallback, useEffect, useState } from 'react';
 import { fetchWeatherApi } from 'openmeteo';
-import {Alert, ScrollView, View, Text, Image, Pressable} from 'react-native';
+import { Alert, ScrollView, View, Text, Image, Pressable } from 'react-native';
 import 'react-native-url-polyfill/auto';
 
 import { styles } from './Styles.tsx';
@@ -18,8 +18,8 @@ export const Weather = () => {
     const [weather, setWeather] = useState<string>("");
     const [wind, setWind] = useState<number>(0);
 
-    {/* Get weather */}
-    const GetWeather = useCallback(async () => {
+    {/* Get weather */ }
+    const GetWeather = async () => {
 
         const params = {
             latitude: [-27.29455],
@@ -29,7 +29,7 @@ export const Weather = () => {
         const url = "https://api.open-meteo.com/v1/forecast";
 
         try {
-            {/* Responses */}
+            {/* Responses */ }
             const responses = await fetchWeatherApi(url, params);
             const response = responses[0];
 
@@ -54,40 +54,47 @@ export const Weather = () => {
 
             console.log("getweather");
         }
-        catch(e) {
-            {/* Error */}
+        catch (e) {
+            {/* Error */ }
             Alert.alert(`${e}`);
         }
-    }, []);
+    }
 
-    GetWeather();
 
-    return(
-        <View style={{flexDirection: 'row'}}>
+    useEffect(() => {
+        GetWeather().then()
+    }, [])
+
+    return (
+        <View style={{ flexDirection: 'row' }}>
             {/* Details */}
-            <View style={{flexDirection: 'column', paddingLeft: 10, width: '75%'}}>
-                <Text style={[styles.baseText, {fontSize: 32}]}>{`${temp}`}˚C</Text>
-                <View style={{flexDirection: 'row'}}>
-                    <Text>{`${weather}`} | </Text>
-                    <Image style={[{width: 18, height: 18}]} source={require('../images/humidity.png')}></Image>
-                    <Text>{`${humidity}`}% | </Text>
-                    <Image style={[{width: 18, height: 18}]} source={require('../images/wind.png')}></Image>
-                    <Text>{`${wind}`}km/h</Text>
+            <View style={{ flexDirection: 'column', paddingLeft: 10, width: '75%' }}>
+                <Text style={[styles.baseText, { fontSize: 32 }]}>{`${temp}`}˚C</Text>
+                <View style={[{ flexDirection: 'row'}]}>
+                    <Text style={[styles.baseText, {fontSize: 14.5}]}>{`${weather}`} | </Text>
+                    <Image style={[{ width: 18, height: 18 }]} source={require('../images/humidity.png')}></Image>
+                    <Text style={[styles.baseText, {fontSize: 14.5}]}>{`${humidity}`}% | </Text>
+                    <Image style={[{ width: 18, height: 18 }]} source={require('../images/wind.png')}></Image>
+                    <Text style={[styles.baseText, {fontSize: 14.5}]}>{`${wind}`}km/h</Text>
                 </View>
             </View>
             {/* Weather image */}
-                <Image
-                style={{width: 75, height: 75}}
+            <Image
+                style={{ width: 70, height: 70 }}
                 source={weatherCode < 2 ? require(sunny)
                     : weatherCode < 49 ? require(partlyCloudy)
-                    : require(rain)
-                    }
-                />
+                        : require(rain)
+                }
+            />
         </View>
-            
+
     );
 
 
 }
 
+
+function UseEffect(arg0: () => void, arg1: never[]) {
+    throw new Error('Function not implemented.');
+}
 

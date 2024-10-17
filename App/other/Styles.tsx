@@ -32,10 +32,12 @@ export const styles = StyleSheet.create({
     fontWeight: "medium"
   },
   modalView: {
-    margin: 20,
+    margin: 50,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
+    paddingTop: '10%',
+
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -112,6 +114,7 @@ export const styles = StyleSheet.create({
   },
   search: {
     flexDirection: 'row',
+    alignItems: 'center',
     fontFamily: 'Poppins-Regular',
   },
   textBox: {
@@ -141,6 +144,20 @@ export const styles = StyleSheet.create({
     marginHorizontal: 20,
     padding: 8,
   },
+  redButton: {
+    backgroundColor: '#D83400',
+    flexDirection: 'row',
+    color: 'white',
+    fontSize: 17,
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: "center",
+    marginHorizontal: 10,
+    padding: 6,
+    borderRadius: 5,
+    fontFamily: 'Poppins-Medium',
+
+  },
   greenButton: {
     backgroundColor: '#218F4A',
     flexDirection: 'row',
@@ -162,31 +179,39 @@ export const styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     flex: 1,
-
     height: 50,
-    paddingVertical: 10,
+    justifyContent: 'center',
+    borderWidth: 2.5,
+    paddingVertical: 7.5,
+    borderColor: '#218F4A',
+    borderRadius: 2000,
   },
   weekDayText: {
     fontFamily: 'Poppins-Regular',
     fontSize: 20,
     textAlign: "center",
     color: "white",
+    justifyContent: 'center',
+  },
+  weekDaySelected: {
+    flex: 1,
+    height: 50,
+    justifyContent: 'center',
+    borderWidth: 2.5,
+    paddingVertical: 7.5,
+    borderColor: '#e5e5e5',
+    borderRadius: 2000,
   },
   weekDaySelectedText: {
     fontFamily: 'Poppins-Regular',
     fontSize: 20,
+    color: "white",
     textAlign: "center",
-    color: "black",
+    justifyContent: 'center',
   },
-  weekDaySelected: {
-
-
+  currentDay: {
     backgroundColor: "#F2F2F2",
-
-    paddingVertical: 10,
-    flex: 1,
-    height: 50,
-    borderRadius: 2000
+    borderRadius: 2000,
   },
 
   smallGreenButton: {
