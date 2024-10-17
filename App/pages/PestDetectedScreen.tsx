@@ -6,6 +6,7 @@ import { Dropdown } from "react-native-element-dropdown";
 import { Footer } from "../other/Footer";
 import { BackButton } from "../other/MiscComponents/BackButton";
 import { Line } from "../other/MiscComponents/Line";
+import { UpdateVibration } from "../api";
 
 
 
@@ -25,6 +26,10 @@ export const PestDetectedScreen = () => {
             "value": 60
         },
     ]
+
+    const update = async () => {
+        await UpdateVibration(plant.devie, selectedFrequency);
+    }
 
     const navigation = useNavigation<any>();
     const route: any = useRoute()
@@ -48,7 +53,7 @@ export const PestDetectedScreen = () => {
                     onChange={(item) => { setSelectedFrequency(item.value) }}
                 ></Dropdown>
                 <Pressable
-                    onPress={() => { }}
+                    onPress={() => { await update() }}
                     style={[styles.greenButton, { marginVertical: 15 }]}>
                     <Text style={[styles.greenButton]}>{"Update Frequency"}</Text>
                 </Pressable>
