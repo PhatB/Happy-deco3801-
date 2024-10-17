@@ -53,7 +53,7 @@ export const PestDetectedScreen = () => {
                     onChange={(item) => { setSelectedFrequency(item.value) }}
                 ></Dropdown>
                 <Pressable
-                    onPress={() => { await update() }}
+                    onPress={async () => { await update() }}
                     style={[styles.greenButton, { marginVertical: 15 }]}>
                     <Text style={[styles.greenButton]}>{"Update Frequency"}</Text>
                 </Pressable>
