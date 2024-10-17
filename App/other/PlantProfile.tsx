@@ -136,7 +136,7 @@ export const PlantProfile = (props: PlantProfileProps) => {
 
                     <Pressable
                         onPress={() => navigation.navigate("History", { "plant": info })}
-                        style={[styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}>
+                        style={[styles.greenButton, styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}>
                         <Text style={styles.greenButton}>View Plant History</Text>
                     </Pressable>
                 </>
@@ -183,14 +183,14 @@ export const PlantProfile = (props: PlantProfileProps) => {
                 onPress={() => {
                     navigation.navigate("PestDetected", { "plant": info })
                 }}
-                style={[styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}>
+                style={[styles.greenButton, styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}>
                 <Text style={styles.greenButton}>I've detected a pest!</Text>
             </Pressable>
             <Line></Line>
             <Text style={[styles.smallBold]}>Description</Text>
             <Text style={styles.baseText}>{info.description}</Text>
             <Pressable
-                style={[styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60 }]}
+                style={[styles.greenButton, styles.smallGreenButton, { marginHorizontal: 0, marginTop: 30, width: '100%', height: 60, backgroundColor: '#D83400' }]}
                 onPress={() => { setWarningVisible(true) }}>
                 <Text style={styles.redButton}>Delete Plant</Text>
             </Pressable>
