@@ -20,4 +20,7 @@ public class Device
     public List<string>? Test { get; set; }
 
     public List<Notification>? Notifications { get; set; }
+
+    public int VibrationFrequency { get; set; } = 10;
+
 }

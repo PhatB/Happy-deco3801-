@@ -140,6 +140,12 @@ export async function mostRecentEnvironmentRecord(deviceID: string) {
     return records.sort((a, b) => a.time > b.time ? -1 : 1)[0]
 }
 
+export async function UpdateVibration(deviceID: string, vibration: number) {
+    let device = await getDevice(deviceID)
+    device.vibrationFrequency = vibration
+    return apiRequest(`Devices/${deviceID}`, device, "PUT")
+}
+
 export async function getPlantTypes() {
     return apiRequest('PlantType');
 }
