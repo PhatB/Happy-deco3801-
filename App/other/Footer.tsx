@@ -41,7 +41,7 @@ export const Footer = ({}) => {
             <Pressable onPress={() => navigation.navigate("Home", {screen: "HomeScreen"})}>
                 <Image
                 style={styles.footerIcon}
-                source={route.name == "Home" || route.name == "Add" || route.name == "Notifications"|| route.name == "History" || getInfoType() == InfoType.PlantProfile
+                source={route.name == "Home" || route.name == "Add" || route.name == "Notifications"|| route.name == "History" || getInfoType() == InfoType.PlantProfile || route.name == "PestDetected"
                     ? require(gLeafIcon):require(leafIcon)}
                 />
             </Pressable>
