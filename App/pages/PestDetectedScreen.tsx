@@ -12,7 +12,7 @@ import { UpdateVibration } from "../api";
 
 export const PestDetectedScreen = () => {
 
-    const choices = [
+    let choices = [
         {
             "label": "5 minutes",
             "value": 5
@@ -43,15 +43,39 @@ export const PestDetectedScreen = () => {
                 <BackButton />
                 <Line />
                 <Text style={{ ...styles.smallHeading }}>     Vibration Frequency</Text>
-                <Dropdown
-                    data={choices}
-                    labelField={"label"}
-                    valueField={"value"}
-                    style={{ ...styles.smallWhiteButton, ...styles.textBox, width: "90%" }}
-                    fontFamily='Poppins-Regular'
-                    placeholder='Please select a vibration frequency.'
-                    onChange={(item) => { setSelectedFrequency(item.value) }}
-                ></Dropdown>
+                <View style={{ display: "flex", flexDirection: "column" }}>
+                    <Pressable
+                        onPress={() => { setSelectedFrequency(5) }}
+                        style={[selectedFrequency === 5
+                            ? styles.whiteButton
+                            : styles.greenButton
+                            , {marginBottom:15}]}>
+                        <Text style={[selectedFrequency === 5
+                            ? styles.whiteButton
+                            : styles.greenButton]}>{"5 mins"}</Text>
+                    </Pressable>
+                    <Pressable
+                        onPress={() => { setSelectedFrequency(20) }}
+                        style={[selectedFrequency === 20
+                            ? styles.whiteButton
+                            : styles.greenButton
+                        , {marginBottom:15}]}>
+                        <Text style={[selectedFrequency === 20
+                            ? styles.whiteButton
+                            : styles.greenButton]}>{"20 mins"}</Text>
+                    </Pressable>
+                    <Pressable
+                        onPress={() => { setSelectedFrequency(60) }}
+                        style={[selectedFrequency === 60
+                            ? styles.whiteButton
+                            : styles.greenButton
+                            , {marginBottom:15}]}>
+                        <Text style={[selectedFrequency === 60
+                            ? styles.whiteButton
+                            : styles.greenButton]}>{"60 mins"}</Text>
+                    </Pressable>
+                </View>
+                <Line />
                 <Pressable
                     onPress={async () => { await update() }}
                     style={[styles.greenButton, { marginVertical: 15 }]}>

@@ -169,7 +169,7 @@ export const History = () => {
                                 records.map((record, idx) => {
                                     //Convert the time to AM or PM
                                     const time = new Date(record.time)
-
+                                    time.setHours(time.getHours() + 6);
                                     const isPM = time.getHours() > 12
                                     let hours = isPM ? time.getHours() - 12 : time.getHours()
                                     if (time.getHours() == 0) hours = 12;

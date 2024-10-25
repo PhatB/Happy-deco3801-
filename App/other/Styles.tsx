@@ -158,6 +158,21 @@ export const styles = StyleSheet.create({
     fontFamily: 'Poppins-Medium',
 
   },
+  whiteButton: {
+    backgroundColor: 'yellow',
+    borderColor: "black",
+    flexDirection: 'row',
+    color: 'black',
+    fontSize: 17,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: "center",
+    marginHorizontal: 10,
+    padding: 6,
+    borderRadius: 5,
+    fontFamily: 'Poppins-Medium',
+  },
   greenButton: {
     backgroundColor: '#218F4A',
     flexDirection: 'row',
@@ -170,7 +185,6 @@ export const styles = StyleSheet.create({
     padding: 6,
     borderRadius: 5,
     fontFamily: 'Poppins-Medium',
-
   },
 
   weekDay: {
